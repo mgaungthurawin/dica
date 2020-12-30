@@ -6,9 +6,8 @@
    <div class="container">
         <div class="col-lg-12 mb-12 text-center">
             <div  style="width: 100%;">
-                <h2>{{trans('app.about_of_matching_service_program')}}</h2>
-                <p>{{trans('app.matching_service_program_is_a_program')}}</p>
-                <p>{{trans('app.in_this_program')}}</p>
+                <h2>{{trans('app.about_of_matching_service_program')}}</h2><br>
+                <p>{{trans('app.matching_service_program_is_a_program')}}{{trans('app.in_this_program')}}</p><br>
                 <a href="#" class="btn outline-btn">
                     {{trans('app.read_more')}}
                 </a>
@@ -21,7 +20,7 @@
         <!-- Marketing Icons Section -->
         <div class="row">            
           <div class="col-lg-9 mb-3">
-            <h1 class="my-4">{{trans('app.matching_service_program_news')}}</h1>
+            <h1 class="my-4">{{trans('app.matching_service_program_news')}}</h1><br>
             @foreach($companies as $company)
             <div class="news-card">
                 <h4 >{{ $company->name }}</h4>
@@ -35,7 +34,7 @@
           </div>
         
           <div class="col-lg-3 mb-3">
-            <h1 class="my-4">{{trans('app.links')}}</h1>
+            <h1 class="my-4">{{trans('app.links')}}</h1><br>
             <div class="link-card-warp">
                 <div class="link-card text-center">
                     <h4 >{{trans('app.industrial_associations')}}</h4>

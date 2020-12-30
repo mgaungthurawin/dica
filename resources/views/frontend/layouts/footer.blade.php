@@ -37,7 +37,7 @@
             
             <div class="col-sm-12 footer-text">
                 <p>{{trans('app.ministry_of_planning')}}<p>
-                <p>{{trans('app.website')}}<img src="v2/images/jica-logo.jpg"></p>
+                <p>{{trans('app.website')}}<img src="{{ asset('v2/images/jica-logo.jpg') }}"></p>
             </div>
             
             

@@ -7,8 +7,8 @@
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
                     <p>{{trans('app.search_result')}}</p>
-                    <h1>{{trans('app.database_on_material_processing')}}</h1>
-                    <p>{{trans('app.products_name')}}<br />
+                    <h1>{{trans('app.database_on_material_processing')}}</h1><br>
+                    <p>{{trans('app.products_name')}}<br>
                     {{trans('app.state_region')}}</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                           <th scope="col">{{trans('app.industry')}}</th>
                           <th scope="col">{{trans('app.name_of_company')}}</th>
                           <th scope="col">{{trans('app.state_region')}}</th>
-                          <th scope="col">{{trans('app.main_products')}}</th>{{trans('app.main_products')}}
+                          <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
                         </tr>
                       </thead>

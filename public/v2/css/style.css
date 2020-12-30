@@ -340,6 +340,7 @@ footer{
 @media (min-width: 993px) {
     nav.navbar.bootsnav ul.nav>li>a {
         padding: 10px 16px !important;
+        font-size: 12px;
     }
 }
 @media (max-width: 768px) {
