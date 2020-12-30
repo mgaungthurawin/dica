@@ -15,7 +15,7 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('prefix')->default(0);
+            $table->integer('prefix')->default(0);
             $table->string('title');
             $table->text('description');
             $table->integer('media_id');
