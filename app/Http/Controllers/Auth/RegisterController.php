@@ -48,6 +48,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if (array_key_exists('user_type', $data)) {
+            if("CUSTOMER" == $data['user_type']) {
+                $data['name'] = $name = $data['fname']." ". $data['lname'];
+            }
+        }
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -66,9 +72,12 @@ class RegisterController extends Controller
         $company = null;
         if (array_key_exists('company', $data)) {
             $company = $data['company'];
+            $name = $data['fname']." ". $data['lname'];
+        } else {
+            $name = $data['name'];
         }
         return User::create([
-            'name' => $data['name'],
+            'name' => $name,
             'company' => $company,
             'email' => $data['email'],
             'user_type' => $data['user_type'],

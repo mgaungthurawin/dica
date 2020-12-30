@@ -9,7 +9,7 @@
                     <h2 class="wiget-title">{{trans('app.contact_info')}}</h2>
                     <ul>
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-address-card"></i> <br> {{trans('app.name_of_officer')}} </li>
-                        <li class="col-sm-3 col-xs-6"><i class="fa fa-envelope"></i> <br>  info@testing.com</a></li>
+                        <li class="col-sm-3 col-xs-6"><i class="fa fa-envelope"></i> <br> msmebusinessmatching@gmail.com</a></li>
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-phone"></i><br>  067-54321</a></li>
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-map-marker"></i><br>  {{trans('app.nay_pyi_taw')}},{{trans('app.myanmar')}}</a></li>
                     </ul>

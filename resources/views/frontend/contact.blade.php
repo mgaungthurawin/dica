@@ -57,7 +57,7 @@
                             067 54321                        </address>
                         <address>
                             <strong><span class="fa fa-envelope"></span> {{trans('app.email')}}</strong><br>
-                            <a href="mailto:#">info@info.com</a>
+                            <a href="mailto:#">msmebusinessmatching@gmail.com</a>
                         </address>
                     </div>
                 </div>

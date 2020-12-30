@@ -48,7 +48,7 @@
     'forgot_your_password' => "သင့်ရဲ့စကားဝှက်ကိုမေ့နေပါသလား?",
     'usage_of_database' => "ဒေတာဘေ့စ်အသုံးပြုမှု",
     'first_name' => "အမည်",
-    'last_name' => "မျိုးနွယ်အမည်",
+    'last_name' => "အမည်",
     'full_name' => "အမည်အပြည့်အစုံ",
     'email' => "အီးမေးလ်",
     'password' => "စကားဝှက်",
