@@ -26,9 +26,8 @@
                                     <label for="email">
                                         {{trans('app.email_address')}}</label>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-envelope"></span>
                                         </span>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="{{trans('app.enter_email')}}" required="required" />
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="{{trans('app.enter_email')}}" required="required" style="font-size: 1rem;" />
                                     </div>
                                 </div>
                                 
@@ -57,7 +56,7 @@
                             067 54321                        </address>
                         <address>
                             <strong><span class="fa fa-envelope"></span> {{trans('app.email')}}</strong><br>
-                            <a href="mailto:#">info@info.com</a>
+                            <a href="mailto:#">msmebusinessmatching@gmail.com</a>
                         </address>
                     </div>
                 </div>
