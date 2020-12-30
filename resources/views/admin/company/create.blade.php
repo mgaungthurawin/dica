@@ -15,6 +15,7 @@
                         <div class="form-group col-sm-12">
                             {!! Form::label('name', 'Company Category:') !!} <span class="text-danger">*</span>
                             <select name="company_category_id" id="company_category_id" class="form-control" required="">
+                                <option value="0">Select Category</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}-{{ $category->prefix }}">{{ $category->title }}</option>
                                 @endforeach

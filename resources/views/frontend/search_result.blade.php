@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-    <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive"></div>         
+    <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div>         
     <div class="container">    
         <div class="row">
             <div class="col-lg-12 mb-12">
