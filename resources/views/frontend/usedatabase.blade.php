@@ -23,7 +23,8 @@
                     </ol>
                 </div>
             </div>
-        </div>  
+        </div>
+        @if(empty(Auth::user()))  
         <div class="row">
             <div class="col-lg-6 mb-6">
                 <div class="container-box" style="width: 100%;">
@@ -34,10 +35,11 @@
             <div class="col-lg-6 mb-6">
                 <div class="container-box" style="width: 100%;">
                     {{trans('app.link_button')}}<br><br>
-                    <a href="#" class="btn outline-btn">{{trans('app.login')}}</a>
+                    <a href="{{ url('register') }}" class="btn outline-btn">{{trans('app.register')}}</a>
                 </div>
             </div>
         </div>
+        @endif
         <!-- /.row -->         
     </div>
 </main>
