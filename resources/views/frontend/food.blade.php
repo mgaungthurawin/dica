@@ -7,7 +7,7 @@
             <div class="container-box">
                 <table class="table">  
                     <tr>
-                      <th rowspan="2">Company name</th>
+                      <th rowspan="2">{{trans('app.name_of_company')}}</th>
                       <td>{!! $company->name !!}</td>
                     </tr>
                     <tr>
@@ -36,12 +36,12 @@
                 <div class="col-lg-12 mb-12">
                     <div class="container-box">
                         <div class="col-lg-5 col-sm-5">
-                            <h3>Products</h3>
+                            <h3>{{trans('app.product')}}</h3>
                             <table class="table table-striped">
                               <thead class="thead-dark">
                                 <tr>
-                                  <th scope="col">No</th>
-                                  <th scope="col">Main product</th>
+                                  <th scope="col">{{trans('app.no')}}</th>
+                                  <th scope="col">{{trans('app.main_products')}}</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -58,12 +58,12 @@
                         </div>
 
                         <div class="col-lg-7 col-sm-7">
-                            <h3>Locations</h3>
+                            <h3>{{trans('app.locations')}}</h3>
                             <table class="table table-striped">
                               <thead class="thead-dark">
                                 <tr>
-                                  <th scope="col">No</th>
-                                  <th scope="col">Location</th>
+                                  <th scope="col">{{trans('app.no')}}</th>
+                                  <th scope="col">{{trans('app.location')}}</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -88,66 +88,66 @@
                         <div class="container-box">
                             <table class="table ">
                               <thead> 
-                                <h3>Company</h3>
+                                <h3>{{trans('app.company')}}</h3>
                               </thead>
                               <tbody>
                                 
                                 <tr>
-                                <th rowspan="11">Contact</th>
+                                <th rowspan="11">{{trans('app.contact_two')}}</th>
                                 <td colspan="6">{!! $company->company_url !!}</td>
                                 </tr>
                                 <tr>
-                                   <td rowspan="2">Office</td>
+                                   <td rowspan="2">{{trans('app.office')}}</td>
                                     <td colspan="5">{!! $company->office_address !!}</td>
                                     <tr>
-                                      <td>TEL</td>
+                                      <td>{{trans('app.tel')}}</td>
                                       <td colspan="2">{!! $company->office_tel !!}</td>
-                                      <td colspan="1">FAX</td>
+                                      <td colspan="1">{{trans('app.fax')}}</td>
                                       <td>{!! $company->office_fax !!}</td>
                                     </tr>
                                 </tr>
                                 <tr>
-                                  <td rowspan="2">Factory</td>
+                                  <td rowspan="2">{{trans('app.factory')}}</td>
                                     <td colspan="5">{!! $company->factory_address !!}</td>
                                     <tr>
-                                      <td>TEL</td>
+                                      <td>{{trans('app.tel')}}</td>
                                       <td colspan="2">{!! $company->factory_tel !!}</td>
-                                      <td colspan="1">FAX</td>
+                                      <td colspan="1">{{trans('app.fax')}}</td>
                                       <td>{!! $company->factory_fax !!}</td>
                                     </tr>
                                 </tr>
                                 <tr>
-                                  <td>MD/CEO</td>
-                                  <td>Name</td>
+                                  <td>{{trans('app.md_ceo')}}</td>
+                                  <td>{{trans('app.name')}}</td>
                                   <td>{!! $company->md_ceo_name !!}</td>
-                                  <td>Position</td>
+                                  <td>{{trans('app.postion')}}</td>
                                   <td colspan="2">{!! $company->md_ceo_position !!}</td>
                                 </tr>
                                 <tr>
-                                  <td>Production/Factory Manager</td>
-                                  <td>Name</td>
+                                  <td>{{trans('app.production_factory_manager')}}</td>
+                                  <td>{{trans('app.name')}}</td>
                                   <td>{!! $company->factory_manager_name !!}</td>
-                                  <td>Position</td>
+                                  <td>{{trans('app.postion')}}</td>
                                   <td colspan="2">{!! $company->factory_manager_position !!}</td>
                                 </tr>
                                 <tr>
-                                  <td>Hygiene manager</td>
-                                  <td>Name</td>
+                                  <td>{{trans('app.hygiene_manager')}}</td>
+                                  <td>{{trans('app.name')}}</td>
                                   <td>{!! $company->hygiene_manager_name !!}</td>
-                                  <td>Position</td>
+                                  <td>{{trans('app.postion')}}</td>
                                   <td colspan="2">{!! $company->hygiene_manager_position !!}</td>
                                 </tr>
                                 <tr>
-                                  <td rowspan="3">Contact Person</td>
-                                  <td>Name</td>
+                                  <td rowspan="3">{{trans('app.contact_person')}}</td>
+                                  <td>{{trans('app.name')}}</td>
                                   <td>{!! $company->cp_name !!}</td>
-                                  <td>Position</td>
+                                  <td>{{trans('app.postion')}}</td>
                                   <td colspan="2">{!! $company->cp_position !!}</td>
                                 </tr>
                                 <tr>
-                                  <td>TEL</td>
+                                  <td>{{trans('app.tel')}}</td>
                                   <td>{!! $company->cp_tel !!}</td>
-                                  <td>Email</td>
+                                  <td>{{trans('app.email')}}</td>
                                   <td colspan="2">{!! $company->cp_email !!}</td>
                                 </tr>
 
