@@ -235,16 +235,28 @@ class CompanyController extends Controller
     }
 
     private function prepareData($data) {
+        $office_location = NULL;
+        if(array_key_exists('office_location', $data)){
+            $office_location = $data['office_location'];
+        }
+        $plant_location = NULL;
+        if(array_key_exists('plant_location', $data)){
+            $plant_location = $data['plant_location'];
+        }
+        $language = NULL;
+        if(array_key_exists('language', $data)){
+            $language = $data['language'];
+        }
         $content = [
             'office' => [
-                'office_location' => $data['office_location'],
+                'office_location' => $office_location,
                 'office_location_other' => $data['office_location_other'],
                 'office_address' => $data['office_address'],
                 'office_tel' => $data['office_tel'],
                 'office_fax' => $data['office_fax']
             ],
             'plant' => [
-                'plant_location' => $data['plant_location'],
+                'plant_location' => $plant_location,
                 'plant_location_other' => $data['plant_location_other'],
                 'plant_address' => $data['plant_address'],
                 'plant_tel' => $data['plant_tel'],
@@ -259,7 +271,7 @@ class CompanyController extends Controller
                 'pic_title' => $data['pic_title'],
                 'pic_tel' => $data['pic_tel'],
                 'pic_email' => $data['pic_email'],
-                'language' => $data['language'],
+                'language' => $language,
                 'language_other' => $data['language_other']
             ]
         ];

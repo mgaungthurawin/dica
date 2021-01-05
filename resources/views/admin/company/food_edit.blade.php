@@ -154,7 +154,7 @@
 
                               <tr>
                                 <td scope="row" rowspan="3">Foreign Language</td>
-                                <td>{{ Form::radio('language', 'English', array('required' => 'required')) }} &nbsp;&nbsp;English</td>
+                                <td>{{ Form::radio('language', 'English') }} &nbsp;&nbsp;English</td>
                                 <td>{!! Form::radio('language', 'Japanese') !!}&nbsp;&nbsp;Japanese</td>
                                 <td>{!! Form::radio('language', 'Other') !!}</td>
                                 <td colspan="8"> {!! Form::text('language_other', null, ['class' => 'form-control', 'placeholder' => 'Other']) !!}</td>

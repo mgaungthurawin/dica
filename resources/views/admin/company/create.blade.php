@@ -107,7 +107,7 @@
                               </tr>
                               <tr>
                                 <td scope="row" rowspan="3" colspan="">Office</td>
-                                <td>{{ Form::radio('office_location', 'Yangon', array('required' => 'required')) }} &nbsp;&nbsp;Yangon</td>
+                                <td>{{ Form::radio('office_location', 'Yangon') }} &nbsp;&nbsp;Yangon</td>
                                 <td>{!! Form::radio('office_location', 'Mandalay') !!} &nbsp;&nbsp;Mandalay</td>
                                 <td>{!! Form::radio('office_location', 'Other') !!}</td>
                                 <td colspan="8"> {!! Form::text('office_location_other', null, ['class' => 'form-control', 'placeholder' => 'Other']) !!}</td>
@@ -128,7 +128,7 @@
 
                               <tr>
                                 <td scope="row" rowspan="3">Plant</td>
-                                <td>{{ Form::radio('plant_location', 'Yangon', array('required' => 'required')) }} &nbsp;&nbsp;Yangon</td>
+                                <td>{{ Form::radio('plant_location', 'Yangon') }} &nbsp;&nbsp;Yangon</td>
                                 <td>{!! Form::radio('plant_location', 'Mandalay') !!} &nbsp;&nbsp;Mandalay</td>
                                 <td>{!! Form::radio('plant_location', 'Other') !!}</td>
                                 <td colspan="8"> {!! Form::text('plant_location_other', null, ['class' => 'form-control', 'placeholder' => 'Other']) !!}</td>
@@ -174,7 +174,7 @@
 
                               <tr>
                                 <td scope="row" rowspan="3">Language</td>
-                                <td>{{ Form::radio('language', 'English', array('required' => 'required')) }} &nbsp;&nbsp;English</td>
+                                <td>{{ Form::radio('language', 'English') }} &nbsp;&nbsp;English</td>
                                 <td>{!! Form::radio('language', 'Japanese') !!}&nbsp;&nbsp;Japanese</td>
                                 <td>{!! Form::radio('language', 'Other') !!}</td>
                                 <td colspan="8"> {!! Form::text('language_other', null, ['class' => 'form-control', 'placeholder' => 'Other']) !!}</td>
