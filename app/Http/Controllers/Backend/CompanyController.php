@@ -60,10 +60,6 @@ class CompanyController extends Controller
     {
         $form = $request->all();
         $category_id = $form['category_id'];
-        if(strpos($form['category_id'], "-")) {
-            $array = explode("-", $form['category_id']);
-            $category_id = $array[0];
-        };
         $category = Category::find($form['category_id']);
         switch ($category->prefix) {
             case FOOD:
@@ -190,7 +186,7 @@ class CompanyController extends Controller
         //
     }
 
-    public function food($category_id){
+    public function food($category_id, $prefix){
         $certificate = ['ISO', 'HACCP', 'BRC', 'Other'];
         $products = Product::all();
         $locations = Location::all();

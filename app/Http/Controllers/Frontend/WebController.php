@@ -46,8 +46,7 @@ class WebController extends Controller
     }
 
     public function textile(Request $request) {
-        
-         return view('frontend.textile');
+        return view('frontend.textile');
     }
     public function food(Request $request) {
         
