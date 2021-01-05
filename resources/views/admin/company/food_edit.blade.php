@@ -15,7 +15,7 @@
                         <input type="hidden" name="category_id" value="{{ $company->category_id }}">
                         <div class="form-group col-sm-6">
                             {!! Form::label('name', 'Name:') !!} <span class="text-danger">*</span>
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control','required' => 'required']) !!}
                         </div>
 
                         <div class="form-group col-sm-6">
