@@ -26,27 +26,27 @@
                         </div>
                         <div class="form-group col-sm-6">
                             {!! Form::label('name', 'Name:') !!} <span class="text-danger">*</span>
-                            {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-6">
                             {!! Form::label('mm_name', 'Myanmar Name:') !!} <span class="text-danger">*</span>
-                            {!! Form::text('mm_name', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('mm_name', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-6">
                             {!! Form::label('abbreviation', 'Abbreviation:') !!} <span class="text-danger">*</span>
-                            {!! Form::text('abbreviation', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('abbreviation', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-6">
                             {!! Form::label('nation', 'Nation:') !!} <span class="text-danger">*</span>
-                            {!! Form::text('nation', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('nation', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-12">
                             {!! Form::label('description', 'Description:') !!} <span class="text-danger">*</span>
-                            {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Main Product</label><br/>
@@ -120,7 +120,7 @@
                                 <th scope="row" rowspan="11">Contact</th>
                                 <td colspan="1">URL</td>
                                 <th colspan="11">
-                                {!! Form::text('company_url', null, ['class' => 'form-control', 'required' => 'required']) !!}</th>
+                                {!! Form::text('company_url', null, ['class' => 'form-control']) !!}</th>
                               </tr>
                               <tr>
                                 <td scope="row" rowspan="3" colspan="">Office Location</td>
@@ -145,15 +145,15 @@
                               <tr>
                                 <td rowspan="1">Address</td>
                                   <td scope="row" colspan="10">
-                                    {!! Form::text('office_address', $contact['office']['office_address'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('office_address', $contact['office']['office_address'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td>TEL</td>
                                 <td colspan="3">
-                                    {!! Form::text('office_tel', $contact['office']['office_tel'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('office_tel', $contact['office']['office_tel'], ['class' => 'form-control']) !!}</td>
                                 <td>FAX</td>
                                 <td colspan="10">
-                                    {!! Form::text('office_fax', $contact['office']['office_fax'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('office_fax', $contact['office']['office_fax'], ['class' => 'form-control']) !!}</td>
                               </tr>
 
                               <tr>
@@ -178,40 +178,40 @@
                               <tr>
                                 <td rowspan="1">Address</td>
                                   <td scope="row" colspan="10">
-                                  {!! Form::text('plant_address', $contact['plant']['plant_address'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                  {!! Form::text('plant_address', $contact['plant']['plant_address'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td>TEL</td>
                                 <td colspan="3">
-                                {!! Form::text('plant_tel', $contact['plant']['plant_tel'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('plant_tel', $contact['plant']['plant_tel'], ['class' => 'form-control']) !!}</td>
                                 <td>FAX</td>
                                 <td colspan="10">
-                                    {!! Form::text('plant_fax', $contact['plant']['plant_fax'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('plant_fax', $contact['plant']['plant_fax'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td scope="row" colspan="1">Representative</td>
                                 <td>Name</td>
                                 <td colspan="3">
-                                    {!! Form::text('repre_name', $contact['representative']['repre_name'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('repre_name', $contact['representative']['repre_name'], ['class' => 'form-control']) !!}</td>
                                 <td colspan="1">Title</td>
-                                <td colspan="8">{!! Form::text('repre_tittle', $contact['representative']['repre_tittle'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                <td colspan="8">{!! Form::text('repre_tittle', $contact['representative']['repre_tittle'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td scope="row" colspan="1" rowspan="3">Person in charge</td>
                                 <td>Name</td>
                                 <td colspan="3">
-                                    {!! Form::text('pic_name', $contact['pic']['pic_name'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('pic_name', $contact['pic']['pic_name'], ['class' => 'form-control']) !!}</td>
                                 <td colspan="1">Title</td>
                                 <td colspan="8">
-                                    {!! Form::text('pic_title', $contact['pic']['pic_title'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('pic_title', $contact['pic']['pic_title'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td scope="row">TEL</td>
                                 <td colspan="3">
-                                    {!! Form::text('pic_tel', $contact['pic']['pic_tel'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('pic_tel', $contact['pic']['pic_tel'], ['class' => 'form-control']) !!}</td>
                                 <td>Email</td>
                                 <td colspan="8">
-                                    {!! Form::text('pic_email', $contact['pic']['pic_email'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                    {!! Form::text('pic_email', $contact['pic']['pic_email'], ['class' => 'form-control']) !!}</td>
                               </tr>
 
                               <tr>
@@ -237,20 +237,20 @@
                                 <th scope="row" rowspan="2">Company Info.</th>
                                 <td>Year of estabishment</td>
                                 <td colspan="2">
-                                {!! Form::text('year_of_establish', $company_info['estabishment'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('year_of_establish', $company_info['estabishment'], ['class' => 'form-control']) !!}</td>
                                 <td>Num. of Employee</td>
                                 <td colspan="2">
-                                {!! Form::text('no_employee', $company_info['no_employee'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('no_employee', $company_info['no_employee'], ['class' => 'form-control']) !!}</td>
                                 <td rowspan="2" colspan="4"><center>Production</center>
                                 </td>
                               </tr>
                               <tr>
                                 <td scope="row">Capital</td>
                                 <td colspan="2">
-                                {!! Form::text('capital', $company_info['capital'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('capital', $company_info['capital'], ['class' => 'form-control']) !!}</td>
                                 <td>Annual Sales Amount</td>
                                 <td colspan="2">
-                                {!! Form::text('annual_amount', $company_info['annual_amount'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('annual_amount', $company_info['annual_amount'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row" rowspan="4">Low material</th>
@@ -259,7 +259,7 @@
                                   <td colspan="2">{{ $key + 1 }}</td>
                                 @endforeach
                                 <td colspan="2">Space for Plant</td>
-                                <td colspan="2">{!! Form::text('space_for_plant', $production['space_for_plant'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                <td colspan="2">{!! Form::text('space_for_plant', $production['space_for_plant'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td colspan="1">Name of Material</td>
@@ -267,7 +267,7 @@
                                   <td colspan="2">{!! Form::text('name_of_material[]', $lm, ['class' => 'form-control']) !!}</td>
                                 @endforeach
                                 <td colspan="2">Production Capacity</td>
-                                <td colspan="2">{!! Form::text('production_capacity', $production['production_capacity'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                <td colspan="2">{!! Form::text('production_capacity', $production['production_capacity'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td colspan="1">Supplier Name</td>
@@ -275,7 +275,7 @@
                                   <td colspan="2">{!! Form::text('supplier_name[]', $sn, ['class' => 'form-control']) !!}</td>
                                 @endforeach
                                 <td colspan="2">Operation Ratio</td>
-                                <td colspan="2"><input type="text" name="operation_ratio" class="form-control" required="" value="{{ $production['operation_ratio'] }}"></td>
+                                <td colspan="2"><input type="text" name="operation_ratio" class="form-control" value="{{ $production['operation_ratio'] }}"></td>
                               </tr>
                               <tr>
                                 <td colspan="1">Country of Origin</td>
@@ -284,7 +284,7 @@
                                 @endforeach
                                 <td colspan="2">Min Order Quantity</td>
                                 <td colspan="2">
-                                {!! Form::text('min_order_quantity', $production['operation_ratio'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('min_order_quantity', $production['operation_ratio'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row" rowspan="2" colspan="2">Main customer</th>
@@ -328,23 +328,23 @@
                                 <th scope="row" rowspan="2">Export and Import</th>
                                 <td>Export Country</td>
                                 <td colspan="4">
-                                {!! Form::text('export_country', $export_impot['export_country'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('export_country', $export_impot['export_country'], ['class' => 'form-control']) !!}</td>
                                 <td>Ex. Items</td>
                                 <td colspan="6">
-                                {!! Form::text('export_item', $export_impot['export_item'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('export_item', $export_impot['export_item'], ['class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <td>Import Country</td>
                                 <td colspan="4">
-                                {!! Form::text('import_country', $export_impot['import_country'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('import_country', $export_impot['import_country'], ['class' => 'form-control']) !!}</td>
                                 <td>Im. Items</td>
                                 <td colspan="6">
-                                {!! Form::text('import_item', $export_impot['import_item'], ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('import_item', $export_impot['import_item'], ['class' => 'form-control']) !!}</td>
                               </tr>
                             <tr>
                                 <th scope="row">Special Notes</th>
                                 <td colspan="12">
-                                {!! Form::text('special_note', null, ['class' => 'form-control', 'required' => 'required']) !!}</td>
+                                {!! Form::text('special_note', null, ['class' => 'form-control']) !!}</td>
                               </tr>
                             </tbody>
                           </table>
