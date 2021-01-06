@@ -34,9 +34,8 @@
                     <table class="table table-striped table-hover tbl_repeat" id="sortable">
                         <thead>
                             <th>No.</th>
-                            <th>Name</th>
-                            <th>Parent</th>
                             <th>Category Name</th>
+                            <th>Name</th>
                             <th>Recommend</th>
                             <th colspan="3">Action</th>
                         </thead>
@@ -45,13 +44,8 @@
                         @foreach($products as $product)
                             <tr>
                                 <td>{{ $index++ }}</td>
-                                <td>{!! $product->name !!}</td>
-                                <td>@if(0 !== $product->parent)
-                                        {!! pName($product->parent) !!}
-                                    @endif
-                                </td>
                                 <td>{!! $product->category->title !!}
-                                <!-- <td>{!! $product->recommend!!}</td> -->
+                                <td>{!! $product->name !!}</td>
                                 <td>{!!showPrettyStatus($product->recommend) !!}</td>
                                 <td>
                                 <a href="{!! route('product.edit', [$product->id]) !!}"
