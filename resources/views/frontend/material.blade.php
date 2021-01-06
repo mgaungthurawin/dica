@@ -53,12 +53,12 @@
                   @foreach($recommands as $recommand)
                     <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
                   @endforeach
-                  <h3><u>Products</u></h3>
+                  {{--<h3><u>Products</u></h3>
                   @foreach($companies as $company)
                     @foreach($company->products as $product)
                       <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
                     @endforeach
-                  @endforeach
+                  @endforeach--}}
             </div>
             <div class="col-lg-4 mb-4">
                 <h3><u>{{trans('app.list_of_state_region')}}</u></h3>
@@ -77,12 +77,12 @@
                   @foreach($recommands as $recommand)
                     <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
                   @endforeach
-                  <h3><u>Products</u></h3>
+                  {{--<h3><u>Products</u></h3>
                   @foreach($companies as $company)
                     @foreach($company->products as $product)
                       <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
                     @endforeach
-                  @endforeach
+                  @endforeach--}}
             </div>
             <div class="col-lg-6 mb-6">
                 <h3><u>{{trans('app.list_of_state_region')}}</u></h3>
