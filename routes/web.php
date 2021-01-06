@@ -12,7 +12,6 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-	// Auth Route
 	Auth::routes();
 });
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -45,7 +44,6 @@ Route::group(['namespace' => 'Frontend'], function() {
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
-	
 	Route::get('/', 'WebController@index');
 	Route::get('outline', 'WebController@outline');
 	Route::get('usedatabase', 'WebController@usedatabase');
