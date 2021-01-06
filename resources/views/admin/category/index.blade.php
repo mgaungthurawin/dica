@@ -27,7 +27,6 @@
                     <thead>
                         <th>No.</th>
                         <th>Title</th>
-                        <th>Description</th>
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -36,7 +35,6 @@
                         <tr>
                             <td>{{ $index++ }}</td>
                             <td>{!! $category->title !!}</td>
-                            <td>{!! $category->description !!}</td>
                             <td>
                             <a href="{!! route('category.edit', [$category->id]) !!}"
                                class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>
