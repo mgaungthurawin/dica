@@ -28,8 +28,6 @@
                         <th>Category Name</th>
                         <th>Title</th>
                         <th>MM Title</th>
-                        <th>Content</th>
-                        <th>En Content</th>
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -40,8 +38,6 @@
                             <td>{!! $new->category->title !!}</td>
                             <td>{!! en($new->title) !!}</td>
                             <td>{!! mm($new->title) !!}</td>
-                            <td>{!! en($new->content) !!}</td>
-                            <td>{!! mm($new->content) !!}</td>
                             <td>
                             <a href="{!! route('new.edit', [$new->id]) !!}"
                                class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>

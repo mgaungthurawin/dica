@@ -37,8 +37,6 @@
                             <th>Category Name</th>
                             <th>Company English Name</th>
                             <th>Company Myanmar Name</th>
-                            <th>Abbreviation</th>
-                            <th>Nation</th>
                             <th colspan="3">Action</th>
                         </thead>
                         <tbody>
@@ -49,8 +47,6 @@
                                 <td>{!! $company->category->title !!}</td>
                                 <td>{!! $company->name !!}</td>
                                 <td>{!! $company->mm_name !!}</td>
-                                <td>{!! $company->abbreviation !!}</td>
-                                <td>{!! $company->nation !!}</td>
                                 <td>
                                 <a href="{!! route('company.edit', [$company->id]) !!}"
                                    class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>
