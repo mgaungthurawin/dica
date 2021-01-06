@@ -40,6 +40,7 @@
                 </div>
             </div>
         </div>
+        @if(!empty(Auth::user()))
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
@@ -58,17 +59,8 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
-                    <?php
-                        if(MATERIAL==$company->category->prefix) {
-                            $pro_col = 5;
-                            $col = 7;
-                        } else {
-                            $pro_col = 7;
-                            $col = 5;
-                        }
-                    ?>
                     @if(MATERIAL==$company->type)
-                    <div class="col-lg-{{ $pro_col }} col-sm-{{ $pro_col }}">
+                    <div class="col-lg-6 col-sm-6">
                         <h4>Main processing classification</h4>
                         <table class="table table-striped">
                           <thead class="thead-dark">
@@ -89,8 +81,7 @@
                           </tbody>
                         </table>
                     </div>
-                    @endif
-                    <div class="col-lg-{{ $col }} col-sm-{{ $col }}">
+                    <div class="col-lg-6 col-sm-6">
                         <h4>Main products</h4>
                         <table class="table table-striped">
                           <thead class="thead-dark">
@@ -111,8 +102,30 @@
                           </tbody>
                         </table>
                     </div>
-                    @if(MATERIAL !== $company->type)
-                      <div class="col-lg-{{ $col }} col-sm-{{ $col }}">
+                    @endif
+                    @if(TEXTILE == $company->type)
+                      <div class="col-lg-6 col-sm-6">
+                          <h4>Main processing classification</h4>
+                          <table class="table table-striped">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Processing classification</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php $processing_index = 1;?>
+                              @foreach($company->processings->pluck('main_process')->all() as $processing)
+                              <tr>
+                                  <th scope="row">{{$processing_index}}</th>
+                                  <td>{{ $processing }}</td>
+                              </tr>
+                              <?php $processing_index++; ?>
+                              @endforeach
+                            </tbody>
+                          </table>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
                           <h4>Locations</h4>
                           <table class="table table-striped">
                             <thead class="thead-dark">
@@ -331,6 +344,7 @@
                 </div>
             </div>
         </div>
+      @endif
         <!-- /.row -->         
     </div>
 </main>
