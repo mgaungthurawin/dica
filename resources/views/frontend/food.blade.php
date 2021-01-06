@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-
+            @if(!empty(Auth::user()))
              <div class="row">
                     <div class="col-lg-12 mb-12">
                         <div class="container-box">
@@ -338,6 +338,7 @@
                                 </div>
                     </div>
             </div>
+            @endif
         </div>             
     </div>
   </div>
