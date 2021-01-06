@@ -191,7 +191,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td scope="row">Capital</td>
+                                <td scope="row">Captial Investment</td>
                                 <td colspan="2">
                                 {!! Form::text('capital', null, ['class' => 'form-control']) !!}</td>
                                 <td>Annual Sales Amount</td>
