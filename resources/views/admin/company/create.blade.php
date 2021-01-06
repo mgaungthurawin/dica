@@ -31,7 +31,7 @@
                             {!! Form::text('mm_name', null, ['id' => 'mm_name','class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group col-sm-6">
+                        {{--<div class="form-group col-sm-6">
                             {!! Form::label('abbreviation', 'Abbreviation:') !!} <span class="text-danger">*</span>
                             {!! Form::text('abbreviation', null, ['class' => 'form-control']) !!}
                         </div>
@@ -39,7 +39,7 @@
                         <div class="form-group col-sm-6">
                             {!! Form::label('nation', 'Nation:') !!} <span class="text-danger">*</span>
                             {!! Form::text('nation', null, ['class' => 'form-control']) !!}
-                        </div>
+                        </div>--}}
 
                         <div class="form-group col-sm-12">
                             {!! Form::label('description', 'Description:') !!} <span class="text-danger">*</span>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Main Product</label><br/>
-                            <select class="form-control" name="product_id[]" multiple>
+                            <select class="form-control" name="product_id[]" id="pro_id" multiple>
                                 @foreach($products as $product)
                                     <option value="{{ $product->id}}">{{ $product->name }}</option>
                                 @endforeach
@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" multiple>
+                            <select class="form-control" name="processing_id[]" id="process_id" multiple>
                                 @foreach($main_processings as $main_processing)
                                     <option value="{{ $main_processing->id}}">{{ $main_processing->main_process }}</option>
                                 @endforeach
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Location</label><br/>
-                            <select class="form-control" name="location_id[]" multiple>
+                            <select class="form-control" name="location_id[]" id="loc_id" multiple>
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id}}">{{ $location->name }}</option>
                                 @endforeach

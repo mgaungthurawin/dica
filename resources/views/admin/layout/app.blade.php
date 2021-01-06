@@ -237,6 +237,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         	myanmarLetterOnly($(this));
         })
 
+        $('#pro_id').select2();
+        $('#process_id').select2();
+        $('#loc_id').select2();
+
         function myanmarLetterOnly( self )
         {
             val = self.val();

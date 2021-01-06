@@ -87,7 +87,9 @@ function parentName($parent) {
 function pName($parent) {
     if (0 !== $parent) {
         $product = Product::find($parent);
-        return $product->name;
+        if (!empty($product)) {
+            return $product->name;
+        }
     }
 }
 
