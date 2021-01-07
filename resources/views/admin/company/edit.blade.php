@@ -112,242 +112,326 @@
                             </table>
                         </div>
                         <hr>
-                        
+
                         <div class="form-group col-sm-12">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <th scope="row" rowspan="11">Contact</th>
-                                <td colspan="1">URL</td>
-                                <th colspan="11">
-                                {!! Form::text('company_url', null, ['class' => 'form-control']) !!}</th>
-                              </tr>
-                              <tr>
-                                <td scope="row" rowspan="3" colspan="">Office Location</td>
-                                <td><input type="radio" name="office_location" value="Yangon" 
-                                    @if("Yangon" == $contact["office"]["office_location"])
-                                      checked
-                                    @endif
-                                  >&nbsp;&nbsp;Yangon</td>
-                                <td><input type="radio" name="office_location" value="Mandalay" 
-                                    @if("Mandalay" == $contact["office"]["office_location"])
-                                      checked
-                                    @endif
-                                  >&nbsp;&nbsp;Mandalay</td>
-                                <td><input type="radio" name="office_location" value="Other" 
+                            <label for="contact">Contact</label><br/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            {!! Form::label('url', 'URL') !!} <span class="text-danger">*</span>
+                            {!! Form::text('company_url', null, ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label for="">Office</label>
+                        </div>
+                        
+                        <div class="form-group col-sm-2">
+                            <input type="radio" name="office_location" value="Yangon" 
+                                @if("Yangon" == $contact["office"]["office_location"])
+                                  checked
+                                @endif
+                              >&nbsp;&nbsp;Yangon
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="radio" name="office_location" value="Mandalay" 
+                                @if("Mandalay" == $contact["office"]["office_location"])
+                                  checked
+                                @endif
+                              >&nbsp;&nbsp;Mandalay
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <div class="col-sm-1">
+                            <input type="radio" name="office_location" value="Other" 
                                     @if("Other" == $contact["office"]["office_location"])
                                       checked 
                                     @endif
-                                  ></td>
-                                <td colspan="8"> 
-                                    {!! Form::text('office_location_other', $contact["office"]["office_location_other"], ['class' => 'form-control', 'placeholder' => 'Other']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td rowspan="1">Address</td>
-                                  <td scope="row" colspan="10">
-                                    {!! Form::text('office_address', $contact['office']['office_address'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td>TEL</td>
-                                <td colspan="3">
-                                    {!! Form::text('office_tel', $contact['office']['office_tel'], ['class' => 'form-control']) !!}</td>
-                                <td>FAX</td>
-                                <td colspan="10">
-                                    {!! Form::text('office_fax', $contact['office']['office_fax'], ['class' => 'form-control']) !!}</td>
-                              </tr>
+                                  >
+                            </div>
+                            <div class="form-group col-sm-11">
+                             {!! Form::text('office_location_other', $contact["office"]["office_location_other"], ['class' => 'form-control', 'placeholder' => 'Other']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            {!! Form::label('address', 'Address') !!} <span class="text-danger">*</span>
+                            {!! Form::text('office_address', $contact['office']['office_address'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('tel', 'TEL') !!} <span class="text-danger">*</span>
+                            {!! Form::text('office_tel', $contact['office']['office_tel'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('fax', 'FAX') !!} <span class="text-danger">*</span>
+                            {!! Form::text('office_fax', $contact['office']['office_fax'], ['class' => 'form-control']) !!}
+                        </div>
 
-                              <tr>
-                                <td scope="row" rowspan="3">Plant Location</td>
-                                <td><input type="radio" name="plant_location" value="Yangon" 
+                        <div class="form-group col-sm-12" style="margin-top: 10px;">
+                            <label for="">Plant</label><br/>
+                        </div>
+                        
+                        <div class="form-group col-sm-2">
+                            <input type="radio" name="plant_location" value="Yangon" 
                                     @if("Yangon" == $contact["plant"]["plant_location"])
                                       checked
                                     @endif
-                                  >&nbsp;&nbsp;Yangon</td>
-                                <td><input type="radio" name="plant_location" value="Mandalay" 
+                                  >&nbsp;&nbsp;Yangon
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="radio" name="plant_location" value="Mandalay" 
                                     @if("Mandalay" == $contact["plant"]["plant_location"])
                                       checked
                                     @endif
-                                  >&nbsp;&nbsp;Mandalay</td>
-                                <td><input type="radio" name="plant_location" value="Other" 
+                                  >&nbsp;&nbsp;Mandalay
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <div class="col-sm-1">
+                            <input type="radio" name="plant_location" value="Other" 
                                     @if("Other" == $contact["plant"]["plant_location"])
                                       checked
                                     @endif
-                                  ></td>
-                                <td colspan="8"> {!! Form::text('plant_location_other', $contact["plant"]["plant_location_other"], ['class' => 'form-control', 'placeholder' => 'Other']) !!}</td>
-                              </tr>                        
-                              <tr>
-                                <td rowspan="1">Address</td>
-                                  <td scope="row" colspan="10">
-                                  {!! Form::text('plant_address', $contact['plant']['plant_address'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td>TEL</td>
-                                <td colspan="3">
-                                {!! Form::text('plant_tel', $contact['plant']['plant_tel'], ['class' => 'form-control']) !!}</td>
-                                <td>FAX</td>
-                                <td colspan="10">
-                                    {!! Form::text('plant_fax', $contact['plant']['plant_fax'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td scope="row" colspan="1">Representative</td>
-                                <td>Name</td>
-                                <td colspan="3">
-                                    {!! Form::text('repre_name', $contact['representative']['repre_name'], ['class' => 'form-control']) !!}</td>
-                                <td colspan="1">Title</td>
-                                <td colspan="8">{!! Form::text('repre_tittle', $contact['representative']['repre_tittle'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td scope="row" colspan="1" rowspan="3">Person in charge</td>
-                                <td>Name</td>
-                                <td colspan="3">
-                                    {!! Form::text('pic_name', $contact['pic']['pic_name'], ['class' => 'form-control']) !!}</td>
-                                <td colspan="1">Title</td>
-                                <td colspan="8">
-                                    {!! Form::text('pic_title', $contact['pic']['pic_title'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td scope="row">TEL</td>
-                                <td colspan="3">
-                                    {!! Form::text('pic_tel', $contact['pic']['pic_tel'], ['class' => 'form-control']) !!}</td>
-                                <td>Email</td>
-                                <td colspan="8">
-                                    {!! Form::text('pic_email', $contact['pic']['pic_email'], ['class' => 'form-control']) !!}</td>
-                              </tr>
+                                  >
+                            </div>
+                            <div class="form-group col-sm-11">
+                             {!! Form::text('plant_location_other', $contact["plant"]["plant_location_other"], ['class' => 'form-control', 'placeholder' => 'Other']) !!}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-sm-12">
+                            {!! Form::label('address', 'Address') !!} <span class="text-danger">*</span>
+                            {!! Form::text('plant_address', $contact['plant']['plant_address'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('tel', 'TEL') !!} <span class="text-danger">*</span>
+                            {!! Form::text('plant_tel', $contact['plant']['plant_tel'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('fax', 'FAX') !!} <span class="text-danger">*</span>
+                            {!! Form::text('plant_fax', $contact['plant']['plant_fax'], ['class' => 'form-control']) !!}
+                        </div>
 
-                              <tr>
-                                <td scope="row" rowspan="3">Language</td>
-                                <td><input type="radio" name="language" value="English" 
+                        <div class="form-group col-sm-12" style="margin-top: 10px;">
+                            <label for="">Top Management</label><br/>
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Name') !!} <span class="text-danger">*</span>
+                            {!! Form::text('repre_name', $contact['representative']['repre_name'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Position') !!} <span class="text-danger">*</span>
+                            {!! Form::text('repre_tittle', $contact['representative']['repre_tittle'], ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            <label for="">Person in charge</label><br/>
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Name') !!} <span class="text-danger">*</span>
+                            {!! Form::text('pic_name', $contact['pic']['pic_name'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Position') !!} <span class="text-danger">*</span>
+                            {!! Form::text('pic_title', $contact['pic']['pic_title'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'TEL') !!} <span class="text-danger">*</span>
+                            {!! Form::text('pic_tel', $contact['pic']['pic_tel'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Email') !!} <span class="text-danger">*</span>
+                            {!! Form::text('pic_email', $contact['pic']['pic_email'], ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 10px;">
+                            <label for="">Language</label><br/>
+                        </div>
+                        
+                        <div class="form-group col-sm-2">
+                            <input type="radio" name="language" value="English" 
                                     @if("English" == $contact["pic"]["language"])
                                       checked
                                     @endif
-                                  >&nbsp;&nbsp;English</td>
-                                <td><input type="radio" name="language" value="Japanese" 
+                                  >&nbsp;&nbsp;English 
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="radio" name="language" value="Japanese" 
                                     @if("Japanese" == $contact["pic"]["language"])
                                       checked
                                     @endif
-                                  >&nbsp;&nbsp;Japanese</td>
-                                <td><input type="radio" name="language" value="Other" 
+                                  >&nbsp;&nbsp;Japanese
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <div class="col-sm-1">
+                            <input type="radio" name="language" value="Other" 
                                     @if("Other" == $contact["pic"]["language"])
                                       checked
                                     @endif
-                                  ></td>
-                                <td colspan="8"> {!! Form::text('language_other', $contact["pic"]["language_other"], ['class' => 'form-control', 'placeholder' => 'Other']) !!} </td>
-                              </tr>
-                              <tr>
-                                <th scope="row" rowspan="2">Company Info.</th>
-                                <td>Year of estabishment</td>
-                                <td colspan="2">
-                                {!! Form::text('year_of_establish', $company_info['estabishment'], ['class' => 'form-control']) !!}</td>
-                                <td>Num. of Employee</td>
-                                <td colspan="2">
-                                {!! Form::text('no_employee', $company_info['no_employee'], ['class' => 'form-control']) !!}</td>
-                                <td rowspan="2" colspan="4"><center>Production</center>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td scope="row">Captial Investment</td>
-                                <td colspan="2">
-                                {!! Form::text('capital', $company_info['capital'], ['class' => 'form-control']) !!}</td>
-                                <td>Annual Sales Amount</td>
-                                <td colspan="2">
-                                {!! Form::text('annual_amount', $company_info['annual_amount'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <th scope="row" rowspan="4">Low material</th>
-                                <td colspan="2" style="text-align: right;">No</td>
-                                @foreach($low_material['name_of_material'] as $key => $lm)
-                                  <td colspan="2">{{ $key + 1 }}</td>
-                                @endforeach
-                                <td colspan="2">Space for Plant</td>
-                                <td colspan="2">{!! Form::text('space_for_plant', $production['space_for_plant'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td colspan="1">Name of Material</td>
-                                @foreach($low_material['name_of_material'] as $key => $lm)
-                                  <td colspan="2">{!! Form::text('name_of_material[]', $lm, ['class' => 'form-control']) !!}</td>
-                                @endforeach
-                                <td colspan="2">Production Capacity</td>
-                                <td colspan="2">{!! Form::text('production_capacity', $production['production_capacity'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td colspan="1">Supplier Name</td>
-                                @foreach($low_material['supplier_name'] as $key => $sn)
-                                  <td colspan="2">{!! Form::text('supplier_name[]', $sn, ['class' => 'form-control']) !!}</td>
-                                @endforeach
-                                <td colspan="2">Operation Ratio</td>
-                                <td colspan="2"><input type="text" name="operation_ratio" class="form-control" value="{{ $production['operation_ratio'] }}"></td>
-                              </tr>
-                              <tr>
-                                <td colspan="1">Country of Origin</td>
-                                @foreach($low_material['country_origin'] as $key => $co)
-                                  <td colspan="2">{!! Form::text('country_origin[]', $co, ['class' => 'form-control']) !!}</td>
-                                @endforeach
-                                <td colspan="2">Min Order Quantity</td>
-                                <td colspan="2">
-                                {!! Form::text('min_order_quantity', $production['operation_ratio'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <th scope="row" rowspan="2" colspan="2">Main customer</th>
-                                @foreach($main_customer['mani_customer_prefix'] as $prefix)
-                                  <td>{!! Form::text('mani_customer_prefix[]', $prefix, ['class' => 'form-control']) !!}</td>
-                                @endforeach
-                              </tr>
-                              <tr>
-                                @foreach($main_customer['main_customer_percent'] as $percent)
-                                  <td>{!! Form::text('main_customer_percent[]', $percent, ['class' => 'form-control']) !!}</td>
-                                @endforeach
-                              </tr>
-                              <tr>
-                                <th scope="row" rowspan="3">Certification and Standard</th>
-                                @foreach($certificate as $c)
-                                  <td><input type="checkbox" name="certificate[]" value="{{ $c }}"
+                                  >
+                            </div>
+                            <div class="form-group col-sm-11">
+                             {!! Form::text('language_other', $contact["pic"]["language_other"], ['class' => 'form-control', 'placeholder' => 'Other']) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            <label for="">Company Info</label><br/>
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Year of estabishment') !!} <span class="text-danger">*</span>
+                            {!! Form::text('year_of_establish', $company_info['estabishment'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Num. of Employee') !!} <span class="text-danger">*</span>
+                            {!! Form::text('no_employee', $company_info['no_employee'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Capital Investment') !!} <span class="text-danger">*</span>
+                            {!! Form::text('capital', $company_info['capital'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Annual Sales Amount') !!} <span class="text-danger">*</span>
+                            {!! Form::text('annual_amount', $company_info['annual_amount'], ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            <label for="">Production</label><br/>
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Space for Plant') !!} <span class="text-danger">*</span>
+                            {!! Form::text('space_for_plant', $production['space_for_plant'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Production Capacity') !!} <span class="text-danger">*</span>
+                            {!! Form::text('production_capacity', $production['production_capacity'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Operation Ratio') !!} <span class="text-danger">*</span>
+                            <input type="text" name="operation_ratio" class="form-control" value="{{ $production['operation_ratio'] }}">
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Min Order Quantity') !!} <span class="text-danger">*</span>
+                            {!! Form::text('min_order_quantity', $production['operation_ratio'], ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 30px;">
+                            <div class="col-sm-3">
+                                <label>Low material</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>1</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>2</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>3</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-3">
+                                <label>Name of Material</label>
+                            </div>
+                            @foreach($low_material['name_of_material'] as $key => $lm)
+                            <div class="col-sm-3">
+                                {!! Form::text('name_of_material[]', $lm, ['class' => 'form-control']) !!}
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-3">
+                                <label>Supplier Name</label>
+                            </div>
+                            @foreach($low_material['supplier_name'] as $key => $sn)
+                            <div class="col-sm-3">
+                              {!! Form::text('supplier_name[]', $sn, ['class' => 'form-control']) !!}
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-3">
+                                <label>Country of Origin</label>
+                            </div>
+                            @foreach($low_material['country_origin'] as $key => $co)
+                            <div class="col-sm-3">
+                              {!! Form::text('country_origin[]', $co, ['class' => 'form-control']) !!}
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 10px;">
+                            <label>Main customer</label>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            @foreach($main_customer['mani_customer_prefix'] as $prefix)
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', $prefix, ['class' => 'form-control']) !!}
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="form-group col-sm-12">
+                            @foreach($main_customer['main_customer_percent'] as $percent)
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', $percent, ['class' => 'form-control']) !!}
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            <label for="">Certification and Standard</label><br/>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            @foreach($certificate as $c)
+                            <div class="form-group col-sm-2">
+                                <input type="checkbox" name="certificate[]" value="{{ $c }}"
                                       @if(in_array($c, $cer_standard['certificate']))
                                         checked="" 
                                       @endif
-                                    ></td>
-                                  <td>{{ $c }}</td>
+                                    >{{ $c }}&nbsp;&nbsp; &nbsp;&nbsp;
                                   <input type="hidden" name="certificate[]" value="0">
-                                @endforeach
-                                <td colspan="6">{!! Form::text('certificate_other', $cer_standard['certificate_other'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                @foreach($standard as $s)
-                                  <td><input type="checkbox" name="standard[]" value="{{ $s }}"
+                            </div>
+                            @endforeach
+                            <span><div class="col-sm-6">
+                                {!! Form::text('certificate_other', $cer_standard['certificate_other'], ['class' => 'form-control']) !!}</div>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            @foreach($standard as $s)
+                            <div class="form-group col-sm-2">
+                                <input type="checkbox" name="standard[]" value="{{ $s }}"
                                       @if(in_array($s, $cer_standard['standard']))
                                         checked="" 
                                       @endif
-                                    ></td>
-                                  <td>{{ $s }}</td>
-                                  <input type="hidden" name="standard[]" value="0">
-                                @endforeach
-                                </tr>
-                                <tr>
-                                <td colspan="12">{!! Form::text('standard_other', $cer_standard['standard_other'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <th scope="row" rowspan="2">Export and Import</th>
-                                <td>Export Country</td>
-                                <td colspan="4">
-                                {!! Form::text('export_country', $export_impot['export_country'], ['class' => 'form-control']) !!}</td>
-                                <td>Ex. Items</td>
-                                <td colspan="6">
-                                {!! Form::text('export_item', $export_impot['export_item'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                              <tr>
-                                <td>Import Country</td>
-                                <td colspan="4">
-                                {!! Form::text('import_country', $export_impot['import_country'], ['class' => 'form-control']) !!}</td>
-                                <td>Im. Items</td>
-                                <td colspan="6">
-                                {!! Form::text('import_item', $export_impot['import_item'], ['class' => 'form-control']) !!}</td>
-                              </tr>
-                            <tr>
-                                <th scope="row">Special Notes</th>
-                                <td colspan="12">
-                                {!! Form::text('special_note', null, ['class' => 'form-control']) !!}</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                                    >{{ $s }}&nbsp;&nbsp; &nbsp;&nbsp;
+                                  <input type="hidden" name="standard[]" value="0"> 
+                            </div>
+                            @endforeach
+                            <span><div class="col-sm-12">
+                                {!! Form::text('standard_other', $cer_standard['standard_other'], ['class' => 'form-control']) !!}</div>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            <label for="">Export and Import</label><br/>
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Export Country') !!} <span class="text-danger">*</span>
+                            {!! Form::text('export_country', $export_impot['export_country'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Ex. Items') !!} <span class="text-danger">*</span>
+                            {!! Form::text('export_item', $export_impot['export_item'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('name', 'Import Country') !!} <span class="text-danger">*</span>
+                            {!! Form::text('import_country', $export_impot['import_country'], ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::label('position', 'Im. Items') !!} <span class="text-danger">*</span>
+                            {!! Form::text('import_item', $export_impot['import_item'], ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            {!! Form::label('address', 'Special Notes') !!} <span class="text-danger">*</span>
+                            {!! Form::text('special_note', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-12">

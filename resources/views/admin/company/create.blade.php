@@ -315,6 +315,51 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group col-sm-12" style="margin-top: 10px;">
+                            <label>Main customer</label>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('mani_customer_prefix[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-2">
+                                {!! Form::text('main_customer_percent[]', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
                         <div class="form-group col-sm-12" style="margin-top: 20px;">
                             <label for="">Certification and Standard</label><br/>
                         </div>
