@@ -7,7 +7,17 @@
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
                     <p>{{trans('app.database_on_potential')}}</p>
-                    <h1>{{trans('app.material_processing')}}</h1>
+                    <h1>
+                      @if(MATERIAL == $category->prefix)
+                        MATERIAL PRICESSING
+                      @elseif(FOOD == $category->prefix)
+                        FOOD PROCESSING
+                      @else
+                        TEXTILE
+                      @endif
+
+
+                    </h1>
                 </div>
             </div>
         </div>
