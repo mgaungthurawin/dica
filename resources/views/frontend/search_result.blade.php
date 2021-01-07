@@ -34,8 +34,8 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ implode(",",$company->locations->pluck('name')->all()) }}</td>
-                                <td>{{ implode(",",$company->products->pluck('name')->all()) }}</td>
-                                <td>{!! str_limit(strip_tags($company->description), 100) !!}</td>
+                                <td>{{ substr(implode(",",$company->products->pluck('name')->all()), 0, 20) }}</td>
+                                <td>{{ substr($company->description,0,20) }}</td>
                             </tr>
                         @endforeach
                       </tbody>

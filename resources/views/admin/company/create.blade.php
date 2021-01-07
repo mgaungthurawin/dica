@@ -230,7 +230,7 @@
                             {!! Form::text('no_employee', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="col-sm-6">
-                            {!! Form::label('name', 'Capital') !!} <span class="text-danger">*</span>
+                            {!! Form::label('name', 'Capital Investment') !!} <span class="text-danger">*</span>
                             {!! Form::text('capital', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="col-sm-6">

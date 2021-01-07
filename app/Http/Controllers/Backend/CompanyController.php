@@ -42,7 +42,7 @@ class CompanyController extends Controller
     {
         $certificate = ['ISO', 'ISO9001', 'Other'];
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
-        $products = Product::all();
+        $products = Product::orderBy('name', 'ASC')->get();
         $main_processings = Processing::all();
         // $categories = Category::all();
         $categories = Category::orderBy('id', 'DESC')->get();
@@ -110,7 +110,7 @@ class CompanyController extends Controller
         if(FOOD == $company->type)
         {
             $company = Company::find($id);
-            $products = Product::all();
+            $products = Product::orderBy('name', 'ASC')->get();
             $locations = Location::all();
             $selected_product = $company->products()->pluck('product_id')->all();
             $selected_location = $company->locations()->pluck('location_id')->all();
@@ -125,7 +125,7 @@ class CompanyController extends Controller
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
         $categories = Category::all();
         $company = Company::find($id);
-        $products = Product::all();
+        $products = Product::orderBy('name', 'ASC')->get();
         $main_processings = Processing::all();
         $locations = Location::all();
         $selected_product = $company->products()->pluck('product_id')->all();

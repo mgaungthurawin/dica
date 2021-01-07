@@ -9,6 +9,7 @@ use App\Model\Category;
 use App\Model\Product;
 use App\Model\News;
 use App\Model\Location;
+use App\Model\Processing;
 use DB;
 use Alert;
 
@@ -41,8 +42,33 @@ class WebController extends Controller
             return redirect(url('/'));
         }
         $companies = Company::where('category_id', $category_id)->get();
-        $recommands = Product::where('recommend', TRUE)->get();
-        return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id'));
+        $recommands = Product::where('recommend', TRUE)->GROUPBY('id')->get();
+        $processing_array = [];
+        $product_array = [];
+        $location_array = [];
+        foreach ($companies as $key => $company) {
+            foreach ($company->processings as $processing) {
+                $processing_array[] = $processing->id;
+            }
+        }
+
+        foreach ($companies as $key => $company) {
+            foreach ($company->products as $product) {
+                $product_array[] = $product->id;
+            }
+        }
+
+        foreach ($companies as $key => $company) {
+            foreach ($company->locations as $location) {
+                $location_array[] = $location->id;
+            }
+        }
+
+        $processings = Processing::whereIn('id', $processing_array)->get();        
+        $products = Product::whereIn('id', $product_array)->get();        
+        $locations = Location::whereIn('id', $location_array)->get();       
+        return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id', 'processings', 'products', 'locations'));
+
     }
 
     public function textile(Request $request) {
@@ -101,7 +127,11 @@ class WebController extends Controller
 
         if(count($data) > 0) {
             if (array_key_exists('q', $data)) {
-                $queries = DB::select('call search(?)',array($data['q']));
+                // $queries = DB::select("call search('?')",array($data['q']));
+                $queries = DB::select('SELECT c.* FROM companies as c join company_product as cp on c.id = cp.company_id 
+    join products as p on p.id = cp.product_id join company_processing as cpr on cpr.company_id = c.id 
+    join processing as pro on pro.id=cpr.processing_id 
+    where p.name LIKE "%' . $data['q'].'%" or pro.main_process LIKE "%'. $data['q'] .'%" or c.name LIKE "%'. $data['q'] .'%" or c.main_machine_equipment LIKE "%'. $data['q'] .'%" GROUP BY c.id');
                 $whereIn = [];
                 foreach ($queries as $key => $query) {
                     $whereIn[] = $query->id;

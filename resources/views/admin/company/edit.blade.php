@@ -34,7 +34,7 @@
                             {!! Form::text('mm_name', null, ['class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group col-sm-6">
+                        {{--<div class="form-group col-sm-6">
                             {!! Form::label('abbreviation', 'Abbreviation:') !!} <span class="text-danger">*</span>
                             {!! Form::text('abbreviation', null, ['class' => 'form-control']) !!}
                         </div>
@@ -42,7 +42,7 @@
                         <div class="form-group col-sm-6">
                             {!! Form::label('nation', 'Nation:') !!} <span class="text-danger">*</span>
                             {!! Form::text('nation', null, ['class' => 'form-control']) !!}
-                        </div>
+                        </div> --}}
 
                         <div class="form-group col-sm-12">
                             {!! Form::label('description', 'Description:') !!} <span class="text-danger">*</span>
@@ -245,7 +245,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td scope="row">Capital</td>
+                                <td scope="row">Captial Investment</td>
                                 <td colspan="2">
                                 {!! Form::text('capital', $company_info['capital'], ['class' => 'form-control']) !!}</td>
                                 <td>Annual Sales Amount</td>

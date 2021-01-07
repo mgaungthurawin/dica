@@ -21,7 +21,9 @@
                       <td colspan="5">
                         <div class="row">
                         @foreach($company->products as $product)
-                        <div class="col-md-6"><img src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt="" class="img-responsive"></div>
+                          @if(isset($product->media))
+                          <div class="col-md-6"><img src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt="" class="img-responsive"></div>
+                          @endif
                         @endforeach
 
 
@@ -82,7 +84,7 @@
                     </div>
                 </div>
             </div>
-
+            @if(!empty(Auth::user()))
              <div class="row">
                     <div class="col-lg-12 mb-12">
                         <div class="container-box">
@@ -336,6 +338,7 @@
                                 </div>
                     </div>
             </div>
+            @endif
         </div>             
     </div>
   </div>
