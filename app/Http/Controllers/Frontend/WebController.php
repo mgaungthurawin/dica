@@ -66,7 +66,7 @@ class WebController extends Controller
 
         $processings = Processing::whereIn('id', $processing_array)->get();        
         $products = Product::whereIn('id', $product_array)->get();        
-        $locations = Product::whereIn('id', $location_array)->get();       
+        $locations = Location::whereIn('id', $location_array)->get();       
         return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id', 'processings', 'products', 'locations'));
 
     }
