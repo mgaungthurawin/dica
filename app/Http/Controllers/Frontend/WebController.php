@@ -9,6 +9,7 @@ use App\Model\Category;
 use App\Model\Product;
 use App\Model\News;
 use App\Model\Location;
+use App\Model\Processing;
 use DB;
 use Alert;
 
@@ -41,8 +42,33 @@ class WebController extends Controller
             return redirect(url('/'));
         }
         $companies = Company::where('category_id', $category_id)->get();
-        $recommands = Product::where('recommend', TRUE)->get();
-        return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id'));
+        $recommands = Product::where('recommend', TRUE)->GROUPBY('id')->get();
+        $processing_array = [];
+        $product_array = [];
+        $location_array = [];
+        foreach ($companies as $key => $company) {
+            foreach ($company->processings as $processing) {
+                $processing_array[] = $processing->id;
+            }
+        }
+
+        foreach ($companies as $key => $company) {
+            foreach ($company->products as $product) {
+                $product_array[] = $product->id;
+            }
+        }
+
+        foreach ($companies as $key => $company) {
+            foreach ($company->locations as $location) {
+                $location_array[] = $location->id;
+            }
+        }
+
+        $processings = Processing::whereIn('id', $processing_array)->get();        
+        $products = Product::whereIn('id', $product_array)->get();        
+        $locations = Product::whereIn('id', $location_array)->get();       
+        return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id', 'processings', 'products', 'locations'));
+
     }
 
     public function textile(Request $request) {

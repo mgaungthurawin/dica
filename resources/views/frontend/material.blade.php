@@ -32,10 +32,8 @@
           @if(MATERIAL == $category->prefix)
             <div class="col-lg-6 mb-6">
                 <h3>Main Processing Classification</h3>
-                  @foreach($companies as $company)
-                    @foreach($company->processings as $processing)
-                      <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
-                    @endforeach
+                  @foreach($processings as $processing)
+                    <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">
@@ -62,6 +60,8 @@
             </div>--}}
           @endif        
           @if(TEXTILE == $category->prefix)
+
+
             {{--<div class="col-lg-6 mb-6">
                 <h3><u>Recommand Products</u></h3>
                   @foreach($recommands as $recommand)
@@ -74,21 +74,19 @@
                     @endforeach
                   @endforeach
             </div>--}}
+
+
             <div class="col-lg-6 mb-6">
                 <h3>Main Processing Classification</h3>
-                  @foreach($companies as $company)
-                    @foreach($company->processings as $processing)
-                      <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
-                    @endforeach
+                  @foreach($processings as $processing)
+                    <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">
                 <h3><u>{{trans('app.list_of_state_region')}}</u></h3>
               <div class="list-group">
-                  @foreach($companies as $company)
-                      @foreach($company->locations as $location)
-                      <a href="{{url($category->id.'/search_result?location='. $location->id)}}" class="list-group-item">{{ $location->name }}</a>
-                      @endforeach
+                  @foreach($locations as $location)
+                  <a href="{{url($category->id.'/search_result?location='. $location->id)}}" class="list-group-item">{{ $location->name }}</a>
                   @endforeach
               </div>
             </div>
@@ -97,20 +95,16 @@
           @if(FOOD == $category->prefix)
             <div class="col-lg-6 mb-6">
                 <h3>Main Products</h3>
-                  @foreach($companies as $company)
-                    @foreach($company->products as $product)
-                      <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
-                    @endforeach
+                  @foreach($products as $product)
+                    <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">
                 <h3><u>{{trans('app.list_of_state_region')}}</u></h3>
               <div class="list-group">
-                  @foreach($companies as $company)
-                      @foreach($company->locations as $location)
-                      <a href="{{url($category->id.'/search_result?location='. $location->id)}}" class="list-group-item">{{ $location->name }}</a>
-                      @endforeach
-                  @endforeach
+                    @foreach($locations as $location)
+                    <a href="{{url($category->id.'/search_result?location='. $location->id)}}" class="list-group-item">{{ $location->name }}</a>
+                    @endforeach
               </div>
             </div>
           @endif
