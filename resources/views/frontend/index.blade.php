@@ -24,7 +24,7 @@
             @if(!empty($news))
                 @foreach($news as $new)
                 <div class="news-card">
-                    <h4 >{{ languageSwitcher($new->category->title) }}</h4>
+                    <h4 >{{ languageSwitcher($new->title) }}</h4>
                     <div class="row">
                     <div class="col-md-10"><p class="card-text">{{ languageSwitcher($new->content) }}</p></div>
                       <div class="col-md-2"><a href="{{ url($new->id.'/new') }}" class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div>
