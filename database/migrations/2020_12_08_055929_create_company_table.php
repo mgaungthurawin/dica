@@ -73,6 +73,7 @@ class CreateCompanyTable extends Migration
             $table->longText('remark')->nullable();
             $table->string('type');
             $table->longText('special_note')->nullable();
+            $table->text('strong_point')->nullable();
             $table->timestamps();
         });
     }

@@ -48,6 +48,14 @@ class NewController extends Controller
     public function store(NewRequest $request)
     {
         $data = $request->all();
+        if ($request->hasFile('image_media')) {
+            $media = saveSingleMedia($request, 'image');
+            if (TRUE != $media['status']) {
+                Alert::error('Error', 'product Not Found');
+                return redirect(route('product.index'));
+            }
+            $data['media_id'] = $media['media_id'];
+        }
         $data['title'] = $data['title'] ."|&|" . $data['mm_title'];
         $data['content'] = $data['content'] ."|&|" . $data['mm_content'];
         News::create($data);
@@ -98,6 +106,12 @@ class NewController extends Controller
             return redirect(route('new.index'));
         }
         $data = $request->all();
+        if ($request->hasFile('image_media')) {
+            $media = saveSingleMedia($request, 'image');
+            if (TRUE == $media['status']) {
+                $data['media_id'] = $media['media_id'];
+            }
+        }
         $data['title'] = $data['title'] ."|&|" . $data['mm_title'];
         $data['content'] = $data['content'] ."|&|" . $data['mm_content'];
         $new->update($data);

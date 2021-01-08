@@ -25,6 +25,7 @@
                           <th scope="col">{{trans('app.state_region')}}</th>
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
+                          <th scope="col">{{trans('app.strong_point')}}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -36,6 +37,7 @@
                                 <td>{{ implode(",",$company->locations->pluck('name')->all()) }}</td>
                                 <td>{{ substr(implode(",",$company->products->pluck('name')->all()), 0, 20) }}</td>
                                 <td>{{ substr($company->description,0,20) }}</td>
+                                <td>{{ substr($company->strong_point,0,20) }}</td>
                             </tr>
                         @endforeach
                       </tbody>

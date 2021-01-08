@@ -130,7 +130,7 @@
     'production_factory_manager' => "Production/Factory Manager",
     'hygiene_manager' => "Hygiene Manager",
     'contact_person' => "Contact Person",
-
+    'strong_point' => "Strong Points",
     
     
    ];

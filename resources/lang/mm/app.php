@@ -147,5 +147,7 @@
     'production_factory_manager' => "ထုတ်လုပ်မှု / စက်ရုံမန်နေဂျာ",
     'hygiene_manager' => "တစ်ကိုယ်ရေသန့်ရှင်းရေးမန်နေဂျာ",
     'contact_person' => "ဆက်သွယ်ရန်ပုဂ္ဂိုလ်",
+    'strong_point' => "အားသာချက်",
+
     ]; 
 ?>

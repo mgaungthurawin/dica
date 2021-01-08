@@ -335,7 +335,8 @@ class CompanyController extends Controller
             'main_customer' => json_encode($maincustomer),
             'cer_standard' => json_encode($car_starndard),
             'export_impot' => json_encode($exportimport),
-            'special_note' => $data['special_note']
+            'special_note' => $data['special_note'],
+            'strong_point' => $data['strong_point']
         ];
         return $insert;
     }

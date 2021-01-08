@@ -352,6 +352,11 @@
                             {!! Form::label('address', 'Remarks') !!} <span class="text-danger">*</span>
                             {!! Form::text('remark', null, ['class' => 'form-control']) !!}
                         </div>
+
+                        <div class="form-group col-sm-12" style="margin-top: 20px;">
+                            {!! Form::label('strong_point', 'Strong Points') !!} <span class="text-danger">*</span>
+                            {!! Form::text('strong_point', null, ['class' => 'form-control']) !!}
+                        </div>
                         
                         <div class="form-group col-sm-12">
                             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

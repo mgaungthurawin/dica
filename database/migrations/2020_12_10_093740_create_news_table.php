@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
                    ->onDelete('cascade');
             $table->longText('title');
             $table->longText('content');
+            $table->integer('media_id');
             $table->timestamps();
         });
     }
