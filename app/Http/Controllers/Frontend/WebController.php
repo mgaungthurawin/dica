@@ -15,9 +15,13 @@ use Alert;
 
 class WebController extends Controller
 {
-    public function index(Request $request) {
-        $companies = Company::orderBy('created_at', 'DESC')->limit(3)->get();
-        return view('frontend.index', compact('companies'));
+    // public function index(Request $request) {
+    //     $companies = Company::orderBy('created_at', 'DESC')->limit(3)->get();
+    //     return view('frontend.index', compact('companies'));
+    // }
+     public function index(Request $request) {
+        $news = News::orderBy('created_at', 'DESC')->limit(3)->get();
+        return view('frontend.index', compact('news'));
     }
     public function outline(Request $request) {
         return view('frontend.outline');
@@ -173,5 +177,7 @@ class WebController extends Controller
         $export_impot = json_decode($company->export_impot, TRUE);
         return view('frontend.individual', compact('company', 'main_machine_equipment', 'contact', 'company_info', 'production', 'low_material', 'main_customer','cer_standard', 'export_impot', 'certificate', 'standard'));
     }
+     
+
 
 }

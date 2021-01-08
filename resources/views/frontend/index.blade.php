@@ -21,17 +21,18 @@
         <div class="row">            
           <div class="col-lg-9 mb-3">
             <h1 class="my-4">{{trans('app.matching_service_program_news')}}</h1><br>
-            @if(!empty($companies))
-                @foreach($companies as $company)
+            @if(!empty($news))
+                @foreach($news as $new)
                 <div class="news-card">
-                    <h4 >{{ $company->name }}</h4>
+                    <h4 >{{ languageSwitcher($new->category->title) }}</h4>
                     <div class="row">
-                        <div class="col-md-10"><p class="card-text">{{ $company->description }}</p></div>
-                        <div class="col-md-2"><a href="{{ url($company->id.'/industry') }}" class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div>
+                    <div class="col-md-10"><p class="card-text">{{ languageSwitcher($new->content) }}</p></div>
+                      <div class="col-md-2"><a href="{{ url($new->id.'/new') }}" class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div>
                     </div>
                 </div>
                 @endforeach
             @endif
+           
 
           </div>
         
