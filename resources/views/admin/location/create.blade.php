@@ -11,16 +11,6 @@
             <div class="box-body">
                 <div class="row">
                 {!! Form::open(['route' => 'location.store', 'files' => 'true']) !!}
-
-                    <div class="form-group col-sm-12">
-                        {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
-                        <select class="form-control" name="parent">
-                            <option value="0">Select One</option>
-                            @foreach($locations as $location)
-                                <option value="{{$location->id}}">{{$location->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="form-group col-sm-12">
                         {!! Form::label('name', 'Name:') !!} <span class="text-danger">*</span>
                         {!! Form::text('name', null, ['class' => 'form-control']) !!}

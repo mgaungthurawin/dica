@@ -12,19 +12,6 @@
                 <div class="row">
                 {!! Form::model($location, ['route' => ['location.update', $location->id], 'method' => 'patch']) !!}
                     <div class="form-group col-sm-12">
-                        {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
-                        <select class="form-control" name="parent">
-                            <option value="0">Select One</option>
-                            @foreach($locations as $loc)
-                                <option value="{{$loc->id}}"
-                                    @if($loc->id == $location->parent)
-                                        selected
-                                    @endif
-                                    >{{$loc->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group col-sm-12">
                         {!! Form::label('name', 'Name:') !!} <span class="text-danger">*</span>
                         {!! Form::text('name', null, ['class' => 'form-control']) !!}
                         @if ($errors->has('name'))

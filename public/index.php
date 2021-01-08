@@ -13,6 +13,13 @@ define('MATERIAL', 20);
 define('TEXTILE', 21);
 define('FOOD', 22);
 define('EMAIL', 'msmebusinessmatching@gmail.com');
+define('COMPANY_UPLOAD', 18);
+define('MEDIA_TYPE', json_encode(
+    array(
+        'image' => array('field_name' => 'image_media', 'extension' => array("jpg", "gif", "png", "jpeg"), 'max_size' => 5000000)
+    )
+));
+
 
 /*
 |--------------------------------------------------------------------------

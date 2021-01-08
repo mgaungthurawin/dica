@@ -10,7 +10,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                    {!! Form::model($company, ['method' => 'PATCH','route' => ['company.update', $company->id]]) !!}
+                    {!! Form::model($company, ['method' => 'PATCH','route' => ['company.update', $company->id], 'files' => 'true']) !!}
                         <input type="hidden" id="category_id" name="category_id">
                         <div class="form-group col-sm-12">
                             {!! Form::label('name', 'Company Category:') !!} <span class="text-danger">*</span>
@@ -48,6 +48,9 @@
                             {!! Form::label('description', 'Description:') !!} <span class="text-danger">*</span>
                             {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                         </div>
+
+                        @include('admin.company.edit_media')
+
                         <div class="form-group col-sm-4">
                             <label for="description">Main Product</label><br/>
                             <select class="form-control" name="product_id[]" multiple>
@@ -449,3 +452,5 @@
        </div>
    </div>
 @endsection
+
+

@@ -34,8 +34,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        $locations = Location::where('parent', 0)->get();
-        return view('admin.location.create', compact('locations'));
+        return view('admin.location.create');
     }
 
     /**
@@ -71,12 +70,11 @@ class LocationController extends Controller
     public function edit($id)
     {
         $location = Location::find($id);
-        $locations = Location::where('parent', 0)->get();
         if(empty($location)) {
             Alert::error('Error', 'Location Not Found');
             return redirect(route('location.index'));
         }
-        return view('admin.location.edit', compact('location', 'locations'));
+        return view('admin.location.edit', compact('location'));
     }
 
     /**
@@ -114,11 +112,5 @@ class LocationController extends Controller
         $location->delete();
         Alert::success('Success', 'Successfully deleted Location');
         return redirect(route('location.index'));
-    }
-
-    public function getAllChild(Request $request) {
-        $parent = $request->get('parent');
-        $location = Location::with('children')->where('parent', $parent)->get();
-        return $location;
     }
 }
