@@ -10,6 +10,7 @@ use App\Model\Category;
 use App\Model\Processing;
 use App\Model\Location;
 use App\Model\ProductLocation;
+use App\Model\MediaReference;
 Use Alert;
 
 class CompanyController extends Controller
@@ -61,6 +62,20 @@ class CompanyController extends Controller
         $form = $request->all();
         $category_id = $form['category_id'];
         $category = Category::find($form['category_id']);
+
+        $media_reference = array();
+        if ($request->hasFile('image_media')) {
+            $medias = saveMultipleMedia($request, 'image');
+            if (TRUE != $medias['status']) {
+                Flash::error($medias['message']);
+                return redirect(route('company.index'));
+            } else {
+                foreach ($medias['media_id'] as $key => $value) {
+                    $media_reference[] = array('media_id' => $value, 'reference_type' => COMPANY_UPLOAD);
+                }
+            }
+        }
+
         switch ($category->prefix) {
             case FOOD:
                 $data = $this->foodPrepareData($form);
@@ -79,6 +94,11 @@ class CompanyController extends Controller
                 $company->locations()->sync($request->location_id);
                 break;
         }
+        foreach ($media_reference as $key => $value) {
+            $media_reference[$key]['reference_id'] = $company->id;
+        }
+        // // Save Media Referencing Table
+        if (count($media_reference)) MediaReference::insert($media_reference);
         Alert::success('Success', 'Successfully Created Company');
         return redirect(route('company.index'));
     }
@@ -107,6 +127,7 @@ class CompanyController extends Controller
             Alert::error('Error', 'Company not found');
             return redirect(route('company.index'));
         }
+
         if(FOOD == $company->type)
         {
             $company = Company::find($id);
@@ -139,6 +160,8 @@ class CompanyController extends Controller
         $main_customer = json_decode($company->main_customer, TRUE);
         $cer_standard = json_decode($company->cer_standard, TRUE);
         $export_impot = json_decode($company->export_impot, TRUE);
+
+
         return view('admin.company.edit', compact('company', 'products', 'main_processings', 'locations', 'contact', 'company_info', 'main_customer', 'cer_standard','categories', 'export_impot', 'low_material', 'production', 'certificate', 'standard', 'selected_product','selected_processing','selected_location', 'main_machine_equipment'));
     }
 
@@ -155,6 +178,33 @@ class CompanyController extends Controller
         $company = Company::find($id);
         $data = $request->all();
         $category = Category::find($data['category_id']);
+
+        $media_reference = array();
+        if ($request->hasFile('image_media')) {
+            $medias = saveMultipleMedia($request, 'image');
+            if (TRUE != $medias['status']) {
+                Flash::error($medias['message']);
+                return redirect(route('company.index'));
+            } else {
+                foreach ($medias['media_id'] as $key => $value) {
+                    $media_reference[] = array('media_id' => $value, 'reference_type' => COMPANY_UPLOAD);
+                }
+            }
+        }
+
+        if (count($media_reference)) {
+            $medias = json_decode($data['medias'], true);
+            $media_label = json_decode(MEDIA_TYPE, true);
+            $image_ext = $media_label['image']['extension'];
+
+            foreach ($media_reference as $key => $value) {
+                $media_reference[$key]['reference_id'] = $company->id;
+            }
+
+            // Save Media Referencing Table
+            if (count($media_reference)) MediaReference::insert($media_reference);
+        }
+
         if(FOOD == $category->prefix)
         {
             $update = $this->foodPrepareData($data);
@@ -171,6 +221,7 @@ class CompanyController extends Controller
         $company->products()->sync($request->product_id);
         $company->processings()->sync($request->processing_id);
         $company->locations()->sync($request->location_id);
+
         Alert::success('Success', 'Successfully Updated Company');
         return redirect(route('company.index'));
     }

@@ -10,7 +10,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                    {!! Form::open(array('route' => 'company.store','method'=>'POST')) !!}
+                    {!! Form::open(array('route' => 'company.store','method'=>'POST','files' => 'true')) !!}
                         <input type="hidden" id="category_id" name="category_id">
                         <div class="form-group col-sm-12">
                             {!! Form::label('name', 'Company Category:') !!} <span class="text-danger">*</span>
@@ -45,6 +45,9 @@
                             {!! Form::label('description', 'Description:') !!} <span class="text-danger">*</span>
                             {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                         </div>
+
+                        @include('admin.company.create_media')
+
                         <div class="form-group col-sm-4">
                             <label for="description">Main Product</label><br/>
                             <select class="form-control" name="product_id[]" id="pro_id" multiple>
@@ -424,3 +427,6 @@
        </div>
    </div>
 @endsection
+
+
+
