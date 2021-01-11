@@ -11,7 +11,7 @@
             <div class="header">
                 <div class="container">
                     <div class="col-xs-3 col-sm-3 col-md-4 hidden-xs pull-left contact-bar">
-                        <a class="btn sitemap-btn" href="#">{{trans('app.sitemap')}}</a> | 
+                        <a class="btn sitemap-btn" href="{{url('sitemap')}}">{{trans('app.sitemap')}}</a> | 
                         <a href="mailto:info@testing.com"><i class="fa fa-envelope"></i> info@testing.com</a> | 
                         <a href="tel:06754321"><i class="fa fa-phone"></i> 067-54321</a>
                     </div>
