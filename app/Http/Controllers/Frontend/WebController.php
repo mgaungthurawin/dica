@@ -177,7 +177,14 @@ class WebController extends Controller
         $export_impot = json_decode($company->export_impot, TRUE);
         return view('frontend.individual', compact('company', 'main_machine_equipment', 'contact', 'company_info', 'production', 'low_material', 'main_customer','cer_standard', 'export_impot', 'certificate', 'standard'));
     }
-     
+    
+     public function sitemap(Request $request) {
 
+        return view('frontend.sitemap');
+    }
+    public function learn_more(Request $request) {
+
+        return view('frontend.learn_more');
+    }
 
 }
