@@ -182,9 +182,9 @@ class WebController extends Controller
 
         return view('frontend.sitemap');
     }
-    public function learn_more(Request $request) {
+    public function new_detail(Request $request) {
 
-        return view('frontend.learn_more');
+        return view('frontend.new_detail');
     }
 
 }

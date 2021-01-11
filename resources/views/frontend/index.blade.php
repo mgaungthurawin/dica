@@ -29,7 +29,7 @@
                     <div class="col-md-10"><p class="card-text">{{ languageSwitcher($new->content) }}</p></div>
                       <!-- <div class="col-md-2"><a href="{{ url($new->id.'/new') }}" class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div> -->
                        
-                       <div class="col-md-2"><a href="{{url('learn_more')}}"class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div> |
+                       <div class="col-md-2"><a href="{{url('new_detail')}}"class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div> |
                     </div>
                 </div>
                 @endforeach
