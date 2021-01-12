@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                    {!! Form::model($product, ['method' => 'PATCH','route' => ['product.update', $product->id], 'files' => 'true' ]) !!}
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Categoy</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -22,7 +22,27 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
+                            <label>Prefix</label>
+                            <select name="prefix" class="form-control">
+                                <option value="{{ PREFIXONE }}"
+                                   @if("23" == $product["prefix"])
+                                    selected
+                                  @endif>PREFIX ONE
+                                </option>
+                                <option value="{{ PREFIXTWO }}"
+                                   @if("24" == $product["prefix"])
+                                        selected
+                                      @endif>PREFIX TWO
+                                </option>
+                                <option value="{{ PREFIXTHREE }}"
+                                   @if("25" == $product["prefix"])
+                                        selected
+                                      @endif>PREFIX THREE
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
                             {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
                             <select class="form-control" name="parent">
                                 <option value="0">Select One</option>
@@ -35,7 +55,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4 mmtext">
+                        <div class="form-group col-sm-6 mmtext">
                             {!! Form::label('name', 'Name:') !!} <span class="text-danger">*</span>
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
                             @if ($errors->has('name'))

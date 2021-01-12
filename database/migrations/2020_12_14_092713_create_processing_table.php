@@ -15,8 +15,10 @@ class CreateProcessingTable extends Migration
     {
         Schema::create('processing', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('prefix')->default(0);
             $table->string('main_process');
             $table->text('location_id')->nullable();
+            $table->boolean('recommend');
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                     {!! Form::open(array('route' => 'product.store','method'=>'POST', 'files' => 'true')) !!}
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Category</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -19,7 +19,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
+                            <label>Prefix</label>
+                            <select name="prefix" class="form-control">
+                                <option value="{{ PREFIXONE }}">PREFIX ONE</option>
+                                <option value="{{ PREFIXTWO }}">PREFIX TWO</option>
+                                <option value="{{ PREFIXTHREE }}">PREFIX THREE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
                             {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
                             <select class="form-control" name="parent">
                                 <option value="0">Select One</option>
@@ -28,7 +36,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4 mmtext">
+                        <div class="form-group col-sm-6 mmtext">
                             {!! Form::label('name', 'Product Name:') !!} <span class="text-danger">*</span>
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
                             @if ($errors->has('name'))

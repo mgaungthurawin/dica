@@ -11,7 +11,15 @@
             <div class="box-body">
                 <div class="row">
                 {!! Form::open(array('url' => 'admin/processing/add','method'=>'POST')) !!}
-                    <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
+                        <label>Prefix</label>
+                        <select name="prefix" class="form-control">
+                            <option value="{{ PREONE }}">PRE ONE</option>
+                            <option value="{{ PRETWO }}">PRE TWO</option>
+                            <option value="{{ PRETHREE }}">PRE THREE</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
                         {!! Form::label('main_process', 'Main Process:') !!} <span class="text-danger">*</span>
                         {!! Form::text('main_process', null, ['class' => 'form-control']) !!}
                         @if ($errors->has('main_process'))
@@ -19,6 +27,10 @@
                                 <strong>{{ $errors->first('main_process') }}</strong>
                             </span>
                        @endif
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="recommend">Recommend</label>
+                        <input type="checkbox" value="1" id="recommend" name="recommend">  
                     </div>
 
                     <div class="form-group col-sm-12">

@@ -11,7 +11,31 @@
             <div class="box-body">
                 <div class="row">
                 {!! Form::model($processing, ['url' => ['admin/processing/edit', $processing->id], 'method' => 'post']) !!}
-                    <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
+                        <label>Prefix</label>
+                        <select name="prefix" class="form-control">
+                            <option value="{{ PREONE }}"
+                             @if("26" == $processing["prefix"])
+                                  selected
+                                @endif
+                                >PRE ONE
+                                
+                            </option>
+                            <option value="{{ PRETWO }}"
+                             @if("27" == $processing["prefix"])
+                                  selected
+                                @endif>PRE TWO
+                                
+                            </option>
+                            <option value="{{ PRETHREE }}"
+                             @if("28" == $processing["prefix"])
+                                  selected
+                                @endif>PRE THREE
+                                
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
                         {!! Form::label('main_process', 'Main Process:') !!} <span class="text-danger">*</span>
                         {!! Form::text('main_process', null, ['class' => 'form-control']) !!}
                         @if ($errors->has('main_process'))
@@ -19,6 +43,14 @@
                                 <strong>{{ $errors->first('main_process') }}</strong>
                             </span>
                        @endif
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="recommend">Recommend</label>
+                        <input type="checkbox" value="1" id="recommend" name="recommend"
+                          @if($processing->recommend)
+                            checked
+                          @endif
+                        >  
                     </div>
 
                     <div class="form-group col-sm-12">

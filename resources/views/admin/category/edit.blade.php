@@ -14,9 +14,21 @@
                     <div class="form-group col-sm-6">
                         <label>Prefix</label>
                         <select name="prefix" class="form-control">
-                            <option value="{{ MATERIAL }}">MATERIAL</option>
-                            <option value="{{ TEXTILE }}">TEXTILE</option>
-                            <option value="{{ FOOD }}">FOOD</option>
+                            <option value="{{ MATERIAL }}"
+                                @if("20" == $category["prefix"])
+                                        selected
+                                      @endif>MATERIAL
+                            </option>
+                            <option value="{{ TEXTILE }}"
+                                @if("21" == $category["prefix"])
+                                        selected
+                                      @endif>TEXTILE
+                            </option>
+                            <option value="{{ FOOD }}"
+                                @if("22" == $category["prefix"])
+                                        selected
+                                      @endif>FOOD
+                            </option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6">
