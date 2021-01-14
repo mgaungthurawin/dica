@@ -74,9 +74,9 @@ class WebController extends Controller
         $locations = Location::whereIn('id', $location_array)->get();
         */  
         $companies = Company::where('category_id', $category_id)->get();
-        $processings = Processing::where('prefix', $category->prefix)->get();    
-        $products = Product::where('prefix', $category->prefix)->get();
-        $locations = Location::all();    
+        $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('main_process', 'ASC')->get();
+        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('name', 'ASC')->get();
+        $locations = Location::orderBy('name', 'ASC')->get();    
         return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
     }
@@ -137,11 +137,13 @@ class WebController extends Controller
 
         if(count($data) > 0) {
             if (array_key_exists('q', $data)) {
-                // $queries = DB::select("call search('?')",array($data['q']));
-                $queries = DB::select('SELECT c.* FROM companies as c join company_product as cp on c.id = cp.company_id
-    join products as p on p.id = cp.product_id join company_processing as cpr on cpr.company_id = c.id 
-    join processing as pro on pro.id=cpr.processing_id 
-    where p.name LIKE "%' . $data['q'].'%" or pro.main_process LIKE "%'. $data['q'] .'%" or c.name LIKE "%'. $data['q'] .'%" or c.main_machine_equipment LIKE "%'. $data['q'] .'%" GROUP BY c.id');
+                $queries = Company::where('name', 'like', '%'. $data["q"] .'%')->get();
+                if(0 == count($queries)) {
+                    $queries = DB::select('SELECT c.* FROM companies as c join company_product as cp on c.id = cp.company_id join products as p on p.id = cp.product_id WHERE p.name LIKE "%' . $data['q'] .'%" GROUP BY c.id');
+                    if(0 == count($queries)) {
+                        $queries = DB::select('SELECT c.* FROM companies as c join company_processing as cpr on cpr.company_id = c.id join processing as pro on pro.id=cpr.processing_id where pro.main_process LIKE "%'. $data['q'] .'%" or c.main_machine_equipment LIKE "%'. $data['q'] .'%" GROUP BY c.id');
+                    }
+                }
                 $whereIn = [];
                 foreach ($queries as $key => $query) {
                     $whereIn[] = $query->id;

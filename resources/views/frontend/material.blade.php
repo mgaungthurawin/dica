@@ -21,15 +21,11 @@
         </div>
         <div class="row">
             <form method="GET" action="{{ url($category->id.'/search_result') }}">
-            @csrf
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
                     <div class="input-group">
                       <label style="line-height: 30px; padding: 0px 20px 0px 0px;">{{trans('app.free_word_search_function')}}</label> 
                         <input type="text" name="q" class="form-control" placeholder="{{trans('app.search_for')}}" style="margin-right: 20px;">
-                        
-                          {{--<button class="btn btn-secondary" type="button" style="border-radius: 10px; background: linear-gradient(#6c757d,#4c4c4c)">{{trans('app.search')}}</button>--}}
-                        
                     </div>
                 </div>
             </div>

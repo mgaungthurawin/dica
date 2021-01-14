@@ -203,5 +203,26 @@ function main_product($company) {
     if(0 > count($products)) {
         return implode(" ",$products);
     }
+    if(0 == count($products)) {
+        return 'N/A';
+    }
     return $products[0];
 }
+
+
+function main_location($company) {
+    $locationArray = $company->locations->pluck('id');
+    $locations = Location::whereIn('id', $locationArray)->pluck('name');
+    if(0 > count($locations)) {
+        return implode(" ",$locations);
+    }
+    if(0 == count($locations)) {
+        return 'N/A';
+    }
+    return $locations[0];
+}
+
+
+
+
+
