@@ -138,7 +138,7 @@ class WebController extends Controller
         if(count($data) > 0) {
             if (array_key_exists('q', $data)) {
                 // $queries = DB::select("call search('?')",array($data['q']));
-                $queries = DB::select('SELECT c.* FROM companies as c join company_product as cp on c.id = cp.company_id 
+                $queries = DB::select('SELECT c.* FROM companies as c join company_product as cp on c.id = cp.company_id
     join products as p on p.id = cp.product_id join company_processing as cpr on cpr.company_id = c.id 
     join processing as pro on pro.id=cpr.processing_id 
     where p.name LIKE "%' . $data['q'].'%" or pro.main_process LIKE "%'. $data['q'] .'%" or c.name LIKE "%'. $data['q'] .'%" or c.main_machine_equipment LIKE "%'. $data['q'] .'%" GROUP BY c.id');
