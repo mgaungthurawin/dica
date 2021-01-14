@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Location</label><br/>
-                            <select class="form-control" name="location_id[]" multiple>
+                            <select class="form-control" name="location_id[]" multiple="">
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id}}"
                                       @if(in_array($location->id, $selected_location))

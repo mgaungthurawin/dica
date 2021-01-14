@@ -55,7 +55,7 @@
 <div class="col-md-12">
       <div class="form-group">
         <label><strong>Upload Image</strong></label><span class="text-danger">*</span><br>
-        <input type="file" name="image_media[]" id="image_media" accept="image/*" multiple="" required="">
+        <input type="file" name="image_media[]" id="image_media" accept="image/*" multiple="">
         {{ Form::hidden('media_path', COMPANY_UPLOAD) }}
     </div>
 </div>
