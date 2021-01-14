@@ -15,8 +15,6 @@
                       @else
                         TEXTILE
                       @endif
-
-
                     </h1>
                 </div>
             </div>
@@ -48,7 +46,7 @@
             </div>
             <div class="col-lg-6 mb-6">
                 <h3><u>Recommand Products</u></h3>
-                  @foreach($recommands as $recommand)
+                  @foreach($products as $recommand)
                     <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
                   @endforeach
                   {{--<h3><u>Products</u></h3>

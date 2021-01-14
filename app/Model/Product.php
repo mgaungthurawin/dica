@@ -8,7 +8,7 @@ class Product extends Model
 {
 	protected $table = 'products';
     protected $fillable = [
-        'prefix', 'name', 'category_id', 'media_id','recommend','parent'
+        'prefix', 'name', 'category_id', 'media_id','recommend','parent', 'main_product',
     ];
 
     public function media()

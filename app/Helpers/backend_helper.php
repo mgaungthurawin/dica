@@ -196,3 +196,12 @@ function mm($string) {
     $array = explode("|&|", $string);
     return $array[1];
 }
+
+function main_product($company) {
+    $productArray = $company->products->pluck('id');
+    $products = Product::whereIn('id', $productArray)->pluck('name');
+    if(0 > count($products)) {
+        return implode(" ",$products);
+    }
+    return $products[0];
+}

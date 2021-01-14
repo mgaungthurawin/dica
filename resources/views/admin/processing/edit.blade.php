@@ -14,23 +14,23 @@
                     <div class="form-group col-sm-6">
                         <label>Prefix</label>
                         <select name="prefix" class="form-control">
-                            <option value="{{ PREONE }}"
-                             @if("26" == $processing["prefix"])
+                            <option value="{{ MATERIAL }}"
+                             @if(MATERIAL == $processing["prefix"])
                                   selected
                                 @endif
-                                >PRE ONE
+                                >MATERIAL
                                 
                             </option>
-                            <option value="{{ PRETWO }}"
-                             @if("27" == $processing["prefix"])
+                            <option value="{{ TEXTILE }}"
+                             @if(TEXTILE == $processing["prefix"])
                                   selected
-                                @endif>PRE TWO
+                                @endif>TEXTILE
                                 
                             </option>
-                            <option value="{{ PRETHREE }}"
-                             @if("28" == $processing["prefix"])
+                            <option value="{{ FOOD }}"
+                             @if(FOOD == $processing["prefix"])
                                   selected
-                                @endif>PRE THREE
+                                @endif>FOOD
                                 
                             </option>
                         </select>

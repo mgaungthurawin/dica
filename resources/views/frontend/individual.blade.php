@@ -41,21 +41,7 @@
             </div>
         </div>
         @if(!empty(Auth::user()))
-        <div class="row">
-            <div class="col-lg-12 mb-12">
-                <div class="container-box">
-                    @foreach($company->products as $product)
-                        <div class="col-lg-4 col-sm-6 portfolio-item">
-                          @if(isset($product->media))
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt=""></a>
-                            </div>
-                          @endif
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        @include('frontend.layouts.company_media')
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">

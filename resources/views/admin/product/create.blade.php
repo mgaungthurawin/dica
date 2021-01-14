@@ -22,9 +22,9 @@
                         <div class="form-group col-sm-6">
                             <label>Prefix</label>
                             <select name="prefix" class="form-control">
-                                <option value="{{ PREFIXONE }}">PREFIX ONE</option>
-                                <option value="{{ PREFIXTWO }}">PREFIX TWO</option>
-                                <option value="{{ PREFIXTHREE }}">PREFIX THREE</option>
+                                <option value="{{ MATERIAL }}">MATERIAL</option>
+                                <option value="{{ TEXTILE }}">TEXTILE</option>
+                                <option value="{{ FOOD }}">FOOD</option>
                             </select>
                         </div>
                         <div class="form-group col-sm-6">
@@ -55,6 +55,11 @@
                         <div class="form-group col-sm-6">
                             <label for="recommend">Recommend</label>
                             <input type="checkbox" value="1" id="recommend" name="recommend">  
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="main_product">Main Product</label>
+                            <input type="checkbox" value="1" id="main_product" name="main_product">  
                         </div>
                         
                         <div class="form-group col-sm-12">

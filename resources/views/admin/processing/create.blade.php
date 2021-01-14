@@ -14,9 +14,9 @@
                     <div class="form-group col-sm-6">
                         <label>Prefix</label>
                         <select name="prefix" class="form-control">
-                            <option value="{{ PREONE }}">PRE ONE</option>
-                            <option value="{{ PRETWO }}">PRE TWO</option>
-                            <option value="{{ PRETHREE }}">PRE THREE</option>
+                            <option value="{{ MATERIAL }}">MATERIAL</option>
+                            <option value="{{ TEXTILE }}">TEXTILE</option>
+                            <option value="{{ FOOD }}">FOOD</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-6">

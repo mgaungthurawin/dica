@@ -45,8 +45,10 @@ class WebController extends Controller
             Alert::error('Category not found');
             return redirect(url('/'));
         }
+        /*
         $companies = Company::where('category_id', $category_id)->get();
         $recommands = Product::where('recommend', TRUE)->GROUPBY('id')->get();
+        
         $processing_array = [];
         $product_array = [];
         $location_array = [];
@@ -67,11 +69,15 @@ class WebController extends Controller
                 $location_array[] = $location->id;
             }
         }
-
         $processings = Processing::whereIn('id', $processing_array)->get();        
         $products = Product::whereIn('id', $product_array)->get();        
-        $locations = Location::whereIn('id', $location_array)->get();       
-        return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id', 'processings', 'products', 'locations'));
+        $locations = Location::whereIn('id', $location_array)->get();
+        */  
+        $companies = Company::where('category_id', $category_id)->get();
+        $processings = Processing::where('prefix', $category->prefix)->get();    
+        $products = Product::where('prefix', $category->prefix)->get();
+        $locations = Location::all();    
+        return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
     }
 

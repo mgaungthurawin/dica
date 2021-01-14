@@ -35,7 +35,7 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ implode(",",$company->locations->pluck('name')->all()) }}</td>
-                                <td>{{ substr(implode(",",$company->products->pluck('name')->all()), 0, 20) }}</td>
+                                <td>{{ main_product($company) }}</td>
                                 <td>{{ substr($company->description,0,20) }}</td>
                                 <td>{{ substr($company->strong_point,0,20) }}</td>
                             </tr>
