@@ -159,29 +159,6 @@ class WebController extends Controller
                     $whereIn[] = $lq->company_id;
                 }
                 $companies = Company::whereIn('id', $whereIn)->get();
-
-
-
-                /*
-                \Log::info("Company-". count($queries));
-                if(0 == count($queries)) {
-                    $queries = DB::select('SELECT c.* FROM companies as c join company_product as cp on c.id = cp.company_id join products as p on p.id = cp.product_id WHERE p.name LIKE "%' . $data['q'] .'%" GROUP BY c.id');
-                        \Log::info("Product-". count($queries));
-                    if(0 == count($queries)) {
-                        $queries = DB::select('SELECT c.* FROM companies as c join company_processing as cpr on cpr.company_id = c.id join processing as pro on pro.id=cpr.processing_id where pro.main_process LIKE "%'. $data['q'] .'%" or c.main_machine_equipment LIKE "%'. $data['q'] .'%" GROUP BY c.id');
-                        \Log::info("Processing-". count($queries));
-                    }
-                    if(0 == count($queries)) {
-                        $queries = DB::select('SELECT c.* FROM companies as c join company_location as cl on cl.company_id = c.id join location as l on l.id=cl.location_id where l.name LIKE "%'. $data['q'] .'%" GROUP BY c.id');
-                        \Log::info("Location-". count($queries));
-                    }
-                }
-                $whereIn = [];
-                foreach ($queries as $key => $query) {
-                    $whereIn[] = $query->id;
-                }
-                $companies = Company::whereIn('id', $whereIn)->get();
-                */
             }
         }
         return view('frontend.search_result', compact('companies'));
