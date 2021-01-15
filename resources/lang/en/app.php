@@ -116,7 +116,7 @@
     'to_be_checked_of' => "to be checked MoPFI DISI of MoPFI, which is primarily responsible to promote, encourage and foster the development of private industrial enterprises, is a main actor to operate MSP.",
     'textile_processing' => "Textile Processing",
     'products' => "Products",
-    'product' => "Product",
+    'product' => "Main products including the use of you product",
     'location' => "Location",
     'locations' => "Locations",
     'no' => "No.",
