@@ -21,14 +21,16 @@
         <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="container-box">
-                    <p>This database provides information of potential supplier companies in Myanmar in three sectors, namely, Material Processing, Textile and Food Processing Industry. Companies in this database are selected by MoPFI with assistance of JICA project team.Notes for using database</p>
+                    <p>{{trans('app.this_database_provides_information')}}<br>
+                        {{trans('app.notes')}}
+                    </p>       
                     <ol>
-                        <li>The information of this database is based on the information provided by each company to JICA Project and/ or MOPFI.</li>
-                        <li>Credibility check is not implemented. This website just show the information provided by each company.</li>
-                        <li>Photos for products, production process and machines, etc. are posted in this website.</li>
-                        <li>The classification items of product and processing are based on the major field of each company.</li>
-                        <li>The list of machines and equipment posted in each company are the major machines and equipment only.</li>
-                        <li>Production environments, technologies, etc. of a company are checked by interview survey after the company provided information. If you find any difference between actual information and the information on this website, kindly inform us.</li>
+                        <li>{{trans('app.the_database_is_based')}}</li>
+                        <li>{{trans('app.impotant_notice')}}</li>
+                        <li>{{trans('app.the_database_contains')}}</li>
+                        <li>{{trans('app.the_classification_in')}}</li>
+                        <li>{{trans('app.machines_and_equipment_posted')}}</li>
+                        <li>{{trans('app.after_a_company')}}</li>
                     </ol>
                 </div>
             </div>
