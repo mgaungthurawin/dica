@@ -39,7 +39,7 @@
                         </div>
 
                         @include('admin.company.create_media')
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Main Product</label><br/>
                             <select class="form-control" name="product_id[]" id="pro_id" multiple>
                                 @foreach($products as $product)
@@ -47,15 +47,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
-                            <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" id="process_id" multiple>
-                                @foreach($main_processings as $main_processing)
-                                    <option value="{{ $main_processing->id}}">{{ $main_processing->main_process }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>
                             <select class="form-control" name="location_id[]" id="loc_id" multiple>
                                 @foreach($locations as $location)
