@@ -9,11 +9,18 @@
                     <p>{{trans('app.database_on_potential')}}</p>
                     <h1>
                       @if(MATERIAL == $category->prefix)
-                        MATERIAL PRICESSING
+                        <h1>MATERIAL PRICESSING</h1>
+                        <p>{{trans('app.the_material_processing_industry')}}<br><br>
+                          {{trans('app.this_database_defines_material')}}
+                        </p>
                       @elseif(FOOD == $category->prefix)
-                        FOOD PROCESSING
+                        <h1>FOOD PROCESSING INDUSTRY</h1>
+                        <p>
+                          {{trans('app.food_processing_industry_covers')}}
+                        </p>
                       @else
-                        TEXTILE
+                        <h1>TEXTILE</h1>
+                        <p>{{trans('app.textile_one')}}</p>
                       @endif
                     </h1>
                 </div>
