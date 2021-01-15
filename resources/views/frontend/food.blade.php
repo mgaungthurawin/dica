@@ -14,7 +14,7 @@
                       <td>{!! $company->mm_name !!}</td>
                     </tr>
                     <tr>
-                      <td colspan="5">{!! $company->abbreviation !!}
+                      <td colspan="5">{!! $company->description !!}
                       </td>  
                     </tr> 
                     <tr>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-12">
                     <div class="container-box">
-                        <div class="col-lg-5 col-sm-5">
+                        <div class="col-lg-6 col-sm-6">
                             <h3>{{trans('app.product')}}</h3>
                             <table class="table table-striped">
                               <thead class="thead-dark">
@@ -59,28 +59,28 @@
                             </table>
                         </div>
 
-                        <div class="col-lg-7 col-sm-7">
-                            <h3>{{trans('app.locations')}}</h3>
+                        <div class="col-lg-6 col-sm-6">
+                            <h3>Main processing classification</h3>
                             <table class="table table-striped">
                               <thead class="thead-dark">
                                 <tr>
-                                  <th scope="col">{{trans('app.no')}}</th>
-                                  <th scope="col">{{trans('app.location')}}</th>
+                                  <th scope="col">No</th>
+                                  <th scope="col">Processing classification</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <?php $location_index = 1;?>
-                                @foreach($company->locations->pluck('name')->all() as $location)
+                                <?php $processing_index = 1;?>
+                                @foreach($company->processings->pluck('main_process')->all() as $processing)
                                 <tr>
-                                    <th scope="row">{{$location_index}}</th>
-                                    <td>{{ $location }}</td>
+                                    <th scope="row">{{$processing_index}}</th>
+                                    <td>{{ $processing }}</td>
                                 </tr>
-                                <?php $location_index++; ?>
+                                <?php $processing_index++; ?>
                                 @endforeach
                               </tbody>
                             </table>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

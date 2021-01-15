@@ -84,6 +84,7 @@ class CompanyController extends Controller
                 $data['category_id'] = $category->id;
                 $company = Company::create($data);
                 $company->products()->sync($request->product_id);
+                $company->processings()->sync($request->processing_id);
                 $company->locations()->sync($request->location_id);
                 break;
             default:
@@ -133,15 +134,17 @@ class CompanyController extends Controller
         {
             $company = Company::find($id);
             $products = Product::orderBy('name', 'ASC')->get();
+            $main_processings = Processing::all();
             $locations = Location::all();
             $selected_product = $company->products()->pluck('product_id')->all();
+            $selected_processing = $company->processings()->pluck('processing_id')->all();
             $selected_location = $company->locations()->pluck('location_id')->all();
             $customer = json_decode($company->customer, TRUE);
             $certificate = ['ISO', 'HACCP', 'BRC', 'Other'];
             $select_certificate = json_decode($company->certificate, TRUE);
             $hygiene = json_decode($company->hygiene, TRUE);
             $machinery = json_decode($company->machinery, TRUE);
-            return view('admin.company.food_edit', compact('company','products','locations','selected_product','selected_location','customer','certificate','select_certificate','hygiene','machinery'));
+            return view('admin.company.food_edit', compact('company','products','main_processings','locations','selected_product','selected_processing','selected_location','customer','certificate','select_certificate','hygiene','machinery'));
         }
         $certificate = ['ISO', 'ISO9001', 'Other'];
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
@@ -212,6 +215,7 @@ class CompanyController extends Controller
             $update['type'] = $category->prefix;
             Company::find($id)->update($update);
             $company->products()->sync($request->product_id);
+            $company->processings()->sync($request->processing_id);
             $company->locations()->sync($request->location_id);
             Alert::success('Success', 'Successfully Updated Food Processing');
             return redirect(route('company.index'));
@@ -241,8 +245,9 @@ class CompanyController extends Controller
     public function food($category_id, $prefix){
         $certificate = ['ISO', 'HACCP', 'BRC', 'Other'];
         $products = Product::all();
+        $main_processings = Processing::all();
         $locations = Location::all();
-        return view('admin.company.food', compact('products','certificate','locations', 'category_id'));
+        return view('admin.company.food', compact('products','main_processings','certificate','locations', 'category_id'));
     }
 
     private function foodPrepareData($data) {
