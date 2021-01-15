@@ -36,7 +36,7 @@ class WebController extends Controller
         return view('frontend.register');
     }
     public function search() { 
-        $categories = Category::all();
+        $categories = Category::orderBy('prefix', 'ASC')->get();
         return view('frontend.search', compact('categories'));
     }
     public function material($category_id) {
