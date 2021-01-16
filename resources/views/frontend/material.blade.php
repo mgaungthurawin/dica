@@ -6,20 +6,20 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
-                    <p>{{trans('app.database_on_potential')}}</p>
+                    <center>
+                      <h3>{{trans('app.database_on_potential')}}</h3>
+                      <h4>{{ $category->title }}</h4>
+                    </center>
                     <h1>
                       @if(MATERIAL == $category->prefix)
-                        <h1>MATERIAL PRICESSING</h1>
                         <p>{{trans('app.the_material_processing_industry')}}<br><br>
                           {{trans('app.this_database_defines_material')}}
                         </p>
                       @elseif(FOOD == $category->prefix)
-                        <h1>FOOD PROCESSING INDUSTRY</h1>
                         <p>
                           {{trans('app.food_processing_industry_covers')}}
                         </p>
                       @else
-                        <h1>TEXTILE</h1>
                         <p>{{trans('app.textile_one')}}</p>
                       @endif
                     </h1>
@@ -31,7 +31,7 @@
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
                     <div class="input-group">
-                      <label style="line-height: 30px; padding: 0px 20px 0px 0px;">{{trans('app.free_word_search_function')}}</label> 
+                      <label style="line-height: 30px; padding: 0px 20px 0px 0px;">Key word Search from {{ $category->title }} companies</label> 
                         <input type="text" name="q" class="form-control" placeholder="{{trans('app.search_for')}}" style="margin-right: 20px;">
                     </div>
                 </div>

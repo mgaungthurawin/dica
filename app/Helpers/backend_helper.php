@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Model\Media;
 use App\Model\Location;
+use App\Model\Processing;
 use App\Model\Product;
 
 function saveSingleMedia(Request $request, $upload_type)
@@ -197,9 +198,21 @@ function mm($string) {
     return $array[1];
 }
 
+function main_processing($company) {
+    $processingArray = $company->locations->pluck('id');
+    $processings = Processing::whereIn('id', $processingArray)->where('main_classification', TRUE)->pluck('main_process');
+    if(0 > count($processings)) {
+        return implode(" ",$processings);
+    }
+    if(0 == count($processings)) {
+        return 'N/A';
+    }
+    return $processings[0];
+}
+
 function main_product($company) {
     $productArray = $company->products->pluck('id');
-    $products = Product::whereIn('id', $productArray)->pluck('name');
+    $products = Product::whereIn('id', $productArray)->where('main_product', TRUE)->pluck('name');
     if(0 > count($products)) {
         return implode(" ",$products);
     }

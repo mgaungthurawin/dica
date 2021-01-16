@@ -6,24 +6,12 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
-                    <p>{{trans('app.search_result')}}</p>
-                    {{--<h1>
-                      @if(MATERIAL == $companies->category_id->prefix)
-                        <h1>Database on potential Material Processing companies in Myanmar</h1>
-                        
-                      @elseif(FOOD == $companies->category_id->prefix)
-                        <h1>Database on potential Food Processing companies in Myanmar</h1>
-                        <
-                      @else
-                        <h1>Database on potential Food Processing companies in Myanmar</h1>
-                        
-                      @endif
-                    </h1>
-                 --}}
-                  
-         
-                    <!-- <h1>{{trans('app.database_on_material_processing')}}</h1><br> -->
-                    
+                    <h1>Database on potential {{ $category->title }} companies in Myanmar</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-6">
+                <div class="container-box" style="width: 100%;">
+                    <h3>Search Result</h3>
                 </div>
             </div>
         </div>
@@ -38,10 +26,11 @@
                           <th scope="col">{{trans('app.industry')}}</th>
                           <th scope="col">{{trans('app.name_of_company')}}</th>
                           <th scope="col">{{trans('app.state_region')}}</th>
-                          <th scope="col">Main Processing</th>
+                          @if(FOOD !== $category->prefix)
+                            <th scope="col">Main Processing</th>
+                          @endif
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
-                          <th scope="col">{{trans('app.strong_point')}}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -52,10 +41,11 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ main_location($company) }}</td>
-                                <td>{{ main_location($company) }}</td>
+                                @if(FOOD !== $category->prefix)
+                                  <td>{{ main_processing($company) }}</td>
+                                @endif
                                 <td>{{ main_product($company) }}</td>
-                                <td>{{ substr($company->description,0,20) }}</td>
-                                <td>{{ substr($company->strong_point,0,20) }}</td>
+                                <td>{{ substr($company->strong_point,0,15) }}</td>
                             </tr>
                             <?php $index++;?>
                         @endforeach

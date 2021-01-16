@@ -72,7 +72,7 @@ class WebController extends Controller
         $companies = Company::where('category_id', $category_id)->get();
         $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
         $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
-        $locations = Location::orderBy('name', 'ASC')->get();    
+        $locations = Location::orderBy('sorting', 'ASC')->get();    
         return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
     }
@@ -154,10 +154,10 @@ class WebController extends Controller
                     $whereIn[] = $lq->company_id;
                 }
                 $companies = Company::whereIn('id', $whereIn)->where('category_id', $category_id)->get();
-                return view('frontend.search_result', compact('companies'));
+                return view('frontend.search_result', compact('companies', 'category'));
             }
         }
-        return view('frontend.search_result', compact('companies'));
+        return view('frontend.search_result', compact('companies', 'category'));
     }
 
     public function industry($company_id) {

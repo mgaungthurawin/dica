@@ -7,6 +7,9 @@
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
                     <h1>Database On Matching Service Program</h1><br>
+                </div>
+
+                <div class="container-box" style="width: 100%;">
                     <p>{{trans('app.search_result')}}</p>
                 </div>
             </div>
@@ -24,7 +27,6 @@
                           <th scope="col">{{trans('app.main_processing')}}</th>
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
-                          <th scope="col">{{trans('app.strong_point')}}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -35,10 +37,9 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ main_location($company) }}</td>
-                                <td>Main Processing</td>
+                                <td>{{ main_processing($company) }}</td>
                                 <td>{{ main_product($company) }}</td>
-                                <td>{{ substr($company->description,0,20) }}</td>
-                                <td>{{ substr($company->strong_point,0,20) }}</td>
+                                <td>{{ substr($company->strong_point,0,15) }}</td>
                             </tr>
                             <?php $index++;?>
                         @endforeach
