@@ -59,7 +59,7 @@
     'outline_of_directorate' => "Outline of Directorate of Industrial Supervision and Inspection (DISI) of MoPFI",
     'outline_of_project' => "Outline of Project for Promoting Investment for Enhancing Industrial Competitiveness",
     'search_result' => "Search Result",
-    'database_on_material_processing' => "Database on Material Processing",
+    'database_on_material_processing' => "Database on potential Material Processing companies in Myanmar",
     'products_name' => "Products Name",
     'state_region' => "State / Region",
     'industry' => "Industry",
