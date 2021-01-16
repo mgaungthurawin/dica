@@ -25,6 +25,7 @@ class ProcessingRequest extends FormRequest
     {
         return [
             'main_process' => 'required',
+            'sorting' => 'required',
         ];
     }
 }
