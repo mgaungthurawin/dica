@@ -27,7 +27,7 @@
                           <th scope="col">{{trans('app.name_of_company')}}</th>
                           <th scope="col">{{trans('app.state_region')}}</th>
                           @if(FOOD !== $category->prefix)
-                            <th scope="col">Main Processing</th>
+                            <th scope="col">{{trans('app.main_processing')}}</th>
                           @endif
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
