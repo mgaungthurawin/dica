@@ -93,6 +93,9 @@ class ProcessingController extends Controller
         if (!array_key_exists('recommend', $data)) {
             $data['recommend'] = 0;
         }
+        if (!array_key_exists('main_classification', $data)) {
+            $data['main_classification'] = 0;
+        }
         Processing::find($id)->update($data);
         Alert::success('Success', 'Successfully Updated main processings');
         return redirect(url('admin/processing'));
