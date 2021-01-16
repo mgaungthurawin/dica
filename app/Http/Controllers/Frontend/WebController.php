@@ -70,8 +70,8 @@ class WebController extends Controller
         $locations = Location::whereIn('id', $location_array)->get();
         */  
         $companies = Company::where('category_id', $category_id)->get();
-        $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('main_process', 'ASC')->get();
-        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('name', 'ASC')->get();
+        $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
+        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
         $locations = Location::orderBy('name', 'ASC')->get();    
         return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
@@ -141,7 +141,6 @@ class WebController extends Controller
                                         ->where('processing.main_process', 'LIKE', '%'. $data["q"].'%')->get();
                 $location_queries = Location::join('company_location as cl', 'cl.location_id', 'location.id')
                                         ->where('location.name', 'LIKE', '%'. $data["q"].'%')->get();
-
                 foreach ($company_queries as $key => $cq) {
                     $whereIn[] = $cq->id;
                 }

@@ -42,7 +42,6 @@ Route::group(['namespace' => 'Frontend'], function() {
 	Route::get('{category_id}/search_result', 'WebController@search_result');
 	Route::get('{company_id}/industry', 'WebController@industry');
 	Route::get('{new_id}/new', 'NewController@new');
-	
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
