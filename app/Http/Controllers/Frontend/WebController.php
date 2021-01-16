@@ -110,7 +110,7 @@ class WebController extends Controller
                     }
                 }
             }
-            $companies = Company::whereIn('id', $companyArray)->get();
+            $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if (array_key_exists('processing', $data)) {
@@ -121,7 +121,7 @@ class WebController extends Controller
                     }
                 }
             }
-            $companies = Company::whereIn('id', $companyArray)->get();
+            $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if (array_key_exists('location', $data)) {
@@ -132,7 +132,7 @@ class WebController extends Controller
                     }
                 }
             }
-            $companies = Company::whereIn('id', $companyArray)->get();
+            $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if(count($data) > 0) {
@@ -148,7 +148,7 @@ class WebController extends Controller
                 foreach ($queries as $key => $query) {
                     $whereIn[] = $query->id;
                 }
-                $companies = Company::whereIn('id', $whereIn)->get();
+                $companies = Company::whereIn('id', $whereIn)->where('category_id', $category_id)->get();
             }
         }
         return view('frontend.search_result', compact('companies'));
