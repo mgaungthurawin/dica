@@ -6,8 +6,11 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
-                    <p>{{trans('app.database_on_potential')}}</p>
-                    <h1>{{trans('app.textile_companies')}}</h1>
+                   <!--  <p>{{trans('app.database_on_potential')}}</p> -->
+                    <!-- <h1>{{trans('app.textile_companies')}}</h1> -->
+                    <h1>{{trans('app.textile')}}</h1>
+                    <p>{{trans('app.textile_one')}}<br>
+                    </p>
                 </div>
             </div>
         </div>

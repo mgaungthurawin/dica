@@ -7,7 +7,8 @@
         <div class="col-lg-12 mb-12 text-center">
             <div  style="width: 100%;">
                 <h2>{{trans('app.about_of_matching_service_program')}}</h2><br>
-                <p>{{trans('app.matching_service_program_is_a_program')}}{{trans('app.in_this_program')}}</p><br>
+                <p>{{trans('app.the_matching_service')}}</p>
+                 <p>{{trans('app.in_the_msp')}}</p>
                 <a href="#" class="btn outline-btn">
                     {{trans('app.read_more')}}
                 </a>

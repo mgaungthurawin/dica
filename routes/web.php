@@ -60,5 +60,4 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('changelanguage', 'LanguageController@changeLanguage');
 	Route::get('sitemap', 'WebController@sitemap');
 	Route::get('new_detail', 'WebController@new_detail');
-	
 });

@@ -26,9 +26,28 @@ class CompanyController extends Controller
         $categories = Category::all();
         if(count($request->all()) > 0) {
             $data = $request->all();
-            if(array_key_exists('product', $data) && array_key_exists('category_id', $data)) {
-                $companies = Company::where('name', 'like', '%' . $data['product'] . '%')
-                                ->where('category_id', $data['category_id'])->paginate(25);
+            if(array_key_exists('q', $data)) {
+                $whereIn = [];
+                $company_queries =  Company::whereRaw("name like ? ", array('%'.$data['q'].'%'))->get();
+                $product_queries = Product::join('company_product as cp', 'cp.product_id', 'products.id')
+                                        ->where('products.name', 'LIKE', '%'. $data["q"].'%')->get();
+                $processing_queries = Processing::join('company_processing as cp', 'cp.processing_id', 'processing.id')
+                                        ->where('processing.main_process', 'LIKE', '%'. $data["q"].'%')->get();
+                $location_queries = Location::join('company_location as cl', 'cl.location_id', 'location.id')
+                                        ->where('location.name', 'LIKE', '%'. $data["q"].'%')->get();
+                foreach ($company_queries as $key => $cq) {
+                    $whereIn[] = $cq->id;
+                }
+                foreach ($product_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($processing_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($location_queries as $key => $lq) {
+                    $whereIn[] = $lq->company_id;
+                }
+                $companies = Company::whereIn('id', $whereIn)->paginate(25);
             }
         }
         return view('admin.company.index', compact('companies', 'categories'));
@@ -84,6 +103,7 @@ class CompanyController extends Controller
                 $data['category_id'] = $category->id;
                 $company = Company::create($data);
                 $company->products()->sync($request->product_id);
+                $company->processings()->sync($request->processing_id);
                 $company->locations()->sync($request->location_id);
                 break;
             default:

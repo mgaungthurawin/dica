@@ -9,15 +9,8 @@
     <div class="content">
         <div class="row">
             <form method="GET">
-                <div class="form-group col-sm-3">
-                    <select name="category_id" class="form-control">
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-sm-3">
-                    {!! Form::text('product', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Company']) !!}
+                <div class="form-group col-sm-6">
+                    {!! Form::text('q', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Filter']) !!}
                 </div>
                 <a href="{!! route('company.index') !!}" class="btn btn-info">Clear</a>
                 <button type="submit" class="btn btn-primary btnSearch">Search</button>

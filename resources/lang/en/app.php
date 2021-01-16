@@ -93,8 +93,8 @@
     'ministry_of_planning' => "Ministry of Planning, Finance and Industry (MoPFI) shall not be liable for any incidental or consequential damages that may result from the usage of information obtained from this website.",
     'website' => "This website is supported by JICA",
     'about_of_matching_service_program' => "About of Matching Service Program",
-    'matching_service_program_is_a_program' => " Matching Service Program (MSP)  is a program operated by Ministry of Planning, Finance and Industry (MoPFI) assisted by JICA to support business matching between supplier companies in Myanmar and manufacturing / assembly companies including both foreign companies and Myanmar companies.",
-    'in_this_program' => "In this program, MoPFI provides a database of potential supplier companies in material processing, textile and food-processing industries in Myanmar. Potential supplier companies in Myanmar are selected and screened by MoPFI with certain criteria. Companies in database is periodically updated.",
+    'matching_service_program_is_a_program' => "The Matching Service Program (MSP) is operated by the Ministry of Planning, Finance, and Industry (MoPFI) with assistance of JICA to support business matching between supplier companies in Myanmar and both foreign and Myanmar manufacturing and assembly companies.",
+    'in_this_program' => "In the MSP, the MoPFI provides a database of potential supplier companies in the material processing, textile, and food-processing industries in Myanmar. In addition, the MoPFI selects and screens potential supplier companies in Myanmar on the basis of certain criteria. The database is updated regularly.",
     'read_more' => "Read More",
     'links' => "Links",
     'industrial_associations' => "Industrial Associations",
@@ -116,7 +116,7 @@
     'to_be_checked_of' => "to be checked MoPFI DISI of MoPFI, which is primarily responsible to promote, encourage and foster the development of private industrial enterprises, is a main actor to operate MSP.",
     'textile_processing' => "Textile Processing",
     'products' => "Products",
-    'product' => "Product",
+    'product' => "Main products including the use of you product",
     'location' => "Location",
     'locations' => "Locations",
     'no' => "No.",
@@ -131,7 +131,25 @@
     'hygiene_manager' => "Hygiene Manager",
     'contact_person' => "Contact Person",
     'strong_point' => "Strong Points",
-    
-    
+    'the_matching_service' => "The Matching Service Program (MSP)  is a program operated by the Ministry of Planning, Finance, and Industry (MoPFI) with the assistance of JICA to support business matching between supplier companies in Myanmar and both foreign and Myanmar manufacturing and assembly companies.",
+    'in_the_msp' => "In the MSP, the MoPFI provides a database of potential supplier companies in the material processing, textile, and food-processing industries in Myanmar. In addition, the MoPFI selects and screens potential supplier companies in Myanmar on the basis of certain criteria. The database is updated regularly.",
+    'the_disi' => "The DISI, which is responsible for promoting, encouraging, and fostering the development of private industrial enterprises, leads the operation of the MSP.",
+    'this_database_provides_information' => " This database provides information on potential supplier companies in Myanmar in three sectors, namely material Processing, textile, and Food Processing Industry. Companies in this database are selected by the MoPFI with the assistance of the JICA project team.",
+    'notes' => "Notes on using the database:",
+    'the_database_is_based' => "The database is based on the information provided by each company to the JICA project and/or the MoPFI.",
+    'impotant_notice' => "IMPORTANT NOTICE AND DISCLAIMER] Please note that the database provides information exactly as given by each company, and no third party has verified the accuracy of the information. By using the database, you, the user, indemnify and hold the MoPFI, JICA, and the JICA project team harmless against any and all liabilities, damages, and losses resulting from the use of any information in the database.",
+    'the_database_contains' => " The database contains photos of such items as products, the production process, and machines.",
+    'the_classification_in' => "The classification in product and processing is based on the major business field of each company.",
+    'machines_and_equipment_posted' => "Machines and equipment posted on the page of each company are only major machines and equipment.",
+    'after_a_company' => "After a company’s provision of information, the production environment and technologies of the company are checked by an interview survey. Please let the MoPFI and the JICA project team know if you find any difference between the actual status of any company and the information in this database.",
+    'the_material_processing_industry' => "The material Processing Industry is a supporting industry to supply metal and plastic parts, units and components to assembly makers and manufacturers of such products as automobiles, motorcycles and home appliances.",
+    'this_database_defines_material' => "This database defines material processing companies as those that make products made of metal or other materials such as plastic, rubber, and other non-metal materials by using processing methods that apply force or heat to materials against a mold or a die.",
+    'textile_one' => "The textile industry is divided into the upstream and downstream stages. The upstream stage refers to mainly spinning and weaving with dyeing and printing. The downstream stage refers to mainly sewing that makes the final product as a garment.",
+    'food_processing_industry' => "Food Processing Industry",
+    'food_processing_industry_covers' => "The food processing industry covers a wide variety of food products. To select this industry’s companies for the database, the main criteria are their food processing technology, product quality, and hygiene management.",
+
+
+
+ 
    ];
 ?>
