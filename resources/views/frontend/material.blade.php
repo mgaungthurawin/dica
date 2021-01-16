@@ -120,7 +120,23 @@
             </div>
           @endif
         </div>
-        <!-- /.row -->         
+        <div class="col-lg-12 mb-12">
+            <div class="container-box" style="width: 100%;">
+              @if(MATERIAL == $category->prefix)
+              <p>
+                When click category of processing technology/ recommended products, jump to “search result” sorted by the selected processing technology category/ Recommended products category.
+              </p> 
+              @elseif(TEXTILE == $category->prefix)
+                <p>
+                  When click Processing Category (Products)/ Location of factory, jump to “search result” sorted by the selected processing category/ location of factory.
+                </p>
+              @else
+                <p>
+                  When click Processing Category (Products)/ Location of factory, jump to “search result” sorted by the selected processing category/ location of factory.
+                </p>
+              @endif
+            </div>
+        </div>     
     </div>
 </main>
 @endsection
