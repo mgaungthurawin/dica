@@ -224,8 +224,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         	var str = $(this).val();
         	var array = str.split("-");
         	$('#category_id').val(array[0]);
-        	if (array['1'] == 22) {
-        		window.location.href = $(this).val() + '/food'
+        	if (array['1'] == {{ FOOD }}) {
+        		window.location.href = array['0'] + '/' + array['1'] + '/food'
         	}
         })
 
@@ -236,6 +236,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $(document).on('keydown', '#mm_name', function () {
         	myanmarLetterOnly($(this));
         })
+
+        $('#pro_id').select2();
+        $('#process_id').select2();
+        $('#loc_id').select2();
 
         function myanmarLetterOnly( self )
         {

@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                     {!! Form::open(array('route' => 'product.store','method'=>'POST', 'files' => 'true')) !!}
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
                             <label for="description">Category</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -19,7 +19,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
+                            <label>Prefix</label>
+                            <select name="prefix" class="form-control">
+                                <option value="{{ MATERIAL }}">MATERIAL</option>
+                                <option value="{{ TEXTILE }}">TEXTILE</option>
+                                <option value="{{ FOOD }}">FOOD</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4">
                             {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
                             <select class="form-control" name="parent">
                                 <option value="0">Select One</option>
@@ -56,6 +64,11 @@
                         <div class="form-group col-sm-6">
                             <label for="recommend">Recommend</label>
                             <input type="checkbox" value="1" id="recommend" name="recommend">  
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="main_product">Main Product</label>
+                            <input type="checkbox" value="1" id="main_product" name="main_product">  
                         </div>
                         
                         <div class="form-group col-sm-12">

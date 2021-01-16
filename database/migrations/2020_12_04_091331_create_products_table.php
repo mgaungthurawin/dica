@@ -15,12 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('prefix')->default(0);
             $table->string('name');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->integer('media_id')->nullable();
             $table->boolean('recommend');
             $table->integer('parent')->default('0');
+            $table->boolean('main_product');
             $table->integer('sorting');
             $table->timestamps();
         });

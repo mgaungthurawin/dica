@@ -14,14 +14,16 @@
                       <td>{!! $company->mm_name !!}</td>
                     </tr>
                     <tr>
-                      <td colspan="5">{!! $company->abbreviation !!}
+                      <td colspan="5">{!! $company->description !!}
                       </td>  
                     </tr> 
                     <tr>
                       <td colspan="5">
                         <div class="row">
                         @foreach($company->products as $product)
-                        <div class="col-md-6"><img src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt="" class="img-responsive"></div>
+                          @if(isset($product->media))
+                          <div class="col-md-6"><img src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt="" class="img-responsive"></div>
+                          @endif
                         @endforeach
 
 
@@ -35,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-12">
                     <div class="container-box">
-                        <div class="col-lg-5 col-sm-5">
+                        <div class="col-lg-12 col-sm-12">
                             <h3>{{trans('app.product')}}</h3>
                             <table class="table table-striped">
                               <thead class="thead-dark">
@@ -57,32 +59,10 @@
                             </table>
                         </div>
 
-                        <div class="col-lg-7 col-sm-7">
-                            <h3>{{trans('app.locations')}}</h3>
-                            <table class="table table-striped">
-                              <thead class="thead-dark">
-                                <tr>
-                                  <th scope="col">{{trans('app.no')}}</th>
-                                  <th scope="col">{{trans('app.location')}}</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <?php $location_index = 1;?>
-                                @foreach($company->locations->pluck('name')->all() as $location)
-                                <tr>
-                                    <th scope="row">{{$location_index}}</th>
-                                    <td>{{ $location }}</td>
-                                </tr>
-                                <?php $location_index++; ?>
-                                @endforeach
-                              </tbody>
-                            </table>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
-
+            @if(!empty(Auth::user()))
              <div class="row">
                     <div class="col-lg-12 mb-12">
                         <div class="container-box">
@@ -336,6 +316,7 @@
                                 </div>
                     </div>
             </div>
+            @endif
         </div>             
     </div>
   </div>

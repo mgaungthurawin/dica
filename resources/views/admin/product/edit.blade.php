@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                    {!! Form::model($product, ['method' => 'PATCH','route' => ['product.update', $product->id], 'files' => 'true' ]) !!}
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
                             <label for="description">Categoy</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -22,7 +22,27 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
+                            <label>Prefix</label>
+                            <select name="prefix" class="form-control">
+                                <option value="{{ MATERIAL }}"
+                                   @if(MATERIAL == $product["prefix"])
+                                    selected
+                                  @endif>MATERIAL
+                                </option>
+                                <option value="{{ TEXTILE }}"
+                                   @if(TEXTILE == $product["prefix"])
+                                        selected
+                                      @endif>TEXTILE
+                                </option>
+                                <option value="{{ FOOD }}"
+                                   @if(FOOD == $product["prefix"])
+                                        selected
+                                      @endif>FOOD
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4">
                             {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
                             <select class="form-control" name="parent">
                                 <option value="0">Select One</option>
@@ -64,6 +84,14 @@
                             <label for="recommend">Recommend</label>
                             <input type="checkbox" value="1" id="recommend" name="recommend"
                               @if($product->recommend)
+                                checked
+                              @endif
+                            >  
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="main_product">Main Product</label>
+                            <input type="checkbox" value="1" id="main_product" name="main_product"
+                              @if($product->main_product)
                                 checked
                               @endif
                             >  

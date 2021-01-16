@@ -25,7 +25,6 @@
                 <table class="table table-striped table-hover tbl_repeat" id="sortable">
                     <thead>
                         <th>No.</th>
-                        <th>Parent</th>
                         <th>Name</th>
                     </thead>
                     <tbody>
@@ -33,7 +32,6 @@
                     @foreach($locations as $location)
                         <tr>
                             <td>{{ $index++ }}</td>
-                            <td>{!! parentName($location->parent) !!}</td>
                             <td>{!! $location->name !!}</td>
                             <td>
                             <a href="{!! route('location.edit', [$location->id]) !!}"

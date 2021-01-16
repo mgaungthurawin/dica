@@ -7,7 +7,8 @@
         <div class="col-lg-12 mb-12 text-center">
             <div  style="width: 100%;">
                 <h2>{{trans('app.about_of_matching_service_program')}}</h2><br>
-                <p>{{trans('app.matching_service_program_is_a_program')}}{{trans('app.in_this_program')}}</p><br>
+                <p>{{trans('app.the_matching_service')}}</p>
+                 <p>{{trans('app.in_the_msp')}}</p>
                 <a href="#" class="btn outline-btn">
                     {{trans('app.read_more')}}
                 </a>
@@ -21,15 +22,20 @@
         <div class="row">            
           <div class="col-lg-9 mb-3">
             <h1 class="my-4">{{trans('app.matching_service_program_news')}}</h1><br>
-            @foreach($companies as $company)
-            <div class="news-card">
-                <h4 >{{ $company->name }}</h4>
-                <div class="row">
-                    <div class="col-md-10"><p class="card-text">{{ $company->description }}</p></div>
-                    <div class="col-md-2"><a href="{{ url($company->id.'/industry') }}" class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div>
+            @if(!empty($news))
+                @foreach($news as $new)
+                <div class="news-card">
+                    <h4 >{{ languageSwitcher($new->title) }}</h4>
+                    <div class="row">
+                    <div class="col-md-10"><p class="card-text">{{ languageSwitcher($new->content) }}</p></div>
+                      <!-- <div class="col-md-2"><a href="{{ url($new->id.'/new') }}" class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div> -->
+                       
+                       <div class="col-md-2"><a href="{{url('new_detail')}}"class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></div> |
+                    </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @endif
+           
 
           </div>
         

@@ -12,7 +12,23 @@ define('LARAVEL_START', microtime(true));
 define('MATERIAL', 20);
 define('TEXTILE', 21);
 define('FOOD', 22);
+
+define('PREFIXONE', 23);
+define('PREFIXTWO', 24);
+define('PREFIXTHREE', 25);
+
+define('PREONE', 26);
+define('PRETWO', 27);
+define('PRETHREE', 28);
+
 define('EMAIL', 'msmebusinessmatching@gmail.com');
+define('COMPANY_UPLOAD', 18);
+define('MEDIA_TYPE', json_encode(
+    array(
+        'image' => array('field_name' => 'image_media', 'extension' => array("jpg", "gif", "png", "jpeg"), 'max_size' => 5000000)
+    )
+));
+
 
 /*
 |--------------------------------------------------------------------------

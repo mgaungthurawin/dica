@@ -29,8 +29,8 @@
                           <td width="25%">{{ $company->abbreviation }}</td>
                         </tr>
                         <tr>
-                          <td>{{ $company->nation }}</td>
-                          <td colspan="2">&nbsp;</td>
+                          <td>Burmese Notation</td>
+                          <td colspan="2">{!! $company->mm_name !!}</td>
                         </tr>
                         <tr>
                           <td colspan="4">{{ $company->description }}</td>
@@ -40,33 +40,34 @@
                 </div>
             </div>
         </div>
+        @if(!empty(Auth::user()))
+        @include('frontend.layouts.company_media')
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
-                    @foreach($company->products as $product)
-                        <div class="col-lg-4 col-sm-6 portfolio-item">
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt=""></a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 mb-12">
-                <div class="container-box">
-                    <?php
-                        if(MATERIAL==$company->category->prefix) {
-                            $pro_col = 5;
-                            $col = 7;
-                        } else {
-                            $pro_col = 7;
-                            $col = 5;
-                        }
-                    ?>
-                    @if(MATERIAL==$company->type)
-                    <div class="col-lg-{{ $pro_col }} col-sm-{{ $pro_col }}">
+
+                    <div class="col-lg-6 col-sm-6">
+                        <h4>Main products including the use of you product</h4>
+                        <table class="table table-striped">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">No</th>
+                              <th scope="col">Main product</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                                <?php $product_index = 1;?>
+                                @foreach($company->products->pluck('name')->all() as $product)
+                                <tr>
+                                    <th scope="row">{{$product_index}}</th>
+                                    <td>{{ $product }}</td>
+                                </tr>
+                                <?php $product_index++; ?>
+                                @endforeach
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
                         <h4>Main processing classification</h4>
                         <table class="table table-striped">
                           <thead class="thead-dark">
@@ -87,52 +88,7 @@
                           </tbody>
                         </table>
                     </div>
-                    @endif
-                    <div class="col-lg-{{ $col }} col-sm-{{ $col }}">
-                        <h4>Main products</h4>
-                        <table class="table table-striped">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th scope="col">No</th>
-                              <th scope="col">Main product</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                                <?php $product_index = 1;?>
-                                @foreach($company->products->pluck('name')->all() as $product)
-                                <tr>
-                                    <th scope="row">{{$product_index}}</th>
-                                    <td>{{ $product }}</td>
-                                </tr>
-                                <?php $product_index++; ?>
-                                @endforeach
-                          </tbody>
-                        </table>
-                    </div>
-                    @if(MATERIAL !== $company->type)
-                      <div class="col-lg-{{ $col }} col-sm-{{ $col }}">
-                          <h4>Locations</h4>
-                          <table class="table table-striped">
-                            <thead class="thead-dark">
-                              <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Location</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                  <?php $location_index = 1;?>
-                                  @foreach($company->locations->pluck('name')->all() as $location)
-                                  <tr>
-                                      <th scope="row">{{$location_index}}</th>
-                                      <td>{{ $location }}</td>
-                                  </tr>
-                                  <?php $location_index++; ?>
-                                  @endforeach
-                            </tbody>
-                          </table>
-                      </div>
-                    @endif
-
+                    
                 </div>
             </div>
         </div>
@@ -329,6 +285,7 @@
                 </div>
             </div>
         </div>
+      @endif
         <!-- /.row -->         
     </div>
 </main>

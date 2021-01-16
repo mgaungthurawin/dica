@@ -12,7 +12,6 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-	// Auth Route
 	Auth::routes();
 });
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -34,7 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 	Route::post('/processing/add', 'ProcessingController@store');
 	Route::get('/processing/edit/{id}', 'ProcessingController@edit'); // edit form
 	Route::post('/processing/edit/{id}', 'ProcessingController@update'); // update
-	Route::get('/company/{category_id}/food', 'CompanyController@food');
+	Route::get('/company/{category_id}/{prefix}/food', 'CompanyController@food');
 });
 
 Route::group(['namespace' => 'Frontend'], function() {
@@ -42,10 +41,11 @@ Route::group(['namespace' => 'Frontend'], function() {
 	Route::get('{category_id}/material', 'WebController@material');
 	Route::get('{category_id}/search_result', 'WebController@search_result');
 	Route::get('{company_id}/industry', 'WebController@industry');
+	Route::get('{new_id}/new', 'NewController@new');
+	
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
-	
 	Route::get('/', 'WebController@index');
 	Route::get('outline', 'WebController@outline');
 	Route::get('usedatabase', 'WebController@usedatabase');
@@ -58,4 +58,6 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('news', 'WebController@news');
 	Route::get('individual', 'WebController@individual');
 	Route::get('changelanguage', 'LanguageController@changeLanguage');
+	Route::get('sitemap', 'WebController@sitemap');
+	Route::get('new_detail', 'WebController@new_detail');
 });

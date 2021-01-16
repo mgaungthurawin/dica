@@ -85,16 +85,18 @@ class ProcessingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProcessingRequest $request, $id)
+    public function update(Request $request, $id)
     {
-    	$processing = Processing::find($id);
-        if(empty($processing)) {
-            Alert::error('Error', 'main processings Not Found');
-            return redirect(route('processing.index'));
-        }
     	$data = $request->all();
         $data['location_id'] = json_encode($request['location_id']);
-        $processing->update($data);
+
+        if (!array_key_exists('recommend', $data)) {
+            $data['recommend'] = 0;
+        }
+        if (!array_key_exists('main_classification', $data)) {
+            $data['main_classification'] = 0;
+        }
+        Processing::find($id)->update($data);
         Alert::success('Success', 'Successfully Updated main processings');
         return redirect(url('admin/processing'));
     }

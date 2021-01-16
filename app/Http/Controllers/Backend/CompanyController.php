@@ -10,6 +10,7 @@ use App\Model\Category;
 use App\Model\Processing;
 use App\Model\Location;
 use App\Model\ProductLocation;
+use App\Model\MediaReference;
 Use Alert;
 
 class CompanyController extends Controller
@@ -25,9 +26,28 @@ class CompanyController extends Controller
         $categories = Category::all();
         if(count($request->all()) > 0) {
             $data = $request->all();
-            if(array_key_exists('product', $data) && array_key_exists('category_id', $data)) {
-                $companies = Company::where('name', 'like', '%' . $data['product'] . '%')
-                                ->where('category_id', $data['category_id'])->paginate(25);
+            if(array_key_exists('q', $data)) {
+                $whereIn = [];
+                $company_queries =  Company::whereRaw("name like ? ", array('%'.$data['q'].'%'))->get();
+                $product_queries = Product::join('company_product as cp', 'cp.product_id', 'products.id')
+                                        ->where('products.name', 'LIKE', '%'. $data["q"].'%')->get();
+                $processing_queries = Processing::join('company_processing as cp', 'cp.processing_id', 'processing.id')
+                                        ->where('processing.main_process', 'LIKE', '%'. $data["q"].'%')->get();
+                $location_queries = Location::join('company_location as cl', 'cl.location_id', 'location.id')
+                                        ->where('location.name', 'LIKE', '%'. $data["q"].'%')->get();
+                foreach ($company_queries as $key => $cq) {
+                    $whereIn[] = $cq->id;
+                }
+                foreach ($product_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($processing_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($location_queries as $key => $lq) {
+                    $whereIn[] = $lq->company_id;
+                }
+                $companies = Company::whereIn('id', $whereIn)->paginate(25);
             }
         }
         return view('admin.company.index', compact('companies', 'categories'));
@@ -42,7 +62,7 @@ class CompanyController extends Controller
     {
         $certificate = ['ISO', 'ISO9001', 'Other'];
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
-        $products = Product::all();
+        $products = Product::orderBy('name', 'ASC')->get();
         $main_processings = Processing::all();
         // $categories = Category::all();
         $categories = Category::orderBy('id', 'DESC')->get();
@@ -60,11 +80,22 @@ class CompanyController extends Controller
     {
         $form = $request->all();
         $category_id = $form['category_id'];
-        if(strpos($form['category_id'], "-")) {
-            $array = explode("-", $form['category_id']);
-            $category_id = $array[0];
-        };
         $category = Category::find($form['category_id']);
+
+        // Image Upload
+        $media_reference = array();
+        if ($request->hasFile('image_media')) {
+            $medias = saveMultipleMedia($request, 'image');
+            if (TRUE != $medias['status']) {
+                Flash::error($medias['message']);
+                return redirect(route('company.index'));
+            } else {
+                foreach ($medias['media_id'] as $key => $value) {
+                    $media_reference[] = array('media_id' => $value, 'reference_type' => COMPANY_UPLOAD);
+                }
+            }
+        }
+
         switch ($category->prefix) {
             case FOOD:
                 $data = $this->foodPrepareData($form);
@@ -72,6 +103,7 @@ class CompanyController extends Controller
                 $data['category_id'] = $category->id;
                 $company = Company::create($data);
                 $company->products()->sync($request->product_id);
+                $company->processings()->sync($request->processing_id);
                 $company->locations()->sync($request->location_id);
                 break;
             default:
@@ -83,6 +115,11 @@ class CompanyController extends Controller
                 $company->locations()->sync($request->location_id);
                 break;
         }
+        foreach ($media_reference as $key => $value) {
+            $media_reference[$key]['reference_id'] = $company->id;
+        }
+        // // Save Media Referencing Table
+        if (count($media_reference)) MediaReference::insert($media_reference);
         Alert::success('Success', 'Successfully Created Company');
         return redirect(route('company.index'));
     }
@@ -111,10 +148,11 @@ class CompanyController extends Controller
             Alert::error('Error', 'Company not found');
             return redirect(route('company.index'));
         }
+
         if(FOOD == $company->type)
         {
             $company = Company::find($id);
-            $products = Product::all();
+            $products = Product::orderBy('name', 'ASC')->get();
             $locations = Location::all();
             $selected_product = $company->products()->pluck('product_id')->all();
             $selected_location = $company->locations()->pluck('location_id')->all();
@@ -129,7 +167,7 @@ class CompanyController extends Controller
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
         $categories = Category::all();
         $company = Company::find($id);
-        $products = Product::all();
+        $products = Product::orderBy('name', 'ASC')->get();
         $main_processings = Processing::all();
         $locations = Location::all();
         $selected_product = $company->products()->pluck('product_id')->all();
@@ -143,6 +181,8 @@ class CompanyController extends Controller
         $main_customer = json_decode($company->main_customer, TRUE);
         $cer_standard = json_decode($company->cer_standard, TRUE);
         $export_impot = json_decode($company->export_impot, TRUE);
+
+
         return view('admin.company.edit', compact('company', 'products', 'main_processings', 'locations', 'contact', 'company_info', 'main_customer', 'cer_standard','categories', 'export_impot', 'low_material', 'production', 'certificate', 'standard', 'selected_product','selected_processing','selected_location', 'main_machine_equipment'));
     }
 
@@ -159,6 +199,33 @@ class CompanyController extends Controller
         $company = Company::find($id);
         $data = $request->all();
         $category = Category::find($data['category_id']);
+
+        $media_reference = array();
+        if ($request->hasFile('image_media')) {
+            $medias = saveMultipleMedia($request, 'image');
+            if (TRUE != $medias['status']) {
+                Flash::error($medias['message']);
+                return redirect(route('company.index'));
+            } else {
+                foreach ($medias['media_id'] as $key => $value) {
+                    $media_reference[] = array('media_id' => $value, 'reference_type' => COMPANY_UPLOAD);
+                }
+            }
+        }
+
+        if (count($media_reference)) {
+            $medias = json_decode($data['medias'], true);
+            $media_label = json_decode(MEDIA_TYPE, true);
+            $image_ext = $media_label['image']['extension'];
+
+            foreach ($media_reference as $key => $value) {
+                $media_reference[$key]['reference_id'] = $company->id;
+            }
+
+            // Save Media Referencing Table
+            if (count($media_reference)) MediaReference::insert($media_reference);
+        }
+
         if(FOOD == $category->prefix)
         {
             $update = $this->foodPrepareData($data);
@@ -175,6 +242,7 @@ class CompanyController extends Controller
         $company->products()->sync($request->product_id);
         $company->processings()->sync($request->processing_id);
         $company->locations()->sync($request->location_id);
+
         Alert::success('Success', 'Successfully Updated Company');
         return redirect(route('company.index'));
     }
@@ -190,7 +258,7 @@ class CompanyController extends Controller
         //
     }
 
-    public function food($category_id){
+    public function food($category_id, $prefix){
         $certificate = ['ISO', 'HACCP', 'BRC', 'Other'];
         $products = Product::all();
         $locations = Location::all();
@@ -235,16 +303,28 @@ class CompanyController extends Controller
     }
 
     private function prepareData($data) {
+        $office_location = NULL;
+        if(array_key_exists('office_location', $data)){
+            $office_location = $data['office_location'];
+        }
+        $plant_location = NULL;
+        if(array_key_exists('plant_location', $data)){
+            $plant_location = $data['plant_location'];
+        }
+        $language = NULL;
+        if(array_key_exists('language', $data)){
+            $language = $data['language'];
+        }
         $content = [
             'office' => [
-                'office_location' => $data['office_location'],
+                'office_location' => $office_location,
                 'office_location_other' => $data['office_location_other'],
                 'office_address' => $data['office_address'],
                 'office_tel' => $data['office_tel'],
                 'office_fax' => $data['office_fax']
             ],
             'plant' => [
-                'plant_location' => $data['plant_location'],
+                'plant_location' => $plant_location,
                 'plant_location_other' => $data['plant_location_other'],
                 'plant_address' => $data['plant_address'],
                 'plant_tel' => $data['plant_tel'],
@@ -259,7 +339,7 @@ class CompanyController extends Controller
                 'pic_title' => $data['pic_title'],
                 'pic_tel' => $data['pic_tel'],
                 'pic_email' => $data['pic_email'],
-                'language' => $data['language'],
+                'language' => $language,
                 'language_other' => $data['language_other']
             ]
         ];
@@ -315,8 +395,8 @@ class CompanyController extends Controller
             'category_id' => $data['category_id'],
             'name' => $data['name'],
             'mm_name' => $data['mm_name'],
-            'abbreviation' => $data['abbreviation'],
-            'nation' => $data['nation'],
+            // 'abbreviation' => $data['abbreviation'],
+            // 'nation' => $data['nation'],
             'description' => $data['description'],
             'company_url' => $data['company_url'],
             'main_machine_equipment' => json_encode($main_machine_equipment),
@@ -327,7 +407,8 @@ class CompanyController extends Controller
             'main_customer' => json_encode($maincustomer),
             'cer_standard' => json_encode($car_starndard),
             'export_impot' => json_encode($exportimport),
-            'special_note' => $data['special_note']
+            'special_note' => $data['special_note'],
+            'strong_point' => $data['strong_point']
         ];
         return $insert;
     }

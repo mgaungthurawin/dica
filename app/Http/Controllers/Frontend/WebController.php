@@ -9,14 +9,19 @@ use App\Model\Category;
 use App\Model\Product;
 use App\Model\News;
 use App\Model\Location;
+use App\Model\Processing;
 use DB;
 use Alert;
 
 class WebController extends Controller
 {
-    public function index(Request $request) {
-        $companies = Company::orderBy('created_at', 'DESC')->limit(3)->get();
-        return view('frontend.index', compact('companies'));
+    // public function index(Request $request) {
+    //     $companies = Company::orderBy('created_at', 'DESC')->limit(3)->get();
+    //     return view('frontend.index', compact('companies'));
+    // }
+     public function index(Request $request) {
+        $news = News::orderBy('created_at', 'DESC')->limit(3)->get();
+        return view('frontend.index', compact('news'));
     }
     public function outline(Request $request) {
         return view('frontend.outline');
@@ -31,7 +36,7 @@ class WebController extends Controller
         return view('frontend.register');
     }
     public function search() { 
-        $categories = Category::all();
+        $categories = Category::orderBy('prefix', 'ASC')->get();
         return view('frontend.search', compact('categories'));
     }
     public function material($category_id) {
@@ -40,14 +45,44 @@ class WebController extends Controller
             Alert::error('Category not found');
             return redirect(url('/'));
         }
+        /*
         $companies = Company::where('category_id', $category_id)->get();
-        $recommands = Product::where('recommend', TRUE)->get();
-        return view('frontend.material', compact('companies', 'category', 'recommands', 'category_id'));
+        $recommands = Product::where('recommend', TRUE)->GROUPBY('id')->get();
+        
+        $processing_array = [];
+        $product_array = [];
+        $location_array = [];
+        foreach ($companies as $key => $company) {
+            foreach ($company->processings as $processing) {
+                $processing_array[] = $processing->id;
+            }
+        }
+
+        foreach ($companies as $key => $company) {
+            foreach ($company->products as $product) {
+                $product_array[] = $product->id;
+            }
+        }
+
+        foreach ($companies as $key => $company) {
+            foreach ($company->locations as $location) {
+                $location_array[] = $location->id;
+            }
+        }
+        $processings = Processing::whereIn('id', $processing_array)->get();        
+        $products = Product::whereIn('id', $product_array)->get();        
+        $locations = Location::whereIn('id', $location_array)->get();
+        */  
+        $companies = Company::where('category_id', $category_id)->get();
+        $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('main_process', 'ASC')->get();
+        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('name', 'ASC')->get();
+        $locations = Location::orderBy('name', 'ASC')->get();    
+        return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
+
     }
 
     public function textile(Request $request) {
-        
-         return view('frontend.textile');
+        return view('frontend.textile');
     }
     public function food(Request $request) {
         
@@ -102,10 +137,26 @@ class WebController extends Controller
 
         if(count($data) > 0) {
             if (array_key_exists('q', $data)) {
-                $queries = DB::select('call search(?)',array($data['q']));
                 $whereIn = [];
-                foreach ($queries as $key => $query) {
-                    $whereIn[] = $query->id;
+                $company_queries =  Company::whereRaw("name like ? ", array('%'.$data['q'].'%'))->get();
+                $product_queries = Product::join('company_product as cp', 'cp.product_id', 'products.id')
+                                        ->where('products.name', 'LIKE', '%'. $data["q"].'%')->get();
+                $processing_queries = Processing::join('company_processing as cp', 'cp.processing_id', 'processing.id')
+                                        ->where('processing.main_process', 'LIKE', '%'. $data["q"].'%')->get();
+                $location_queries = Location::join('company_location as cl', 'cl.location_id', 'location.id')
+                                        ->where('location.name', 'LIKE', '%'. $data["q"].'%')->get();
+
+                foreach ($company_queries as $key => $cq) {
+                    $whereIn[] = $cq->id;
+                }
+                foreach ($product_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($processing_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($location_queries as $key => $lq) {
+                    $whereIn[] = $lq->company_id;
                 }
                 $companies = Company::whereIn('id', $whereIn)->get();
             }
@@ -143,6 +194,15 @@ class WebController extends Controller
         $cer_standard = json_decode($company->cer_standard, TRUE);
         $export_impot = json_decode($company->export_impot, TRUE);
         return view('frontend.individual', compact('company', 'main_machine_equipment', 'contact', 'company_info', 'production', 'low_material', 'main_customer','cer_standard', 'export_impot', 'certificate', 'standard'));
+    }
+    
+     public function sitemap(Request $request) {
+
+        return view('frontend.sitemap');
+    }
+    public function new_detail(Request $request) {
+
+        return view('frontend.new_detail');
     }
 
 }

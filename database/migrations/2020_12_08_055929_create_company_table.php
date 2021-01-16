@@ -19,12 +19,12 @@ class CreateCompanyTable extends Migration
             $table->foreign('category_id')
                    ->references('id')->on('category')
                    ->onDelete('cascade');
-            $table->string('name');
-            $table->string('mm_name');
-            $table->string('abbreviation');
-            $table->string('nation');
-            $table->longText('description');
-            $table->string('company_url');
+            $table->string('name')->nullable();
+            $table->string('mm_name')->nullable();
+            $table->text('abbreviation')->nullable();
+            $table->text('nation')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('company_url')->nullable();
             $table->longText('main_machine_equipment')->nullable();
             $table->longText('contact')->nullable();
             $table->longText('company_info')->nullable();
@@ -73,6 +73,7 @@ class CreateCompanyTable extends Migration
             $table->longText('remark')->nullable();
             $table->string('type');
             $table->longText('special_note')->nullable();
+            $table->text('strong_point')->nullable();
             $table->timestamps();
         });
     }

@@ -114,6 +114,9 @@ class ProductController extends Controller
         if (!array_key_exists('recommend', $data)) {
             $data['recommend'] = 0;
         }
+        if (!array_key_exists('main_product', $data)) {
+            $data['main_product'] = 0;
+        }
         Product::find($id)->update($data);
         Alert::success('Success', 'Successfully Updated product');
         return redirect(route('product.index'));

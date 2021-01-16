@@ -25,6 +25,7 @@
                           <th scope="col">{{trans('app.state_region')}}</th>
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
+                          <th scope="col">{{trans('app.strong_point')}}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -33,9 +34,10 @@
                                 <th scope="row">1</th>
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
-                                <td>{{ implode(",",$company->locations->pluck('name')->all()) }}</td>
-                                <td>{{ implode(",",$company->products->pluck('name')->all()) }}</td>
-                                <td>{{ $company->description }}</td>
+                                <td>{{ main_location($company) }}</td>
+                                <td>{{ main_product($company) }}</td>
+                                <td>{{ substr($company->description,0,20) }}</td>
+                                <td>{{ substr($company->strong_point,0,20) }}</td>
                             </tr>
                         @endforeach
                       </tbody>

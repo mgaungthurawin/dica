@@ -12,7 +12,7 @@
         <div class="row">
             <div class="container-box" style="width: 100%;">
                 <h2>{{trans('app.outline_of_directorate')}}</h2><br>
-                <p>{{trans('app.to_be_checked_of')}}</p>
+                <p>{{trans('app.the_disi')}}</p>
             </div>
         </div> 
         <div class="row">
