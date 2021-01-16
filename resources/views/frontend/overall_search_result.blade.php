@@ -6,10 +6,8 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
+                    <h1>Database On Matching Service Program</h1><br>
                     <p>{{trans('app.search_result')}}</p>
-                    <h1>{{trans('app.database_on_material_processing')}}</h1><br>
-                    <p>{{trans('app.products_name')}}<br>
-                    {{trans('app.state_region')}}</p>
                 </div>
             </div>
         </div>
@@ -23,6 +21,7 @@
                           <th scope="col">{{trans('app.industry')}}</th>
                           <th scope="col">{{trans('app.name_of_company')}}</th>
                           <th scope="col">{{trans('app.state_region')}}</th>
+                          <th scope="col">{{trans('app.main_processing')}}</th>
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
                           <th scope="col">{{trans('app.strong_point')}}</th>
@@ -36,6 +35,7 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ main_location($company) }}</td>
+                                <td>Main Processing</td>
                                 <td>{{ main_product($company) }}</td>
                                 <td>{{ substr($company->description,0,20) }}</td>
                                 <td>{{ substr($company->strong_point,0,20) }}</td>
