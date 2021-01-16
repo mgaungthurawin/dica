@@ -40,7 +40,7 @@
 
                         @include('admin.company.edit_media')
 
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Main Product</label><br/>
                             <select class="form-control" name="product_id[]" multiple>
                                 @foreach($products as $product)
@@ -52,19 +52,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
-                            <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" multiple>
-                                @foreach($main_processings as $processing)
-                                    <option value="{{ $processing->id }}"
-                                      @if(in_array($processing->id, $selected_processing))
-                                        selected
-                                      @endif
-                                      >{{ $processing->main_process }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>
                             <select class="form-control" name="location_id[]" multiple>
                                 @foreach($locations as $location)

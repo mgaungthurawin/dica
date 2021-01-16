@@ -47,7 +47,7 @@
                 <div class="container-box">
 
                     <div class="col-lg-6 col-sm-6">
-                        <h4>Main products</h4>
+                        <h4>Main products including the use of you product</h4>
                         <table class="table table-striped">
                           <thead class="thead-dark">
                             <tr>

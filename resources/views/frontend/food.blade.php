@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-12">
                     <div class="container-box">
-                        <div class="col-lg-6 col-sm-6">
+                        <div class="col-lg-12 col-sm-12">
                             <h3>{{trans('app.product')}}</h3>
                             <table class="table table-striped">
                               <thead class="thead-dark">
@@ -54,28 +54,6 @@
                                     <td>{{ $product }}</td>
                                 </tr>
                                 <?php $product_index++; ?>
-                                @endforeach
-                              </tbody>
-                            </table>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <h3>Main processing classification</h3>
-                            <table class="table table-striped">
-                              <thead class="thead-dark">
-                                <tr>
-                                  <th scope="col">No</th>
-                                  <th scope="col">Processing classification</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <?php $processing_index = 1;?>
-                                @foreach($company->processings->pluck('main_process')->all() as $processing)
-                                <tr>
-                                    <th scope="row">{{$processing_index}}</th>
-                                    <td>{{ $processing }}</td>
-                                </tr>
-                                <?php $processing_index++; ?>
                                 @endforeach
                               </tbody>
                             </table>

@@ -22,6 +22,8 @@ class CreateProductsTable extends Migration
             $table->integer('media_id')->nullable();
             $table->boolean('recommend');
             $table->integer('parent')->default('0');
+            $table->boolean('main_product');
+            $table->integer('sorting');
             $table->timestamps();
         });
     }
