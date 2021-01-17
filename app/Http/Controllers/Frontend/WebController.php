@@ -161,7 +161,8 @@ class WebController extends Controller
                 $companies = Company::whereIn('id', $whereIn)->get();
             }
         }
-        return view('frontend.search_result', compact('companies'));
+        $company = Company::where('category_id', $category_id)->first();
+        return view('frontend.search_result', compact('companies','company'));
     }
 
     public function industry($company_id) {

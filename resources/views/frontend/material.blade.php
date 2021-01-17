@@ -42,53 +42,21 @@
         <div class="row" style="margin-top: 20px;"> 
           @if(MATERIAL == $category->prefix)
             <div class="col-lg-6 mb-6">
-                <h3>Main Processing Classification</h3>
+                <h3>{{trans('app.main_processing_classification')}}</h3>
                   @foreach($processings as $processing)
                     <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">
-                <h3><u>Recommand Products</u></h3>
+                <h3><u>{{trans('app.recommand_products')}}</u></h3>
                   @foreach($products as $recommand)
                     <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
                   @endforeach
-                  {{--<h3><u>Products</u></h3>
-                  @foreach($companies as $company)
-                    @foreach($company->products as $product)
-                      <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
-                    @endforeach
-                  @endforeach--}}
             </div>
-            {{--<div class="col-lg-4 mb-4">
-                <h3><u>{{trans('app.list_of_state_region')}}</u></h3>
-              <div class="list-group">
-                  @foreach($companies as $company)
-                      @foreach($company->locations as $location)
-                      <a href="{{url($category->id.'/search_result?location='. $location->id)}}" class="list-group-item">{{ $location->name }}</a>
-                      @endforeach
-                  @endforeach
-              </div>
-            </div>--}}
           @endif        
           @if(TEXTILE == $category->prefix)
-
-
-            {{--<div class="col-lg-6 mb-6">
-                <h3><u>Recommand Products</u></h3>
-                  @foreach($recommands as $recommand)
-                    <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
-                  @endforeach
-                  <h3><u>Products</u></h3>
-                  @foreach($companies as $company)
-                    @foreach($company->products as $product)
-                      <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
-                    @endforeach
-                  @endforeach
-            </div>--}}
-
-
             <div class="col-lg-6 mb-6">
-                <h3>Main Processing Classification</h3>
+                <h3>{{trans('app.main_processing_classification')}}</h3>
                   @foreach($processings as $processing)
                     <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
                   @endforeach
@@ -105,7 +73,7 @@
 
           @if(FOOD == $category->prefix)
             <div class="col-lg-6 mb-6">
-                <h3>Main Products</h3>
+                <h3>{{trans('app.main_products')}}</h3>
                   @foreach($products as $product)
                     <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
                   @endforeach
