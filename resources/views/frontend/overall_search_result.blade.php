@@ -6,25 +6,14 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
-                    @if(MATERIAL == $company_type->type)
-                      <h1>{{trans('app.db_material')}}</h1><br>
-                    @elseif(TEXTILE == $company_type->type)
-                      <h1>{{trans('app.db_textile')}}</h1><br>
-                    @else
-                      <h1>{{trans('app.db_food')}}</h1><br>
-                    @endif
-                  <p>{{trans('app.search_result')}}</p>
-                  <p>{{trans('app.products_name')}}<br>
-                  {{trans('app.state_region')}}</p>
+                    <h1>Database On Matching Service Program</h1><br>
+                </div>
+
+                <div class="container-box" style="width: 100%;">
+                    <p>{{trans('app.search_result')}}</p>
                 </div>
             </div>
-            {{--<div class="col-lg-6 mb-6">
-                <div class="container-box" style="width: 100%;">
-                    <h3>Search Result</h3>
-                </div>
-            </div>--}}
         </div>
-
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
@@ -35,9 +24,7 @@
                           <th scope="col">{{trans('app.industry')}}</th>
                           <th scope="col">{{trans('app.name_of_company')}}</th>
                           <th scope="col">{{trans('app.state_region')}}</th>
-                          @if(FOOD !== $category->prefix)
-                            <th scope="col">{{trans('app.main_processing')}}</th>
-                          @endif
+                          <th scope="col">{{trans('app.main_processing')}}</th>
                           <th scope="col">{{trans('app.main_products')}}</th>
                           <th scope="col">{{trans('app.company_profile')}}</th>
                         </tr>
@@ -50,9 +37,7 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ main_location($company) }}</td>
-                                @if(FOOD !== $category->prefix)
-                                  <td>{{ main_processing($company) }}</td>
-                                @endif
+                                <td>{{ main_processing($company) }}</td>
                                 <td>{{ main_product($company) }}</td>
                                 <td>{{ substr($company->strong_point,0,15) }}</td>
                             </tr>
