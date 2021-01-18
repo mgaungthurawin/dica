@@ -53,7 +53,7 @@
 
                         <div class="form-group col-sm-4">
                             <label for="description">Main Product</label><br/>
-                            <select class="form-control" name="product_id[]" multiple>
+                            <select class="form-control" name="product_id[]" id="pro_id" multiple>
                                 @foreach($products as $product)
                                     <option value="{{ $product->id}}"
                                       @if(in_array($product->id, $selected_product))
@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" multiple>
+                            <select class="form-control" name="processing_id[]" id="process_id" multiple>
                                 @foreach($main_processings as $processing)
                                     <option value="{{ $processing->id }}"
                                       @if(in_array($processing->id, $selected_processing))
@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Location</label><br/>
-                            <select class="form-control" name="location_id[]" multiple="">
+                            <select class="form-control" name="location_id[]" id="loc_id" multiple="">
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id}}"
                                       @if(in_array($location->id, $selected_location))

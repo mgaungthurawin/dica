@@ -64,7 +64,6 @@ class CompanyController extends Controller
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
         $products = Product::orderBy('name', 'ASC')->get();
         $main_processings = Processing::all();
-        // $categories = Category::all();
         $categories = Category::orderBy('id', 'DESC')->get();
         $locations = Location::all();
         return view('admin.company.create', compact('categories','products','certificate','standard','main_processings','locations'));
@@ -152,7 +151,7 @@ class CompanyController extends Controller
         if(FOOD == $company->type)
         {
             $company = Company::find($id);
-            $products = Product::orderBy('name', 'ASC')->get();
+            $products = Product::where('category_id', $company->category_id)->orderBy('name', 'ASC')->get();
             $locations = Location::all();
             $selected_product = $company->products()->pluck('product_id')->all();
             $selected_location = $company->locations()->pluck('location_id')->all();
@@ -167,8 +166,8 @@ class CompanyController extends Controller
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
         $categories = Category::all();
         $company = Company::find($id);
-        $products = Product::orderBy('name', 'ASC')->get();
-        $main_processings = Processing::all();
+        $products = Product::where('category_id', $company->category_id)->orderBy('name', 'ASC')->get();
+        $main_processings = Processing::where('prefix', $company->type);
         $locations = Location::all();
         $selected_product = $company->products()->pluck('product_id')->all();
         $selected_processing = $company->processings()->pluck('processing_id')->all();
@@ -260,7 +259,7 @@ class CompanyController extends Controller
 
     public function food($category_id, $prefix){
         $certificate = ['ISO', 'HACCP', 'BRC', 'Other'];
-        $products = Product::all();
+        $products = Product::where('category_id', $category_id)->get();
         $locations = Location::all();
         return view('admin.company.food', compact('products','certificate','locations', 'category_id'));
     }
