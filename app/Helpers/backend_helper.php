@@ -199,7 +199,7 @@ function mm($string) {
 }
 
 function main_processing($company) {
-    $processingArray = $company->locations->pluck('id');
+    $processingArray = $company->processings->pluck('id');
     $processings = Processing::whereIn('id', $processingArray)->where('main_classification', TRUE)->pluck('main_process');
     if(0 > count($processings)) {
         return implode(" ",$processings);

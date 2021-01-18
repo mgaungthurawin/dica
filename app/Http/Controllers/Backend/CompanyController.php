@@ -167,7 +167,7 @@ class CompanyController extends Controller
         $categories = Category::all();
         $company = Company::find($id);
         $products = Product::where('category_id', $company->category_id)->orderBy('name', 'ASC')->get();
-        $main_processings = Processing::where('prefix', $company->type);
+        $main_processings = Processing::all();
         $locations = Location::all();
         $selected_product = $company->products()->pluck('product_id')->all();
         $selected_processing = $company->processings()->pluck('processing_id')->all();
