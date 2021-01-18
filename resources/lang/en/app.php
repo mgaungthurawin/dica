@@ -59,7 +59,7 @@
     'outline_of_directorate' => "Outline of Directorate of Industrial Supervision and Inspection (DISI) of MoPFI",
     'outline_of_project' => "Outline of Project for Promoting Investment for Enhancing Industrial Competitiveness",
     'search_result' => "Search Result",
-    'database_on_material_processing' => "Database on Material Processing",
+    'database_on_material_processing' => "Database on potential Material Processing companies in Myanmar",
     'products_name' => "Products Name",
     'state_region' => "State / Region",
     'industry' => "Industry",
@@ -148,8 +148,10 @@
     'food_processing_industry' => "Food Processing Industry",
     'food_processing_industry_covers' => "The food processing industry covers a wide variety of food products. To select this industry’s companies for the database, the main criteria are their food processing technology, product quality, and hygiene management.",
 
+    'recommand_products' => "Recommand Products",
+    'db_material' => "Database on potential Material Processing companies in Myanmar",
+    'db_textile' => "Database on potential Textile Processing companies in Myanmar",
+    'db_food' => "Database on potential Food Processing companies in Myanmar",
 
-
- 
    ];
 ?>

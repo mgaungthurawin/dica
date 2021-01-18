@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                     {!! Form::open(array('route' => 'product.store','method'=>'POST', 'files' => 'true')) !!}
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
                             <label for="description">Category</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -19,7 +19,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
                             <label>Prefix</label>
                             <select name="prefix" class="form-control">
                                 <option value="{{ MATERIAL }}">MATERIAL</option>
@@ -27,7 +27,7 @@
                                 <option value="{{ FOOD }}">FOOD</option>
                             </select>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-4">
                             {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
                             <select class="form-control" name="parent">
                                 <option value="0">Select One</option>
@@ -42,6 +42,15 @@
                             @if ($errors->has('name'))
                                 <span class="text-danger">
                                     <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group col-sm-6 mmtext">
+                            {!! Form::label('sorting', 'Sorting:') !!} <span class="text-danger">*</span>
+                            {!! Form::number('sorting', null, ['class' => 'form-control']) !!}
+                            @if ($errors->has('sorting'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('sorting') }}</strong>
                                 </span>
                             @endif
                         </div>

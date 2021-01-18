@@ -29,7 +29,9 @@
                         
                         <div class="pull-right search-box">
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="{{trans('app.search_for')}}">
+                                <form id="orver-all-search">
+                                    <input type="text" class="form-control" placeholder="{{trans('app.search_for')}}" name="q">
+                                </form>
                               <!-- <span class="input-group-append">
                                 <button class="btn btn-secondary" type="button">Go!</button>
                               </span> -->

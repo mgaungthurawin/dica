@@ -15,11 +15,7 @@ use Alert;
 
 class WebController extends Controller
 {
-    // public function index(Request $request) {
-    //     $companies = Company::orderBy('created_at', 'DESC')->limit(3)->get();
-    //     return view('frontend.index', compact('companies'));
-    // }
-     public function index(Request $request) {
+    public function index(Request $request) {
         $news = News::orderBy('created_at', 'DESC')->limit(3)->get();
         return view('frontend.index', compact('news'));
     }
@@ -74,9 +70,9 @@ class WebController extends Controller
         $locations = Location::whereIn('id', $location_array)->get();
         */  
         $companies = Company::where('category_id', $category_id)->get();
-        $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('main_process', 'ASC')->get();
-        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('name', 'ASC')->get();
-        $locations = Location::orderBy('name', 'ASC')->get();    
+        $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
+        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
+        $locations = Location::orderBy('sorting', 'ASC')->get();    
         return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
     }
@@ -110,7 +106,7 @@ class WebController extends Controller
                     }
                 }
             }
-            $companies = Company::whereIn('id', $companyArray)->get();
+            $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if (array_key_exists('processing', $data)) {
@@ -121,7 +117,7 @@ class WebController extends Controller
                     }
                 }
             }
-            $companies = Company::whereIn('id', $companyArray)->get();
+            $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if (array_key_exists('location', $data)) {
@@ -132,7 +128,7 @@ class WebController extends Controller
                     }
                 }
             }
-            $companies = Company::whereIn('id', $companyArray)->get();
+            $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if(count($data) > 0) {
@@ -145,7 +141,6 @@ class WebController extends Controller
                                         ->where('processing.main_process', 'LIKE', '%'. $data["q"].'%')->get();
                 $location_queries = Location::join('company_location as cl', 'cl.location_id', 'location.id')
                                         ->where('location.name', 'LIKE', '%'. $data["q"].'%')->get();
-
                 foreach ($company_queries as $key => $cq) {
                     $whereIn[] = $cq->id;
                 }
@@ -158,10 +153,12 @@ class WebController extends Controller
                 foreach ($location_queries as $key => $lq) {
                     $whereIn[] = $lq->company_id;
                 }
-                $companies = Company::whereIn('id', $whereIn)->get();
+                $companies = Company::whereIn('id', $whereIn)->where('category_id', $category_id)->get();
+                return view('frontend.search_result', compact('companies', 'category'));
             }
         }
-        return view('frontend.search_result', compact('companies'));
+        $company_type = Company::where('category_id', $category_id)->first();
+        return view('frontend.search_result', compact('companies', 'category','company_type'));
     }
 
     public function industry($company_id) {
@@ -205,4 +202,43 @@ class WebController extends Controller
         return view('frontend.new_detail');
     }
 
+    public function overAllSearch(Request $request) {
+        $data = $request->all();
+        if (!empty($data)) {
+            if (array_key_exists('q', $data)) {
+                $whereIn = [];
+                $company_queries =  Company::whereRaw("name like ? ", array('%'.$data['q'].'%'))->get();
+                $product_queries = Product::join('company_product as cp', 'cp.product_id', 'products.id')
+                                        ->where('products.name', 'LIKE', '%'. $data["q"].'%')->get();
+                $processing_queries = Processing::join('company_processing as cp', 'cp.processing_id', 'processing.id')
+                                        ->where('processing.main_process', 'LIKE', '%'. $data["q"].'%')->get();
+                $location_queries = Location::join('company_location as cl', 'cl.location_id', 'location.id')
+                                        ->where('location.name', 'LIKE', '%'. $data["q"].'%')->get();
+
+                foreach ($company_queries as $key => $cq) {
+                    $whereIn[] = $cq->id;
+                }
+                foreach ($product_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($processing_queries as $key => $pq) {
+                    $whereIn[] = $pq->company_id;
+                }
+                foreach ($location_queries as $key => $lq) {
+                    $whereIn[] = $lq->company_id;
+                }
+                $companies = Company::whereIn('id', $whereIn)->get();
+                return view('frontend.overall_search_result', compact('companies'));
+            }
+        }
+    }
+
+
 }
+
+
+
+
+
+
+
