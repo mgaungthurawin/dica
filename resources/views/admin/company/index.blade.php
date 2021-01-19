@@ -8,13 +8,21 @@
     </section>
     <div class="content">
         <div class="row">
-            <form method="GET">
-                <div class="form-group col-sm-6">
-                    {!! Form::text('q', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Filter']) !!}
+            <div class="row">
+                <div class="col-md-10">
+                    <form method="GET">
+                        <div class="form-group col-sm-6">
+                            {!! Form::text('q', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Filter']) !!}
+                        </div>
+                        <a href="{!! route('company.index') !!}" class="btn btn-info">Clear</a>
+                        <button type="submit" class="btn btn-primary btnSearch">Search</button>
+                    </form>
                 </div>
-                <a href="{!! route('company.index') !!}" class="btn btn-info">Clear</a>
-                <button type="submit" class="btn btn-primary btnSearch">Search</button>
-            </form>
+
+                <div class="col-md-2 text-right" style="padding-right: 30px">
+                    <a href="{{route('company.export-excel')}}" class="btn btn-success" target="_blank">Export Excel</a>
+                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
         <div class="clearfix"></div>

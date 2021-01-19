@@ -19,18 +19,19 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('getProductByCategory', 'HelperController@getProductByCategory');
 Route::get('getProcessingByCategory', 'HelperController@getProcessingByCategory');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'Backend'], 
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'Backend'],
 	function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::delete('media/{id}', 'MediaController@destroy');
 	Route::resource('user', 'UserController');
-	Route::resource('category', 'CategoryController');	
+	Route::resource('category', 'CategoryController');
 	Route::resource('location', 'LocationController');
 	Route::resource('new', 'NewController');
 	Route::resource('product', 'ProductController');
 	Route::resource('company', 'CompanyController');
 	Route::get('{type}/create', 'CompanyController@create');
-	// Route::resource('processing', 'ProcessingController');
+    // Route::resource('processing', 'ProcessingController');
+    Route::get('export-excel', 'CompanyController@exportExcel')->name('company.export-excel');
 	Route::get('/processing', 'ProcessingController@index');
 	Route::get('/processing/add', 'ProcessingController@add');
 	Route::post('/processing/add', 'ProcessingController@store');
