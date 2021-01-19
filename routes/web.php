@@ -16,6 +16,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('getProductByCategory', 'HelperController@getProductByCategory');
+Route::get('getProcessingByCategory', 'HelperController@getProcessingByCategory');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace' => 'Backend'], 
 	function () {
 	Route::get('/home', 'HomeController@index')->name('home');

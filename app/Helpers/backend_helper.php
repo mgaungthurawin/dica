@@ -199,7 +199,7 @@ function mm($string) {
 }
 
 function main_processing($company) {
-    $processingArray = $company->locations->pluck('id');
+    $processingArray = $company->processings->pluck('id');
     $processings = Processing::whereIn('id', $processingArray)->where('main_classification', TRUE)->pluck('main_process');
     if(0 > count($processings)) {
         return implode(" ",$processings);
@@ -234,6 +234,17 @@ function main_location($company) {
     }
     return $locations[0];
 }
+
+
+function limit_text($text, $limit) {
+    if (str_word_count($text, 0) > $limit) {
+        $words = str_word_count($text, 2);
+        $pos   = array_keys($words);
+        $text  = substr($text, 0, $pos[$limit]) . '...';
+    }
+    return $text;
+}
+
 
 
 

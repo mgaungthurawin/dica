@@ -51,7 +51,7 @@
                                   <td>{{ main_processing($company) }}</td>
                                 @endif
                                 <td>{{ main_product($company) }}</td>
-                                <td>{{ substr($company->strong_point,0,15) }}</td>
+                                <td>{{ limit_text($company->strong_point, 15) }}</td>
                             </tr>
                             <?php $index++;?>
                         @endforeach

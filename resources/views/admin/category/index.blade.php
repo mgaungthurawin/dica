@@ -38,11 +38,11 @@
                             <td>
                             <a href="{!! route('category.edit', [$category->id]) !!}"
                                class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>
-                            <a href="#" type="button" data-id="{{ $category->id }}"
+                            {{--<a href="#" type="button" data-id="{{ $category->id }}"
                                class="btn btn-xs btn-danger" data-toggle="modal"
                                data-url="{{ url('admin/category/'.$category->id) }}"
                                data-target="#deleteFormModal"><i
-                                    class="fa fa-trash-o"></i>&nbsp;Delete</a>
+                                    class="fa fa-trash-o"></i>&nbsp;Delete</a>--}}
                             </td>
                         </tr>
                     @endforeach

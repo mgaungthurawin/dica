@@ -42,7 +42,7 @@
 
                         <div class="form-group col-sm-6">
                             <label for="description">Main Product</label><br/>
-                            <select class="form-control" name="product_id[]" multiple>
+                            <select class="form-control" name="product_id[]" id="pro_id" multiple>
                                 @foreach($products as $product)
                                     <option value="{{ $product->id}}"
                                       @if(in_array($product->id, $selected_product))
@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>
-                            <select class="form-control" name="location_id[]" multiple>
+                            <select class="form-control" name="location_id[]" id="loc_id" multiple>
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id}}"
                                       @if(in_array($location->id, $selected_location))
