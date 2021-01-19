@@ -65,3 +65,4 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('new_detail', 'WebController@new_detail');
 	Route::get('overAllSearch', 'WebController@overAllSearch');
 });
+// Hello
