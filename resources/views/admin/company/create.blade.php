@@ -54,6 +54,7 @@
                                 @foreach($products as $product)
                                     <option value="{{ $product->id}}">{{ $product->name }}</option>
                                 @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="description">Main Processing Classification</label><br/>
