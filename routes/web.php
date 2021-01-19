@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('test', function () {
+	return limit_text('Around (30)Years of Tea Business industry and (20)Years of Experienes in Local Tea Market and (5) Years of Experience in International Market and Working Together with Farmers and Good Relationship with Customers. ', 15);
+});
+
 Route::group(['prefix' => 'admin'], function () {
 	Auth::routes();
 });
