@@ -12,6 +12,7 @@ use App\Model\Location;
 use App\Model\ProductLocation;
 use App\Model\MediaReference;
 Use Alert;
+use App\CustomClass\CompanyExcel;
 
 class CompanyController extends Controller
 {
@@ -51,6 +52,12 @@ class CompanyController extends Controller
             }
         }
         return view('admin.company.index', compact('companies', 'categories'));
+    }
+
+    public function exportExcel()
+    {
+        $companyExcel = new CompanyExcel();
+        $companyExcel->download();
     }
 
     /**
