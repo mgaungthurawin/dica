@@ -45,6 +45,7 @@
                         <div class="form-group col-sm-4">
                             <label>Main Product</label>
                             <select name="main_product" class="form-control">
+                                <option value="0">Select Main Product</option>
                                 <option value="{{ 411 }}"
                                  @if(411 == $product["main_product"])
                                   selected

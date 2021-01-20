@@ -38,6 +38,7 @@
                     <div class="form-group col-sm-6">
                         <label>Main Classification</label>
                         <select name="main_classification" class="form-control">
+                            <option value="0">Select Main Classification</option>
                             <option value="{{ 511 }}"
                              @if(511 == $processing["main_classification"])
                               selected
