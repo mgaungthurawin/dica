@@ -256,6 +256,15 @@ function authValue($text) {
 
 }
 
+function getMainProduct($company_product) {
+    $products = Product::whereIn('id', $company_product)->get();
+    return $products;
+}
+
+function getMainProcessing($company_processing) {
+    $processings = Processing::whereIn('id', $company_processing)->get();
+    return $processings;
+}
 
 
 
