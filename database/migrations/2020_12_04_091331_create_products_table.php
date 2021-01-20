@@ -21,8 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->integer('media_id')->nullable();
             $table->boolean('recommend');
-            $table->integer('parent')->default('0');
-            $table->boolean('main_product');
+            $table->string('main_product')->nullable();
             $table->integer('sorting');
             $table->timestamps();
         });

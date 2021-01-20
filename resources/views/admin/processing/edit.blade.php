@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row">
                 {!! Form::model($processing, ['url' => ['admin/processing/edit', $processing->id], 'method' => 'post']) !!}
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-6">
                         <label>Prefix</label>
                         <select name="prefix" class="form-control">
                             <option value="{{ MATERIAL }}"
@@ -35,7 +35,42 @@
                             </option>
                         </select>
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-6">
+                        <label>Main Classification</label>
+                        <select name="main_classification" class="form-control">
+                            <option value="{{ 511 }}"
+                             @if(511 == $processing["main_classification"])
+                              selected
+                            @endif
+                            >5-1-1</option>
+                            <option value="{{ 521 }}"
+                             @if(521 == $processing["main_classification"])
+                              selected
+                            @endif
+                            >5-2-1</option>
+                            <option value="{{ 531 }}"
+                             @if(531 == $processing["main_classification"])
+                              selected
+                            @endif
+                            >5-3-1</option>
+                            <option value="{{ 541 }}"
+                             @if(541 == $processing["main_classification"])
+                              selected
+                            @endif
+                            >5-4-1</option>
+                            <option value="{{ 551 }}"
+                             @if(551 == $processing["main_classification"])
+                              selected
+                            @endif
+                            >5-5-1</option>
+                            <option value="{{ 561 }}"
+                             @if(561 == $processing["main_classification"])
+                              selected
+                            @endif
+                            >5-6-1</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
                         {!! Form::label('main_process', 'Main Process:') !!} <span class="text-danger">*</span>
                         {!! Form::text('main_process', null, ['class' => 'form-control']) !!}
                         @if ($errors->has('main_process'))
@@ -44,7 +79,7 @@
                             </span>
                        @endif
                     </div>
-                    <div class="form-group col-sm-4 mmtext">
+                    <div class="form-group col-sm-6 mmtext">
                         {!! Form::label('sorting', 'sorting:') !!} <span class="text-danger">*</span>
                         {!! Form::number('sorting', null, ['class' => 'form-control']) !!}
                         @if ($errors->has('sorting'))
@@ -61,14 +96,14 @@
                           @endif
                         >  
                     </div>
-                    <div class="form-group col-sm-6">
+                    {{--<div class="form-group col-sm-6">
                         <label for="main_classification">Main Classification</label>
                         <input type="checkbox" value="1" id="main_classification" name="main_classification"
                           @if($processing->main_classification)
                             checked
                           @endif
                         >  
-                    </div>
+                    </div>--}}
                     <div class="form-group col-sm-12">
                        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
                        <a href="{{ url('admin/processing') }}" class="btn btn-default">Cancel</a>

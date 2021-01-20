@@ -40,8 +40,7 @@ class ProductController extends Controller
     public function create()
     {
     	$categories = Category::all();
-        $products = Product::where('parent', 0)->get();
-        return view('admin.product.create', compact('categories','products'));
+        return view('admin.product.create', compact('categories'));
     }
 
     /**
@@ -87,7 +86,6 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $categories = Category::all();
-        $products = Product::where('parent', 0)->get();
         if(empty($product)){
             Alert::error('Error', 'product Not Found');
             return redirect(route('product.index'));
