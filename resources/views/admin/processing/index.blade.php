@@ -42,6 +42,11 @@
                             <td>
                             <a href='{{ url("admin/processing/edit/$processing->id") }}'
                                class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>
+                            <a href="#" type="button" data-id="{{ $processing->id }}"
+                               class="btn btn-xs btn-danger" data-toggle="modal"
+                               data-url="{{ url('admin/processing/delete/'.$processing->id) }}"
+                               data-target="#deleteFormModal"><i
+                                    class="fa fa-trash-o"></i>&nbsp;Delete</a>
                             </td>
                         </tr>
                     @endforeach

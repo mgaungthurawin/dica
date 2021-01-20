@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'namespace
 	Route::post('/processing/add', 'ProcessingController@store');
 	Route::get('/processing/edit/{id}', 'ProcessingController@edit'); // edit form
 	Route::post('/processing/edit/{id}', 'ProcessingController@update'); // update
+	Route::delete('/processing/delete/{id}', 'ProcessingController@destroy'); // delete
 	Route::get('/company/{category_id}/{prefix}/food', 'CompanyController@food');
 });
 
