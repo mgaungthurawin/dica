@@ -72,7 +72,8 @@ class WebController extends Controller
         $companies = Company::where('category_id', $category_id)->get();
         $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
         $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
-        $locations = Location::orderBy('sorting', 'ASC')->get();    
+        // $locations = Location::orderBy('sorting', 'ASC')->get();    
+        $locations = Location::orderBy('id', 'ASC')->get();    
         return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
     }

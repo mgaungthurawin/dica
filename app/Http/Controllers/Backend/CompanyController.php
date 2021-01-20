@@ -261,7 +261,14 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+        if (empty($company)) {
+            Alert::error('Error', 'company Not Found');
+            return redirect(route('company.index'));
+        }
+        $company->delete();
+        Alert::success('Success', 'Successfully deleted company');
+        return redirect(route('company.index'));
     }
 
     public function food($category_id, $prefix){

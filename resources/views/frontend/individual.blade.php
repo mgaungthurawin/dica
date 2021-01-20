@@ -91,6 +91,54 @@
                 </div>
             </div>
         </div>
+
+        <!-- <tr>
+            <th class="row" colspan="7" rowspan="1">Main Machine and Equipment</th>
+        </tr> -->
+        <div class="row">
+          <div class="form-group col-sm-12">
+            <div class="container-box">
+                <h4>Main Machine and Equipment</h4>
+                  <table class="table">
+                      <thead class="thead-dark">
+                          <th>#</th>
+                          <th>Type Of Equipment</th>
+                          <th>Model Destigation</th>
+                          <th>Num. of Machine</th>
+                          <th>Machine builder</th>
+                          <th>Country Origin</th>
+                      </thead>
+                      <tbody>
+                          <?php $i=1; ?>
+                          @foreach($main_machine_equipment['type_of_equipment'] as $key => $mm)
+                              <tr>
+                                  <td>{{ $i }}</td>
+                                  <td>
+                                    {!! $main_machine_equipment['type_of_equipment'][$key] !!}
+                                  </td>
+                                  <td>
+                                    {!! $main_machine_equipment['model_destination'][$key] !!}
+                                  </td>
+                                  <td>
+                                    {!! $main_machine_equipment['no_machine'][$key] !!}
+                                  </td>
+                                  <td>
+                                    {!! $main_machine_equipment['machine_builder'][$key] !!}
+                                  </td>
+                                  <td>
+                                    {!! $main_machine_equipment['machine_country_origin'][$key] !!}
+                                  </td>
+                              </tr>
+                              <?php $i++; ?>
+                          @endforeach
+
+                      </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+
+
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">

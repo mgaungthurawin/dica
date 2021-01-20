@@ -51,6 +51,11 @@
                                 <td>
                                 <a href="{!! route('company.edit', [$company->id]) !!}"
                                    class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>
+                                <a href="#" type="button" data-id="{{ $company->id }}"
+                                   class="btn btn-xs btn-danger" data-toggle="modal"
+                                   data-url="{{ url('admin/company/'.$company->id) }}"
+                                   data-target="#deleteFormModal"><i
+                                        class="fa fa-trash-o"></i>&nbsp;Delete</a>
                                 </td>
                             </tr>
                         @endforeach
