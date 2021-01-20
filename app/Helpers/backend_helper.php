@@ -257,12 +257,12 @@ function authValue($text) {
 }
 
 function getMainProduct($company_product) {
-    $products = Product::whereIn('id', $company_product)->get();
+    $products = Product::whereIn('id', $company_product)->where('mian_product', TRUE)->get();
     return $products;
 }
 
 function getMainProcessing($company_processing) {
-    $processings = Processing::whereIn('id', $company_processing)->get();
+    $processings = Processing::whereIn('id', $company_processing)->where('main_classification', TRUE)->get();
     return $processings;
 }
 
