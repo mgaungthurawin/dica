@@ -38,7 +38,7 @@
                                 <?php 
                                   $product_index = 1;
                                   $company_product = $company->products->pluck('id')->all();
-                                  $products = getMainProduct($company_product, $company->prefix);
+                                  $products = getMainProduct($company_product, $company->type);
                                 ?>
                                 @foreach($products as $product)
                                 <tr>
