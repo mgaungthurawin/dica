@@ -84,7 +84,20 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $product_array = [];
+        $processing_array = [];
         $form = $request->all();
+        $products = $form['product_id'];
+        $processings = $form['processing_id'];
+
+        foreach ($products as $key => $product) {
+            $product_array[] = $product;
+        }
+
+        foreach ($processings as $key => $processing) {
+            $processing_array[] = $processing;
+        }
+
         $category_id = $form['category_id'];
         $category = Category::find($form['category_id']);
 

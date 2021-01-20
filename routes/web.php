@@ -14,6 +14,22 @@
 Route::group(['prefix' => 'admin'], function () {
 	Auth::routes();
 });
+
+Route::get('test', function () {
+	$array = [
+		'4-1-1' => '4-1-1',
+		'4-1-2' => '4-1-2',
+		'4-2-1' => '4-2-1',
+		'4-3-1' => '4-3-1',
+		'4-4-1' => '4-4-1',
+		'4-5-1' => '4-5-1',
+		'4-6-1' => '4-6-1',
+	];
+
+	return $array['4-1-1'];
+});
+
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('getProductByCategory', 'HelperController@getProductByCategory');
