@@ -257,7 +257,7 @@ function authValue($text) {
 }
 
 function getMainProduct($company_product) {
-    $products = Product::whereIn('id', $company_product)->where('mian_product', TRUE)->get();
+    $products = Product::whereIn('id', $company_product)->where('main_product', TRUE)->get();
     return $products;
 }
 
