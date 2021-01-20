@@ -40,7 +40,6 @@
                 </div>
             </div>
         </div>
-        @if(!empty(Auth::user()))
         @include('frontend.layouts.company_media')
         <div class="row">
             <div class="col-lg-12 mb-12">
@@ -285,7 +284,6 @@
                 </div>
             </div>
         </div>
-      @endif
         <!-- /.row -->         
     </div>
 </main>
@@ -293,7 +291,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){
-    $("#alert").modal('show');
+    // $("#alert").modal('show');
   });
 </script>
 @endsection
