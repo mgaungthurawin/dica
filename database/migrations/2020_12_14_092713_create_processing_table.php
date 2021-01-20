@@ -19,7 +19,7 @@ class CreateProcessingTable extends Migration
             $table->string('main_process');
             $table->text('location_id')->nullable();
             $table->boolean('recommend');
-            $table->boolean('main_classification');
+            $table->string('main_classification')->nullable();
             $table->integer('sorting');
             $table->timestamps();
         });
