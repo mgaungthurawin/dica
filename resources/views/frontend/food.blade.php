@@ -16,21 +16,7 @@
                     <tr>
                       <td colspan="5">{!! $company->description !!}
                       </td>  
-                    </tr> 
-                    {{--<tr>
-                      <td colspan="5">
-                        <div class="row">
-                        @foreach($company->products as $product)
-                          @if(isset($product->media))
-                          <div class="col-md-6"><img src="{{ asset($product->media->file_path . $product->media->file_name) }}" alt="" class="img-responsive"></div>
-                          @endif
-                        @endforeach
-
-
-                        {{--<div class="col-md-6"><img src="{{ asset('frontend/images/slide-03.jpg') }}" alt="" class="img-responsive"></div>--}}
-                      </div>    
-                      </td>  
-                    </tr> --}}
+                    </tr>
                 </table>
             </div>
 
@@ -75,70 +61,74 @@
                                 
                                 <tr>
                                 <th rowspan="11">{{trans('app.contact_two')}}</th>
-                                <td colspan="6">{!! $company->company_url !!}</td>
+                                <td colspan="6">{!! authValue($company->company_url) !!}</td>
                                 </tr>
                                 <tr>
                                    <td rowspan="2">{{trans('app.office')}}</td>
-                                    <td colspan="5">{!! $company->office_address !!}</td>
+                                    <td colspan="5">{!! authValue($company->office_address) !!}</td>
                                     <tr>
-                                      <td>{{trans('app.tel')}}</td>
-                                      <td colspan="2">{!! $company->office_tel !!}</td>
-                                      <td colspan="1">{{trans('app.fax')}}</td>
-                                      <td>{!! $company->office_fax !!}</td>
+                                      <td>{{ authValue(trans('app.tel')) }}</td>
+                                      <td colspan="2">{!! authValue($company->office_tel) !!}</td>
+                                      <td colspan="1">{{ authValue(trans('app.fax')) }}</td>
+                                      <td>{!! authValue($company->office_fax) !!}</td>
                                     </tr>
                                 </tr>
                                 <tr>
                                   <td rowspan="2">{{trans('app.factory')}}</td>
-                                    <td colspan="5">{!! $company->factory_address !!}</td>
+                                    <td colspan="5">{!! authValue($company->factory_address) !!}</td>
                                     <tr>
-                                      <td>{{trans('app.tel')}}</td>
-                                      <td colspan="2">{!! $company->factory_tel !!}</td>
-                                      <td colspan="1">{{trans('app.fax')}}</td>
-                                      <td>{!! $company->factory_fax !!}</td>
+                                      <td>{{ authValue(trans('app.tel')) }}</td>
+                                      <td colspan="2">{!! authValue($company->factory_tel) !!}</td>
+                                      <td colspan="1">{{ authValue(trans('app.fax')) }}</td>
+                                      <td>{!! authValue($company->factory_fax) !!}</td>
                                     </tr>
                                 </tr>
                                 <tr>
                                   <td>{{trans('app.md_ceo')}}</td>
-                                  <td>{{trans('app.name')}}</td>
-                                  <td>{!! $company->md_ceo_name !!}</td>
-                                  <td>{{trans('app.postion')}}</td>
-                                  <td colspan="2">{!! $company->md_ceo_position !!}</td>
+                                  <td>{{ authValue(trans('app.name')) }}</td>
+                                  <td>{!! authValue($company->md_ceo_name) !!}</td>
+                                  <td>{{ authValue(trans('app.postion')) }}</td>
+                                  <td colspan="2">{!! authValue($company->md_ceo_position) !!}</td>
                                 </tr>
                                 <tr>
                                   <td>{{trans('app.production_factory_manager')}}</td>
-                                  <td>{{trans('app.name')}}</td>
-                                  <td>{!! $company->factory_manager_name !!}</td>
-                                  <td>{{trans('app.postion')}}</td>
-                                  <td colspan="2">{!! $company->factory_manager_position !!}</td>
+                                  <td>{{ authValue(trans('app.name')) }}</td>
+                                  <td>{!! authValue($company->factory_manager_name) !!}</td>
+                                  <td>{{ authValue(trans('app.postion')) }}</td>
+                                  <td colspan="2">{!! authValue($company->factory_manager_position) !!}</td>
                                 </tr>
                                 <tr>
                                   <td>{{trans('app.hygiene_manager')}}</td>
-                                  <td>{{trans('app.name')}}</td>
-                                  <td>{!! $company->hygiene_manager_name !!}</td>
-                                  <td>{{trans('app.postion')}}</td>
-                                  <td colspan="2">{!! $company->hygiene_manager_position !!}</td>
+                                  <td>{{ authValue(trans('app.name')) }}</td>
+                                  <td>{!! authValue($company->hygiene_manager_name) !!}</td>
+                                  <td>{{ authValue(trans('app.postion')) }}</td>
+                                  <td colspan="2">{!! authValue($company->hygiene_manager_position) !!}</td>
                                 </tr>
                                 <tr>
                                   <td rowspan="3">{{trans('app.contact_person')}}</td>
-                                  <td>{{trans('app.name')}}</td>
-                                  <td>{!! $company->cp_name !!}</td>
-                                  <td>{{trans('app.postion')}}</td>
-                                  <td colspan="2">{!! $company->cp_position !!}</td>
+                                  <td>{{ authValue(trans('app.name')) }}</td>
+                                  <td>{!! authValue($company->cp_name) !!}</td>
+                                  <td>{{ authValue(trans('app.postion')) }}</td>
+                                  <td colspan="2">{!! authValue($company->cp_position) !!}</td>
                                 </tr>
                                 <tr>
-                                  <td>{{trans('app.tel')}}</td>
-                                  <td>{!! $company->cp_tel !!}</td>
-                                  <td>{{trans('app.email')}}</td>
-                                  <td colspan="2">{!! $company->cp_email !!}</td>
+                                  <td>{{ authValue(trans('app.tel')) }}</td>
+                                  <td>{!! authValue($company->cp_tel) !!}</td>
+                                  <td>{{ authValue(trans('app.email')) }}</td>
+                                  <td colspan="2">{!! authValue($company->cp_email) !!}</td>
                                 </tr>
 
 
                                 <tr>
                                   <td scope="row" colspan="1">Foreign Language</td>
-                                  <td>{!! checkUncheck($company['language']) !!}</td>
-                                  <td>{{ $company['language'] }}</td>
-                                  <td>{!! checkUncheck($company['language_other']) !!}</td>
-                                  <td colspan="1">Other (   {{ $company['language_other'] }}   )</td>
+                                  <td>{!! authValue(checkUncheck($company['language'])) !!}</td>
+                                  <td>{{ authValue($company['language']) }}</td>
+                                  <td>{!! authValue(checkUncheck($company['language_other'])) !!}</td>
+                                  <td colspan="1">
+                                    @if(Auth::user())
+                                        Other (   {{ $company['language_other'] }}   )
+                                    @endif
+                                  </td>
                                 </tr>
 
 
@@ -146,42 +136,42 @@
                                 <tr>
                                   <th rowspan="3">Outline</th>
                                   <td>Year of foundation   
-                                  <td>{!! $company->foundation !!}</td>
+                                  <td>{!! authValue($company->foundation) !!}</td>
                                   <td>Employees</td>
-                                  <td>{!! $company->employee !!}</td>
+                                  <td>{!! authValue($company->employee) !!}</td>
                                   <td>Factory size</td>
-                                  <td>{!! $company->factory_size !!}</td>
+                                  <td>{!! authValue($company->factory_size) !!}</td>
                                 </tr>
                                   </td>
                                 </tr>
                                 <tr>
                                     <td>Capital stock</td>
-                                    <td>{!! $company->capital_stock !!}</td>
+                                    <td>{!! authValue($company->capital_stock) !!}</td>
                                     <td>Annal Sale</td>
-                                    <td>{!! $company->annual_sale !!}</td>
+                                    <td>{!! authValue($company->annual_sale) !!}</td>
                                     <td>Production capacity</td>
-                                    <td>{!! $company->production_capacity !!}</td>
+                                    <td>{!! authValue($company->production_capacity) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Primary materials</td>
-                                    <td>{!! $company->primary_meterial !!}</td>
+                                    <td>{!! authValue($company->primary_meterial) !!}</td>
                                     <td>Source of materials</td>
-                                    <td>{!! $company->source_meterial !!}</td>
+                                    <td>{!! authValue($company->source_meterial) !!}</td>
                                     <td>Minimum order</td>
-                                    <td>{!! $company->minimum_order !!}</td>
+                                    <td>{!! authValue($company->minimum_order) !!}</td>
                                 </tr>
                                 
 
                                 <tr>
                                   <th scope="row" rowspan="2" colspan="1">Customers</th>
                                   @foreach($customer['customer_prefix'] as $prefix)
-                                    <td colspan="1">{!! $prefix !!}</td>
+                                    <td colspan="1">{!! authValue($prefix) !!}</td>
                                   @endforeach
                                   <td colspan="3"></td>
                                 </tr>
                                 <tr>
                                   @foreach($customer['customer_percent'] as $percent)
-                                    <td colspan="1">{!! $percent !!}</td>
+                                    <td colspan="1">{!! authValue($percent) !!}</td>
                                   @endforeach
                                   <td colspan="3"></td>
                                 </tr>
@@ -189,32 +179,35 @@
                                 <tr>
                                   <th scope="row" rowspan="2">Certification</th>
                                   @foreach($certificate as $c)
-                                    <td colspan="1"><i
-                                        @if(in_array($c, $select_certificate['certificate']))
-                                          class="fa fa-check-square"
-                                        @else 
-                                            class="fa fa-square"
-                                        @endif
-                                      >{{ $c }}
+                                    <td colspan="1">
+                                        @if(Auth::user())
+                                            <i
+                                            @if(in_array($c, $select_certificate['certificate']))
+                                              class="fa fa-check-square"
+                                            @else 
+                                                class="fa fa-square"
+                                            @endif
+                                        >@endif
+                                      {{ authValue($c) }}
                                     </td>
                                   @endforeach
                                   <td colspan="2">
-                                    {!! $select_certificate['certificate_other'] !!}
+                                    {!! authValue($select_certificate['certificate_other']) !!}
                                   </td>
                                 </tr>
 
                                 <tr>
                                   <td>Number =></td>
                                   <td colspan="1">
-                                    {!! $select_certificate['cer_number'] !!}
+                                    {!! authValue($select_certificate['cer_number']) !!}
                                   </td>
                                   <td>Acquired Year =></td>
                                   <td colspan="1">
-                                    {!! $select_certificate['cer_acquired_year'] !!}
+                                    {!! authValue($select_certificate['cer_acquired_year']) !!}
                                   </td>
                                   <td>Sprcify =></td>
                                   <td>
-                                    {!! $select_certificate['cer_sprcify'] !!}
+                                    {!! authValue($select_certificate['cer_sprcify']) !!}
                                   </td>
                                 </tr>
 
@@ -222,15 +215,15 @@
                                   <th scope="row" rowspan="1">Exportation</th>
                                   <td>Country Name</td>
                                   <td colspan="1">
-                                    {!! $company->expotation_country !!}
+                                    {!! authValue($company->expotation_country) !!}
                                   </td>
                                   <td>Product Name</td>
                                   <td colspan="1">
-                                    {!! $company->expotation_product !!}
+                                    {!! authValue($company->expotation_product) !!}
                                   </td>
                                   <td>USD/year</td>
                                   <td colspan="1">
-                                    {!! $company->expotation_year !!}
+                                    {!! authValue($company->expotation_year) !!}
                                   </td>
                                 </tr>
 
@@ -238,7 +231,7 @@
                                   <th scope="row" rowspan="3">Hygiene</th>
                                     @foreach($hygiene[0] as $hg)
                                       <td colspan="1">
-                                        {!! $hg !!}
+                                        {!! authValue($hg) !!}
                                       </td>  
                                     @endforeach
                                     <td colspan="2"></td>
@@ -247,25 +240,28 @@
                                 <tr>
                                   @foreach($hygiene[1] as $hg)
                                     <td colspan="1">
-                                        {!! $hg !!}
+                                        {!! authValue($hg) !!}
                                     </td>  
                                   @endforeach
                                   <td colspan="2"></td>
                                 </tr>
 
                                 <tr>
-                                      <?php $hygienearray=[1,2,3,4]; ?>
-                                      @for ($i=1; $i < 5; $i++) 
-                                      <td colspan="1">
-                                      <i
-                                        @if(in_array($i, $hygiene["2"]))
-                                          class="fa fa-check-square"
-                                        @else 
-                                            class="fa fa-square"
+                                  <?php $hygienearray=[1,2,3,4]; ?>
+                                  @for ($i=1; $i < 5; $i++) 
+                                  <td colspan="1">
+                                        @if(Auth::user())
+                                          <i
+                                            @if(in_array($i, $hygiene["2"]))
+                                              class="fa fa-check-square"
+                                            @else 
+                                                class="fa fa-square"
+                                            @endif
+                                          >
                                         @endif
-                                      ></td>
-                                      @endfor
-                                    </td>  
+                                    </td>
+                                  @endfor
+                                    <td colspan="2"></td>  
                                 </tr>
                                   
 
@@ -288,19 +284,19 @@
                                                 <tr>
                                                     <td>{{ $i }}</td>
                                                     <td>
-                                                      {!! $machinery['machinery'][$key] !!}
+                                                      {!! authValue($machinery['machinery'][$key]) !!}
                                                     </td>
                                                     <td>
-                                                      {!! $machinery['model_number'][$key] !!}
+                                                      {!! authValue($machinery['model_number'][$key]) !!}
                                                     </td>
                                                     <td>
-                                                      {!! $machinery['number'][$key] !!}
+                                                      {!! authValue($machinery['number'][$key]) !!}
                                                     </td>
                                                     <td>
-                                                      {!! $machinery['manufacturer'][$key] !!}
+                                                      {!! authValue($machinery['manufacturer'][$key]) !!}
                                                     </td>
                                                     <td>
-                                                      {!! $machinery['manufacturered_country'][$key] !!}
+                                                      {!! authValue($machinery['manufacturered_country'][$key]) !!}
                                                     </td>
                                                 </tr>
                                                 <?php $i++; ?>
@@ -308,7 +304,7 @@
                                             <tr>
                                             <th scope="row">Remarks</th>
                                             <td colspan="12">
-                                              {!! $company->remark !!}
+                                              {!! authValue($company->remark) !!}
                                             </td>
                                           </tr>
 
@@ -325,7 +321,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){
-    // $("#alert").modal('show');
+    $("#alert").modal('show');
   });
 </script>
 @endsection
