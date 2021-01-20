@@ -169,8 +169,8 @@ class WebController extends Controller
             return redirect(url('/'));
         }
         if(FOOD == $company->type) {
-           $products = Product::all();
-           $locations = Location::all();
+           $products = Product::where('main_product', TRUE)->get();
+           $locations = Location::where('main_classification', TRUE)->get();
            $selected_product = $company->products()->pluck('product_id')->all();
            $selected_location = $company->locations()->pluck('location_id')->all();
            $customer = json_decode($company->customer, TRUE);
