@@ -57,7 +57,7 @@
                                 <?php 
                                   $product_index = 1;
                                   $company_product = $company->products->pluck('id')->all();
-                                  $products = getMainProduct($company_product);
+                                  $products = getMainProduct($company_product, $company->prefix);
                                 ?>
                                 @foreach($products as $product)
                                 <tr>
@@ -83,7 +83,7 @@
                             <?php 
                               $processing_index = 1;
                               $company_processing = $company->processings->pluck('id')->all();
-                              $processings = getMainProcessing($company_processing);
+                              $processings = getMainProcessing($company_processing, $company->prefix);
                             ?>
                             @foreach($processings as $processing)
                             <tr>
