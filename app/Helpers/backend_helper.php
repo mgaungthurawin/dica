@@ -5,6 +5,7 @@ use App\Model\Media;
 use App\Model\Location;
 use App\Model\Processing;
 use App\Model\Product;
+use Auth;
 
 function saveSingleMedia(Request $request, $upload_type)
 {
@@ -243,6 +244,16 @@ function limit_text($text, $limit) {
         $text  = substr($text, 0, $pos[$limit]) . '...';
     }
     return $text;
+}
+
+function authValue($text) {
+
+    if(Auth::user()){
+        return $text;
+    }
+
+    return NULL;
+
 }
 
 

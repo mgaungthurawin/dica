@@ -44,7 +44,6 @@
         <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box">
-
                     <div class="col-lg-6 col-sm-6">
                         <h4>Main products including the use of you product</h4>
                         <table class="table table-striped">
@@ -75,6 +74,7 @@
                               <th scope="col">Processing classification</th>
                             </tr>
                           </thead>
+
                           <tbody>
                             <?php $processing_index = 1;?>
                             @foreach($company->processings->pluck('main_process')->all() as $processing)
@@ -113,21 +113,21 @@
                           @foreach($main_machine_equipment['type_of_equipment'] as $key => $mm)
                               <tr>
                                   <td>{{ $i }}</td>
-                                  <td>
-                                    {!! $main_machine_equipment['type_of_equipment'][$key] !!}
-                                  </td>
-                                  <td>
-                                    {!! $main_machine_equipment['model_destination'][$key] !!}
-                                  </td>
-                                  <td>
-                                    {!! $main_machine_equipment['no_machine'][$key] !!}
-                                  </td>
-                                  <td>
-                                    {!! $main_machine_equipment['machine_builder'][$key] !!}
-                                  </td>
-                                  <td>
-                                    {!! $main_machine_equipment['machine_country_origin'][$key] !!}
-                                  </td>
+                                    <td>
+                                      {!! authValue($main_machine_equipment['type_of_equipment'][$key]) !!}
+                                    </td>
+                                    <td>
+                                      {!! authValue($main_machine_equipment['model_destination'][$key]) !!}
+                                    </td>
+                                    <td>
+                                      {!! authValue($main_machine_equipment['no_machine'][$key]) !!}
+                                    </td>
+                                    <td>
+                                      {!! authValue($main_machine_equipment['machine_builder'][$key]) !!}
+                                    </td>
+                                    <td>
+                                      {!! authValue($main_machine_equipment['machine_country_origin'][$key]) !!}
+                                    </td>
                               </tr>
                               <?php $i++; ?>
                           @endforeach
@@ -148,184 +148,208 @@
                         <tr>
                           <th scope="row" rowspan="11">Contact</th>
                           <td colspan="4">URL</td>
-                          <th colspan="8">{{ $company->company_url }}</th>
+                          <th colspan="8">
+                            {{ authValue($company->company_url) }}</th>
                         </tr>
                         <tr>
                           <td scope="row" rowspan="3" colspan="2">Office</td>
-                          <td rowspan="2" colspan="2">Address</td>
-                          <td><i class="fa fa-check-square"></i></td>
-                          <td>{{ $contact['office']['office_location'] }}</td>
-                          <td><i class="fa fa-square"></i></td>
-                          <td colspan="5">Other (    {{ $contact['office']['office_location_other'] }}         )</td>
+                          <td rowspan="2" colspan="2">{{ authValue("Address") }}</td>
+                          <td>{!! authValue('<i class="fa fa-check-square"></i>') !!}</td>
+                          <td>{{ authValue($contact['office']['office_location']) }}</td>
+                          <td>{!! authValue('<i class="fa fa-square"></i>') !!}</td>
+                          <td colspan="5">
+                            @if(Auth::user())
+                              Other (    {{ $contact['office']['office_location_other'] }}         )
+                            @endif
+                        </td>
                         </tr>
                         <tr>
-                            <td scope="row" colspan="8">{{ $contact['office']['office_address'] }}</td>
+                            <td scope="row" colspan="8">{{ authValue($contact['office']['office_address']) }}</td>
                         </tr>
                         <tr>
-                          <td scope="row" colspan="2">TEL</td>
-                          <td colspan="3">{{ $contact['office']['office_tel'] }}</td>
-                          <td colspan="2">FAX</td>
-                          <td colspan="3">{{ $contact['office']['office_tel'] }}</td>
+                          <td scope="row" colspan="2">{{ authValue("TEL") }}</td>
+                          <td colspan="3">{{ authValue($contact['office']['office_tel']) }}</td>
+                          <td colspan="2">{{ authValue("FAX") }}</td>
+                          <td colspan="3">{{ authValue($contact['office']['office_tel']) }}</td>
                         </tr>
                         <tr>
                           <td scope="row" rowspan="3" colspan="2">Plant</td>
-                          <td rowspan="2" colspan="2">Address</td>
-                          <td>{!! checkUncheck($contact['plant']['plant_location']) !!}</i></td>
-                          <td>{{ $contact['plant']['plant_location'] }}</td>
-                          <td>{!! checkUncheck($contact['plant']['plant_location_other']) !!}</i></td>
-                          <td colspan="5">Other (     {{ $contact['plant']['plant_location_other'] }}        )</td>
+                          <td rowspan="2" colspan="2">{{ authValue("Address") }}</td>
+                          <td>{!! authValue(checkUncheck($contact['plant']['plant_location'])) !!}</i></td>
+                          <td>{{ authValue($contact['plant']['plant_location']) }}</td>
+                          <td>{!! authValue(checkUncheck($contact['plant']['plant_location_other'])) !!}</i></td>
+                          <td colspan="5">
+                            @if(Auth::user())
+                              Other (     {{ $contact['plant']['plant_location_other'] }}        )
+                            @endif
+                            </td>
                         </tr>                        
                         <tr>
-                            <td scope="row" colspan="8">{{ $contact['plant']['plant_address'] }}</td>
+                            <td scope="row" colspan="8">{{ authValue($contact['plant']['plant_address']) }}</td>
                         </tr>
                         <tr>
-                          <td scope="row" colspan="2">TEL</td>
-                          <td colspan="3">{{ $contact['plant']['plant_tel'] }}</td>
-                          <td colspan="2">FAX</td>
-                          <td colspan="3">{{ $contact['plant']['plant_fax'] }}</td>
+                          <td scope="row" colspan="2">{{ authValue("TEL") }}</td>
+                          <td colspan="3">{{ authValue($contact['plant']['plant_tel']) }}</td>
+                          <td colspan="2">{{ authValue("FAX") }}</td>
+                          <td colspan="3">{{ authValue($contact['plant']['plant_fax']) }}</td>
                         </tr>
                         <tr>
                           <td scope="row" colspan="2">Representative</td>
-                          <td colspan="2">Name</td>
-                          <td colspan="3">{{ $contact['representative']['repre_name'] }}</td>
-                          <td colspan="2">Title</td>
-                          <td colspan="2">{{ $contact['representative']['repre_tittle'] }}</td>
+                          <td colspan="2">{{ authValue("Name") }}</td>
+                          <td colspan="3">{{ authValue($contact['representative']['repre_name']) }}</td>
+                          <td colspan="2">{{ authValue("Title") }}</td>
+                          <td colspan="2">{{ authValue($contact['representative']['repre_tittle']) }}</td>
                         </tr>
                         <tr>
                           <td scope="row" colspan="2" rowspan="3">Person in charge</td>
-                          <td colspan="2">Name</td>
-                          <td colspan="3">{{ $contact['pic']['pic_name'] }}</td>
-                          <td colspan="2">Title</td>
-                          <td colspan="2">{{ $contact['pic']['pic_title'] }}</td>
+                          <td colspan="2">{{ authValue("Name") }}</td>
+                          <td colspan="3">{{ authValue($contact['pic']['pic_name']) }}</td>
+                          <td colspan="2">{{ authValue("Title") }}</td>
+                          <td colspan="2">{{ authValue($contact['pic']['pic_title']) }}</td>
                         </tr>
                         <tr>
-                          <td scope="row" colspan="2">TEL</td>
-                          <td colspan="3">{{ $contact['pic']['pic_tel'] }}</td>
-                          <td colspan="2">Email</td>
-                          <td colspan="3">{{ $contact['pic']['pic_email'] }}</td>
+                          <td scope="row" colspan="2">{{ authValue("TEL") }}</td>
+                          <td colspan="3">{{ authValue($contact['pic']['pic_tel']) }}</td>
+                          <td colspan="2">{{ authValue("Email") }}</td>
+                          <td colspan="3">{{ authValue($contact['pic']['pic_email']) }}</td>
                         </tr>
                         <tr>
-                          <td scope="row" colspan="2">Language</td>
-                          <td>{!! checkUncheck($contact['pic']['language']) !!}</td>
-                          <td>{{ $contact['pic']['language'] }}</td>
-                          <td>{!! checkUncheck($contact['pic']['language_other']) !!}</td>
-                          <td colspan="5">Other (   {{ $contact['pic']['language_other'] }}   )</td>
+                          <td scope="row" colspan="2">{{ authValue("Language") }}</td>
+                          <td>{!! authValue(checkUncheck($contact['pic']['language'])) !!}</td>
+                          <td>{{ authValue($contact['pic']['language']) }}</td>
+                          <td>{!! authValue(checkUncheck($contact['pic']['language_other'])) !!}</td>
+                          <td colspan="5">
+                            @if(Auth::user())
+                              Other (   {{ $contact['pic']['language_other'] }}   )
+                            @endif
+                            </td>
                         </tr>
                         <tr>
+
                           <th scope="row" rowspan="2">Company Info.</th>
                           <td colspan="2">Year of estabishment</td>
-                          <td colspan="2">{{ $company_info['estabishment'] }}</td>
-                          <td colspan="2">Num. of Employee</td>
-                          <td colspan="2">{{ $company_info['no_employee'] }}</td>
-                          <td rowspan="2" colspan="4">Production</td>
+                          <td colspan="2">{{ authValue($company_info['estabishment']) }}</td>
+                          <td colspan="2">{{ authValue("Num. of Employee") }}</td>
+                          <td colspan="2">{{ authValue($company_info['no_employee']) }}</td>
+                          <td rowspan="2" colspan="4">{{ authValue("Production") }}</td>
                         </tr>
                         <tr>
                           <td scope="row" colspan="2">Capital</td>
-                          <td colspan="2">{{ $company_info['capital'] }}</td>
-                          <td colspan="2">Annual Sales Amount</td>
-                          <td colspan="2">{{ $company_info['annual_amount'] }}</td>
+                          <td colspan="2">{{ authValue($company_info['capital']) }}</td>
+                          <td colspan="2">{{ authValue("Annual Sales Amount") }}</td>
+                          <td colspan="2">{{ authValue($company_info['annual_amount']) }}</td>
                         </tr>
                         <tr>
                           <th scope="row" rowspan="4">Low material</th>
-                          <td colspan="2" style="text-align: right;">No</td>
-                          @foreach($low_material['name_of_material'] as $key => $lm)
-                            <td colspan="2">{{ $key + 1 }}</td>
-                          @endforeach
-                          <td colspan="2">Space for Plant</td>
-                          <td colspan="2">{{ $production['space_for_plant'] }}</td>
+                            <td colspan="2" style="text-align: right;">{{ authValue("No") }}</td>
+                            @foreach($low_material['name_of_material'] as $key => $lm)
+                              <td colspan="2">{{ authValue($key + 1) }}</td>
+                            @endforeach
+                            <td colspan="2">{{ authValue("Space for Plant") }}</td>
+                            <td colspan="2">{{ authValue($production['space_for_plant']) }}</td>
                         </tr>
                         <tr>
-                          <td colspan="2">Name of Material</td>
+                          <td colspan="2">{{ authValue("Name of Material") }}</td>
                           @foreach($low_material['name_of_material'] as $key => $lm)
-                            <td colspan="2">{{ $lm }}</td>
+                            <td colspan="2">{{ authValue($lm) }}</td>
                           @endforeach
-                          <td colspan="2">Production Capacity</td>
-                          <td colspan="2">{{ $production['production_capacity'] }}</td>
+                          <td colspan="2">{{ authValue("Production Capacity") }}</td>
+                          <td colspan="2">{{ authValue($production['production_capacity']) }}</td>
                         </tr>
                         <tr>
-                          <td colspan="2">Supplier Name</td>
+                          <td colspan="2">{{ authValue("Supplier Name") }}</td>
                           @foreach($low_material['supplier_name'] as $key => $sn)
-                            <td colspan="2">{{ $sn }}</td>
+                            <td colspan="2">{{ authValue($sn) }}</td>
                           @endforeach
-                          <td colspan="2">Operation Ratio</td>
-                          <td colspan="2">{{ $production['operation_ratio'] }}</td>
+                          <td colspan="2">{{ authValue("Operation Ratio") }}</td>
+                          <td colspan="2">{{ authValue($production['operation_ratio']) }}</td>
                         </tr>
                         <tr>
-                          <td colspan="2">Country of Origin</td>
+                          <td colspan="2">{{ authValue("Country of Origin") }}</td>
                           @foreach($low_material['country_origin'] as $key => $co)
-                            <td colspan="2">{{ $co }}</td>
+                            <td colspan="2">{{ authValue($co) }}</td>
                           @endforeach
-                          <td colspan="2">Min Order Quantity</td>
-                          <td colspan="2">{{ $production['min_order_quantity'] }}</td>
+                          <td colspan="2">{{ authValue("Min Order Quantity") }}</td>
+                          <td colspan="2">{{ authValue($production['min_order_quantity']) }}</td>
                         </tr>
                         <tr>
-                          <th scope="row" rowspan="2">Main customer</th>
+                          <th scope="row" rowspan="2"> {{ authValue("Main customer") }}</th>
                           @foreach($main_customer['mani_customer_prefix'] as $prefix)
-                            <td colspan="2">{{ $prefix }}</td>
+                            <td colspan="2">{{ authValue($prefix) }}</td>
                           @endforeach
                         </tr>
                         <tr>
                           @foreach($main_customer['main_customer_percent'] as $percent)
-                            <td colspan="2">{{ $percent }}</td>
+                            <td colspan="2">{{ authValue($percent) }}</td>
                           @endforeach
                         </tr>
                         <tr>
                           <th scope="row" rowspan="3">Certification and Standard</th>
-                          @foreach($certificate as $c)
-                            <td><i
-                                @if(in_array($c, $cer_standard['certificate']))
-                                  class="fa fa-check-square"
-                                @else 
-                                    class="fa fa-square"
+                            @foreach($certificate as $c)
+                              <td>
+                                @if(Auth::user())
+                                <i
+                                  @if(in_array($c, $cer_standard['certificate']))
+                                    class="fa fa-check-square"
+                                  @else 
+                                      class="fa fa-square"
+                                  @endif
+                                >
                                 @endif
-                              ></td>
-                            <td>{{ $c }}</td>
-                          @endforeach
-                          <td colspan="5">{{ $cer_standard['certificate_other'] }}</td>
+                              </td>
+                              <td>{{ authValue($c) }}</td>
+                            @endforeach
+                            <td colspan="5">{{ authValue($cer_standard['certificate_other']) }}</td>
                         </tr>
                         <tr>
                           @foreach($standard as $s)
-                            <td><i
+                            <td>
+                              @if(Auth::user())
+                              <i
                                 @if(in_array($s, $cer_standard['standard']))
                                   class="fa fa-check-square"
                                 @else 
                                     class="fa fa-square"
                                 @endif
-                              ></td>
-                            <td>{{ $s }}</td>
+                              >
+                              @endif
+                            </td>
+                            <td>{{ authValue($s) }}</td>
                           @endforeach
-                          <td>{{ $cer_standard['standard_other'] }}</td>
+                          <td>{{ authValue($cer_standard['standard_other']) }}</td>
                         </tr>
                         <tr>
                             <td>
+                              @if(Auth::user())
                                 @if(in_array($s, $cer_standard['standard']))
                                   <i class="fa fa-check-square"></i>
                                 @else 
                                     <i class="fa fa-square"></i>
                                 @endif
-                                Other
+                              @endif
+                                {{ authValue("Other") }}
                             </td>
-                          <td colspan="7">{{ $cer_standard['standard_other'] }}</td>
+                          <td colspan="7">{{ authValue($cer_standard['standard_other']) }}</td>
                           <td colspan="3"></td>
                         </tr>
                         <tr>
                           <th scope="row" rowspan="2">Export and Import</th>
-                          <td>Export</td>
-                          <td>Country</td>
-                          <td colspan="4">{{ $export_impot['export_country'] }}</td>
-                          <td>Ex. Items</td>
-                          <td colspan="5">{{ $export_impot['export_item'] }}</td>
+                          <td>{{ authValue("Export") }}</td>
+                          <td>{{ authValue("Country") }}</td>
+                          <td colspan="4">{{ authValue($export_impot['export_country']) }}</td>
+                          <td>{{ authValue("Ex. Items") }}</td>
+                          <td colspan="5">{{ authValue($export_impot['export_item']) }}</td>
                         </tr>
                         <tr>
-                          <td>Import</td>
-                          <td>Country</td>
-                          <td colspan="4">{{ $export_impot['import_country'] }}</td>
-                          <td>Im. Items</td>
-                          <td colspan="5">{{ $export_impot['import_item'] }}</td>
+                          <td>{{ authValue("Import") }}</td>
+                          <td>{{ authValue("Country") }}</td>
+                          <td colspan="4">{{ authValue($export_impot['import_country']) }}</td>
+                          <td>{{ authValue("Im. Items") }}</td>
+                          <td colspan="5">{{ authValue($export_impot['import_item']) }}</td>
                         </tr>
                         <tr>
                           <th scope="row">Special Notes</th>
-                          <td colspan="12">{{ $company->special_note }}</td>
+                          <td colspan="12">{{ authValue($company->special_note) }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -339,7 +363,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){
-    // $("#alert").modal('show');
+    $("#alert").modal('show');
   });
 </script>
 @endsection

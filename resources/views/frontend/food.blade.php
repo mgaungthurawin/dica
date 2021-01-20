@@ -17,7 +17,7 @@
                       <td colspan="5">{!! $company->description !!}
                       </td>  
                     </tr> 
-                    <tr>
+                    {{--<tr>
                       <td colspan="5">
                         <div class="row">
                         @foreach($company->products as $product)
@@ -30,9 +30,11 @@
                         {{--<div class="col-md-6"><img src="{{ asset('frontend/images/slide-03.jpg') }}" alt="" class="img-responsive"></div>--}}
                       </div>    
                       </td>  
-                    </tr> 
+                    </tr> --}}
                 </table>
             </div>
+
+            @include('frontend.layouts.company_media')
 
             <div class="row">
                 <div class="col-lg-12 mb-12">
