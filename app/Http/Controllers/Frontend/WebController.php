@@ -169,7 +169,7 @@ class WebController extends Controller
         }
         if(FOOD == $company->type) {
            $products = Product::where('main_product', TRUE)->get();
-           $locations = Location::where('main_classification', TRUE)->get();
+           $locations = Location::all();
            $selected_product = $company->products()->pluck('product_id')->all();
            $selected_location = $company->locations()->pluck('location_id')->all();
            $customer = json_decode($company->customer, TRUE);
