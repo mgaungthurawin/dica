@@ -35,11 +35,15 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <?php $product_index = 1;?>
-                                @foreach($company->products->pluck('name')->all() as $product)
+                                <?php 
+                                  $product_index = 1;
+                                  $company_product = $company->products->pluck('id')->all();
+                                  $products = getMainProduct($company_product, $company->type);
+                                ?>
+                                @foreach($products as $product)
                                 <tr>
                                     <th scope="row">{{$product_index}}</th>
-                                    <td>{{ $product }}</td>
+                                    <td>{{ $product->name }}</td>
                                 </tr>
                                 <?php $product_index++; ?>
                                 @endforeach

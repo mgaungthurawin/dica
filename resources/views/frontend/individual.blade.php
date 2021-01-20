@@ -54,11 +54,15 @@
                             </tr>
                           </thead>
                           <tbody>
-                                <?php $product_index = 1;?>
-                                @foreach($company->products->pluck('name')->all() as $product)
+                                <?php 
+                                  $product_index = 1;
+                                  $company_product = $company->products->pluck('id')->all();
+                                  $products = getMainProduct($company_product, $company->prefix);
+                                ?>
+                                @foreach($products as $product)
                                 <tr>
                                     <th scope="row">{{$product_index}}</th>
-                                    <td>{{ $product }}</td>
+                                    <td>{{ $product->name }}</td>
                                 </tr>
                                 <?php $product_index++; ?>
                                 @endforeach
@@ -76,11 +80,15 @@
                           </thead>
 
                           <tbody>
-                            <?php $processing_index = 1;?>
-                            @foreach($company->processings->pluck('main_process')->all() as $processing)
+                            <?php 
+                              $processing_index = 1;
+                              $company_processing = $company->processings->pluck('id')->all();
+                              $processings = getMainProcessing($company_processing, $company->prefix);
+                            ?>
+                            @foreach($processings as $processing)
                             <tr>
                                 <th scope="row">{{$processing_index}}</th>
-                                <td>{{ $processing }}</td>
+                                <td>{{ $processing->main_process }}</td>
                             </tr>
                             <?php $processing_index++; ?>
                             @endforeach
