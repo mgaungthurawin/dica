@@ -29,7 +29,6 @@ Route::get('test', function () {
 	return $array['4-1-1'];
 });
 
-
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('getProductByCategory', 'HelperController@getProductByCategory');

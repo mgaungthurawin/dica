@@ -17,7 +17,8 @@
                             <select name="company_category_id" id="company_category_id" class="form-control">
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" 
-                                        @if($category->id == $company->category_id) selected 
+                                        @if($category->id == $company->category_id) 
+                                            selected 
                                         @endif>
                                         {{ $category->title }}
                                     </option>
@@ -67,6 +68,8 @@
                         <?php
                             $constproduts = json_decode(PRODUCT, TRUE);
                             $constprocessings = json_decode(PROCESSING, TRUE);
+                            $existingproducts = json_decode($company->products, TRUE);
+                            $existingprocessings = json_decode($company->processings, TRUE);
                         ?>
 
                         <div class="col-md-12">
@@ -75,8 +78,12 @@
                                 <div class="form-group col-sm-3">
                                     <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
                                         <option value="">Select {{ $cp }}</option>
-                                        @foreach($products as $product)
-                                            <option value="{{ $product->id}}">{{ $product->name }}</option>
+                                        @foreach($products as $key => $product)
+                                            <option value="{{ $product->id}}"
+                                                @if($product->id == $existingproducts[$cp])
+                                                    selected 
+                                                @endif
+                                                >{{ $product->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -93,6 +100,9 @@
                                         <option value="">Select {{$cpr}}</option>
                                         @foreach($main_processings as $main_processing)
                                             <option value="{{ $main_processing->id}}"
+                                                @if($main_processing->id == $existingprocessings[$cpr])
+                                                    selected
+                                                @endif
                                                 >{{ $main_processing->main_process }}</option>
                                         @endforeach
                                     </select>

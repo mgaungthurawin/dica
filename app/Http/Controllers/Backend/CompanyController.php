@@ -288,8 +288,8 @@ class CompanyController extends Controller
             return redirect(route('company.index'));
         }
         $update = $this->prepareData($request->all());
-        $data['products'] = $product_json;
-        $data['processings'] = $processing_json;
+        $update['products'] = $product_json;
+        $update['processings'] = $processing_json;
         $update['type'] = $category->prefix;
         Company::find($id)->update($update);
         $company->products()->sync(array_filter($products));

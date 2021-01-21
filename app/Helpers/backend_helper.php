@@ -200,27 +200,20 @@ function mm($string) {
 }
 
 function main_processing($company) {
-    $processingArray = $company->processings->pluck('id');
-    $processings = Processing::whereIn('id', $processingArray)->where('main_classification', TRUE)->pluck('main_process');
-    if(0 > count($processings)) {
-        return implode(" ",$processings);
-    }
-    if(0 == count($processings)) {
-        return 'N/A';
-    }
-    return $processings[0];
+
+    $array = json_decode($company->processings, TRUE);
+    $processing = Processing::find($array['511']);
+    return $processing->main_process;
 }
 
 function main_product($company) {
-    $productArray = $company->products->pluck('id');
-    $products = Product::whereIn('id', $productArray)->where('main_product', TRUE)->pluck('name');
-    if(0 > count($products)) {
-        return implode(" ",$products);
+    $array = json_decode($company->products, TRUE);
+    $product_id = $array["412"];
+    if (FOOD !== $company->type) {
+        $product_id = $array["411"];
     }
-    if(0 == count($products)) {
-        return 'N/A';
-    }
-    return $products[0];
+
+    return Product::find($product_id)->name;
 }
 
 
@@ -234,6 +227,37 @@ function main_location($company) {
         return 'N/A';
     }
     return $locations[0];
+}
+
+
+function getProductName($id) {
+    return Product::find($id)->name;
+}
+
+function getProcessingName($id) {
+    return Processing::find($id)->main_process;
+}
+
+function mainProducts($array) {
+    $string = NULL;
+    $array = array_filter($array);
+    foreach ($array as $key => $arr) {
+        $string .= Product::find($arr)->name;
+        $string .= ",";
+    }
+
+    return $string;
+}
+
+function mainProcessings($array) {
+    $string = NULL;
+    $array = array_filter($array);
+    foreach ($array as $key => $arr) {
+        $string .= Processing::find($arr)->main_process;
+        $string .= ",";
+    }
+
+    return $string;
 }
 
 

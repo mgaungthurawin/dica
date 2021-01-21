@@ -9,11 +9,14 @@
                         <p>Category：{{ $company->category->title }}</p>
                     </div>
                     <div class="col-lg-4 mb-4">
-                        <?php $product_array = json_decode($company->products, TRUE);?>
-                        <p>Main Product：{{ implode(",",$product_array) }}</p>
+                        <?php 
+                          $product_array = json_decode($company->products, TRUE);
+                          $processing_array = json_decode($company->processings, TRUE);
+                        ?>
+                        <p>Main Product：{{ mainProducts($product_array) }}</p>
                     </div>
                     <div class="col-lg-4 mb-4">
-                        <p>Main processing：{{ implode(",",$company->processings->pluck('main_process')->all()) }}</p>
+                        <p>Main processing：{{ mainProcessings($processing_array) }}</p>
                     </div>
                 </div>
             </div>
@@ -57,12 +60,11 @@
                           <tbody>
                                 <?php 
                                   $product_index = 1;
-                                  $product_array = json_decode($company->products, TRUE);
                                 ?>
-                                @foreach($product_array as $pr)
+                                @foreach(array_filter($product_array) as $pr)
                                 <tr>
                                     <th scope="row">{{$product_index}}</th>
-                                    <td>{{ $pr }}</td>
+                                    <td>{{ getProductName($pr) }}</td>
                                 </tr>
                                 <?php $product_index++; ?>
                                 @endforeach
@@ -81,13 +83,11 @@
                           <tbody>
                             <?php 
                               $processing_index = 1;
-                              $company_processing = $company->processings->pluck('id')->all();
-                              $processings = getMainProcessing($company_processing, $company->prefix);
                             ?>
-                            @foreach($processings as $processing)
+                            @foreach(array_filter($processing_array) as $pra)
                             <tr>
                                 <th scope="row">{{$processing_index}}</th>
-                                <td>{{ $processing->main_process }}</td>
+                                <td>{{ getProcessingName($pra) }}</td>
                             </tr>
                             <?php $processing_index++; ?>
                             @endforeach
