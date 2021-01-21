@@ -280,7 +280,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         $(document).on('keydown', '#mm_name', function () {
         	myanmarLetterOnly($(this));
-        })
+        });
 
         $('#pro_id_411').select2();
         $('#pro_id_412').select2();
