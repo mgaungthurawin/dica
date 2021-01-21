@@ -200,14 +200,22 @@ function mm($string) {
 }
 
 function main_processing($company) {
-
+    if (NULL == $company->processings) {
+        return NULL;
+    }
     $array = json_decode($company->processings, TRUE);
     $processing = Processing::find($array['511']);
     return $processing->main_process;
 }
 
 function main_product($company) {
+
+    if (NULL == $company->products) {
+        return NULL;
+    }
+
     $array = json_decode($company->products, TRUE);
+    $array = array_filter($array);
     $product_id = $array["412"];
     if (FOOD !== $company->type) {
         $product_id = $array["411"];
@@ -241,6 +249,9 @@ function getProcessingName($id) {
 function mainProducts($array) {
     $string = NULL;
     $array = array_filter($array);
+    if(NULL == $array) {
+        return 'N/A';
+    }
     foreach ($array as $key => $arr) {
         $string .= Product::find($arr)->name;
         $string .= ",";
@@ -252,6 +263,9 @@ function mainProducts($array) {
 function mainProcessings($array) {
     $string = NULL;
     $array = array_filter($array);
+    if(NULL == $array) {
+        return 'N/A';
+    }
     foreach ($array as $key => $arr) {
         $string .= Processing::find($arr)->main_process;
         $string .= ",";

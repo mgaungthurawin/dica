@@ -86,7 +86,6 @@ class CompanyController extends Controller
     {
         $form = $request->all();
         $products = $form['product_id'];
-
         $category_id = $form['category_id'];
         $category = Category::find($form['category_id']);
         if(FOOD !== $category->prefix){
@@ -128,8 +127,9 @@ class CompanyController extends Controller
                 $data['type'] = $category->prefix;
                 $data['category_id'] = $category->id;
                 $data['products'] = $product_json;
+                $company_product = array_filter($products);
                 $company = Company::create($data);
-                $company->products()->sync(array_filter($products));
+                $company->products()->sync($company_product);
                 $company->locations()->sync($request->location_id);
                 break;
             default:
@@ -138,8 +138,10 @@ class CompanyController extends Controller
                 $data['products'] = $product_json;
                 $data['processings'] = $processing_json;
                 $company = Company::create($data);
-                $company->products()->sync(array_filter($products));
-                $company->processings()->sync(array_filter($processings));
+                $company_product = array_filter($products);
+                $company_processing = array_filter($products);
+                $company->products()->sync($company_product);
+                $company->processings()->sync($company_processing);
                 $company->locations()->sync($request->location_id);
                 break;
         }
@@ -282,7 +284,8 @@ class CompanyController extends Controller
             $update['products'] = $product_json;
             $update['type'] = $category->prefix;
             Company::find($id)->update($update);
-            $company->products()->sync(array_filter($products));
+            $company_product = array_filter($products);
+            $company->products()->sync($company_product);
             $company->locations()->sync($request->location_id);
             Alert::success('Success', 'Successfully Updated Food Processing');
             return redirect(route('company.index'));
@@ -292,8 +295,10 @@ class CompanyController extends Controller
         $update['processings'] = $processing_json;
         $update['type'] = $category->prefix;
         Company::find($id)->update($update);
-        $company->products()->sync(array_filter($products));
-        $company->processings()->sync(array_filter($processings));
+        $company_product = array_filter($products);
+        $company_processing = array_filter($processings);
+        $company->products()->sync($company_product);
+        $company->processings()->sync($company_processing);
         $company->locations()->sync($request->location_id);
 
         Alert::success('Success', 'Successfully Updated Company');

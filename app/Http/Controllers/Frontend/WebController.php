@@ -98,11 +98,12 @@ class WebController extends Controller
         $data = $request->all();
         $companies = Company::where('category_id', $category_id)->get();
         if (array_key_exists('product', $data)) {
-            
             foreach ($companies as $key => $company) {
-                foreach ($company->products as $key => $product) {
-                    if ($data['product'] == $product->id) {
-                        $companyArray[] = $company->id;
+                if(NULL !== $company->product) {
+                    foreach ($company->products as $key => $product) {
+                        if ($data['product'] == $product->product_id) {
+                            $companyArray[] = $company->id;
+                        }
                     }
                 }
             }
@@ -111,9 +112,11 @@ class WebController extends Controller
 
         if (array_key_exists('processing', $data)) {
             foreach ($companies as $key => $company) {
-                foreach ($company->processings as $key => $processing) {
-                    if ($data['processing'] == $processing->id) {
-                        $companyArray[] = $company->id;
+                if(NULL !== $company->processing) {
+                    foreach ($company->processings as $key => $processing) {
+                        if ($data['processing'] == $processing->id) {
+                            $companyArray[] = $company->id;
+                        }
                     }
                 }
             }
@@ -157,8 +160,7 @@ class WebController extends Controller
                 return view('frontend.search_result', compact('companies', 'category'));
             }
         }
-        return $companies;
-        return view('frontend.search_result', compact('companies', 'category','company_type'));
+        return view('frontend.search_result', compact('companies', 'category'));
     }
 
     public function industry($company_id) {
