@@ -24,8 +24,7 @@ class ProcessingRequest extends FormRequest
     public function rules()
     {
         return [
-            'main_process' => 'required',
-            'sorting' => 'required',
+            'main_process' => 'required'
         ];
     }
 }

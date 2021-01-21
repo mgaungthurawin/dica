@@ -50,7 +50,7 @@
                             @foreach($constproduts as $cp)
                                 <div class="form-group col-sm-3">
                                     <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
-                                        <option value="">Select {{ $cp }}</option>
+                                        <option value="">Select {{ $cp }} Product</option>
                                         @foreach($products as $product)
                                             <option value="{{ $product->id}}">{{ $product->name }}</option>
                                         @endforeach
@@ -58,14 +58,6 @@
                                 </div>
                             @endforeach
                         </div>
-                        {{--<div class="form-group col-sm-6">
-                            <label for="description">Main Product</label><br/>
-                            <select class="form-control" name="product_id[]" id="pro_id" multiple>
-                                @foreach($products as $product)
-                                    <option value="{{ $product->id}}">{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>--}}
                         <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>
                             <select class="form-control" name="location_id[]" id="loc_id" multiple>

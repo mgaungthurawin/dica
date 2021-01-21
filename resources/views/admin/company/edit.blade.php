@@ -77,7 +77,7 @@
                             @foreach($constproduts as $cp)
                                 <div class="form-group col-sm-3">
                                     <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
-                                        <option value="">Select {{ $cp }}</option>
+                                        <option value="">Select {{ $cp }} Product</option>
                                         @foreach($products as $key => $product)
                                             <option value="{{ $product->id}}"
                                                 @if($product->id == $existingproducts[$cp])
@@ -97,7 +97,7 @@
                             @foreach($constprocessings as $cpr)
                                 <div class="form-group col-sm-3">
                                     <select class="form-control" name="processing_id[]" id="process_id_{{ $cpr }}">
-                                        <option value="">Select {{$cpr}}</option>
+                                        <option value="">Select {{$cpr}} Processing</option>
                                         @foreach($main_processings as $main_processing)
                                             <option value="{{ $main_processing->id}}"
                                                 @if($main_processing->id == $existingprocessings[$cpr])
@@ -109,19 +109,7 @@
                                 </div>
                             @endforeach
                         </div>
-
-                        {{--<div class="form-group col-sm-4">
-                            <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" id="process_id" multiple>
-                                @foreach($main_processings as $processing)
-                                    <option value="{{ $processing->id }}"
-                                      @if(in_array($processing->id, $selected_processing))
-                                        selected
-                                      @endif
-                                      >{{ $processing->main_process }}</option>
-                                @endforeach
-                            </select>
-                        </div>--}}
+                        
                         <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>
                             <select class="form-control" name="location_id[]" id="loc_id" multiple="">

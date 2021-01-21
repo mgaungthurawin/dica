@@ -13,14 +13,6 @@ define('MATERIAL', 20);
 define('TEXTILE', 21);
 define('FOOD', 22);
 
-define('PREFIXONE', 23);
-define('PREFIXTWO', 24);
-define('PREFIXTHREE', 25);
-
-define('PREONE', 26);
-define('PRETWO', 27);
-define('PRETHREE', 28);
-
 define('EMAIL', 'msmebusinessmatching@gmail.com');
 define('COMPANY_UPLOAD', 18);
 define('MEDIA_TYPE', json_encode(
@@ -64,21 +56,6 @@ define('PROCESSING', json_encode(
 		'562',
 	)
 ));
-
-// define('411', 411);
-// define('412', 412);
-// define('421', 421);
-// define('431', 431);
-// define('441', 441);
-// define('451', 451);
-// define('461', 461);
-
-// define('511', 511);
-// define('521', 521);
-// define('531', 531);
-// define('541', 541);
-// define('551', 551);
-// define('561', 561);
 
 /*
 |--------------------------------------------------------------------------
