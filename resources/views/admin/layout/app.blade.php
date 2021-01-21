@@ -295,7 +295,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('#pro_id_461').select2();
         $('#pro_id_462').select2();
 
-        $('#process_id').select2();
+        $('#process_id_511').select2();
+        $('#process_id_512').select2();
+        $('#process_id_521').select2();
+        $('#process_id_522').select2();
+        $('#process_id_531').select2();
+        $('#process_id_532').select2();
+        $('#process_id_541').select2();
+        $('#process_id_542').select2();
+        $('#process_id_551').select2();
+        $('#process_id_552').select2();
+        $('#process_id_561').select2();
+        $('#process_id_562').select2();
+
         $('#loc_id').select2();
 
         function myanmarLetterOnly( self )
