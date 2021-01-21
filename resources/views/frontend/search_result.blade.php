@@ -50,7 +50,15 @@
                                 @if(FOOD !== $category->prefix)
                                   <td>{{ main_processing($company) }}</td>
                                 @endif
-                                <td>{{ main_product($company) }}</td>
+                                <?php
+                                  $product_array = json_decode($company->products, TRUE);
+                                  if(FOOD !== $company->type) {
+                                      $product = $product_array[0];
+                                  }else {
+                                    $product = $product_array[1];
+                                  }
+                                ?>
+                                <td>{{ $product }}</td>
                                 <td>{{ limit_text($company->strong_point, 15) }}</td>
                             </tr>
                             <?php $index++;?>

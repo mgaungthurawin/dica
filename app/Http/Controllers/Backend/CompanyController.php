@@ -84,19 +84,24 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $product_array = [];
-        $processing_array = [];
         $form = $request->all();
         $products = $form['product_id'];
         $processings = $form['processing_id'];
+        $constprodcts = json_decode(PRODUCT, TRUE);
+        $constprocessings = json_decode(PROCESSING, TRUE);
+        $product_array = [];
+        $processing_array = [];
 
-        foreach ($products as $key => $product) {
-            $product_array[] = $product;
+        foreach ($products as $key => $p) {
+            $product_array[$constprodcts[$key]] = $p;
+        }
+        $product_json = json_encode($product_array);
+
+        foreach ($processings as $key => $pr) {
+            $processing_array[$constprocessings[$key]] = $pr;
         }
 
-        foreach ($processings as $key => $processing) {
-            $processing_array[] = $processing;
-        }
+        $processing_json = json_encode($processing_array);
 
         $category_id = $form['category_id'];
         $category = Category::find($form['category_id']);
@@ -120,6 +125,7 @@ class CompanyController extends Controller
                 $data = $this->foodPrepareData($form);
                 $data['type'] = $category->prefix;
                 $data['category_id'] = $category->id;
+                $data['products'] = $product_json;
                 $company = Company::create($data);
                 $company->products()->sync($request->product_id);
                 $company->processings()->sync($request->processing_id);
@@ -128,9 +134,11 @@ class CompanyController extends Controller
             default:
                 $data = $this->prepareData($request->all());
                 $data['type'] = $category->prefix;
+                $data['products'] = $product_json;
+                $data['processings'] = $processing_json;
                 $company = Company::create($data);
-                $company->products()->sync($request->product_id);
-                $company->processings()->sync($request->processing_id);
+                $company->products()->sync(array_filter($products));
+                $company->processings()->sync(array_filter($processings));
                 $company->locations()->sync($request->location_id);
                 break;
         }
@@ -217,8 +225,10 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $data = $request->all();
+        $products = $data['product_id'];
+        sort($products);
+        $products = Product::whereIn('id', $data['product_id'])->pluck('name');
         $category = Category::find($data['category_id']);
-
         $media_reference = array();
         if ($request->hasFile('image_media')) {
             $medias = saveMultipleMedia($request, 'image');
@@ -248,6 +258,7 @@ class CompanyController extends Controller
         if(FOOD == $category->prefix)
         {
             $update = $this->foodPrepareData($data);
+            $update['products'] = json_encode($products);
             $update['type'] = $category->prefix;
             Company::find($id)->update($update);
             $company->products()->sync($request->product_id);
@@ -256,6 +267,7 @@ class CompanyController extends Controller
             return redirect(route('company.index'));
         }
         $update = $this->prepareData($request->all());
+        $update['products'] = json_encode($products);
         $update['type'] = $category->prefix;
         Company::find($id)->update($update);
         $company->products()->sync($request->product_id);

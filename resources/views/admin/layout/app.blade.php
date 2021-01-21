@@ -282,7 +282,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         	myanmarLetterOnly($(this));
         })
 
-        $('#pro_id').select2();
+        $('#pro_id_411').select2();
+        $('#pro_id_412').select2();
+        $('#pro_id_421').select2();
+        $('#pro_id_422').select2();
+        $('#pro_id_431').select2();
+        $('#pro_id_432').select2();
+        $('#pro_id_441').select2();
+        $('#pro_id_442').select2();
+        $('#pro_id_451').select2();
+        $('#pro_id_452').select2();
+        $('#pro_id_461').select2();
+        $('#pro_id_462').select2();
+
         $('#process_id').select2();
         $('#loc_id').select2();
 

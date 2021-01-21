@@ -90,7 +90,7 @@ class ProductController extends Controller
             Alert::error('Error', 'product Not Found');
             return redirect(route('product.index'));
         }
-        return view('admin.product.edit',compact('product', 'categories', 'products'));
+        return view('admin.product.edit',compact('product', 'categories'));
     }
 
     /**

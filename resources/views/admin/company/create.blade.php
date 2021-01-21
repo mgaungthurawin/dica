@@ -48,22 +48,35 @@
 
                         @include('admin.company.create_media')
 
-                        <div class="form-group col-sm-4">
+                        <?php
+                            $constproduts = json_decode(PRODUCT, TRUE);
+                            $constprocessings = json_decode(PROCESSING, TRUE);
+                        ?>
+                        @foreach($constproduts as $cp)
+                            <div class="form-group col-sm-3">
                             <label for="description">Main Product</label><br/>
-                            <select class="form-control" name="product_id[]" id="pro_id" multiple>
-                                @foreach($products as $product)
-                                    <option value="{{ $product->id}}">{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-4">
+                                <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
+                                    <option value="">Select One</option>
+                                    @foreach($products as $product)
+                                        <option value="{{ $product->id}}">{{ $product->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endforeach
+
+                        <br><br><br>
+                        @foreach($constprocessings as $cpr)
+                            <div class="form-group col-sm-3">
                             <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" id="process_id" multiple>
-                                @foreach($main_processings as $main_processing)
-                                    <option value="{{ $main_processing->id}}">{{ $main_processing->main_process }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                                <select class="form-control" name="processing_id[]" id="process_id">
+                                    <option value="">Select {{$cpr}}</option>
+                                    @foreach($main_processings as $main_processing)
+                                        <option value="{{ $main_processing->id}}">{{ $main_processing->main_process }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endforeach
+
                         <div class="form-group col-sm-4">
                             <label for="description">Location</label><br/>
                             <select class="form-control" name="location_id[]" id="loc_id" multiple>

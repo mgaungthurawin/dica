@@ -9,7 +9,8 @@
                         <p>Category：{{ $company->category->title }}</p>
                     </div>
                     <div class="col-lg-4 mb-4">
-                        <p>Main Product：{{ implode(",",$company->products->pluck('name')->all()) }}</p>
+                        <?php $product_array = json_decode($company->products, TRUE);?>
+                        <p>Main Product：{{ implode(",",$product_array) }}</p>
                     </div>
                     <div class="col-lg-4 mb-4">
                         <p>Main processing：{{ implode(",",$company->processings->pluck('main_process')->all()) }}</p>
@@ -56,13 +57,12 @@
                           <tbody>
                                 <?php 
                                   $product_index = 1;
-                                  $company_product = $company->products->pluck('id')->all();
-                                  $products = getMainProduct($company_product, $company->prefix);
+                                  $product_array = json_decode($company->products, TRUE);
                                 ?>
-                                @foreach($products as $product)
+                                @foreach($product_array as $pr)
                                 <tr>
                                     <th scope="row">{{$product_index}}</th>
-                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $pr }}</td>
                                 </tr>
                                 <?php $product_index++; ?>
                                 @endforeach
@@ -78,7 +78,6 @@
                               <th scope="col">Processing classification</th>
                             </tr>
                           </thead>
-
                           <tbody>
                             <?php 
                               $processing_index = 1;
@@ -93,6 +92,7 @@
                             <?php $processing_index++; ?>
                             @endforeach
                           </tbody>
+                          
                         </table>
                     </div>
                     

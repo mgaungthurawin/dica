@@ -157,7 +157,7 @@ class WebController extends Controller
                 return view('frontend.search_result', compact('companies', 'category'));
             }
         }
-        $company_type = Company::where('category_id', $category_id)->first();
+        return $companies;
         return view('frontend.search_result', compact('companies', 'category','company_type'));
     }
 
