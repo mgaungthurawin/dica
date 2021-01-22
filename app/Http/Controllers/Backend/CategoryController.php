@@ -49,8 +49,8 @@ class CategoryController extends Controller
         if ($request->hasFile('image_media')) {
             $media = saveSingleMedia($request, 'image');
             if (TRUE != $media['status']) {
-                Alert::error('Error', 'product Not Found');
-                return redirect(route('product.index'));
+                Alert::error('Error', 'category Not Found');
+                return redirect(route('category.index'));
             }
             $data['media_id'] = $media['media_id'];
         }

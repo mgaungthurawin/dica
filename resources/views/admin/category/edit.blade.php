@@ -54,7 +54,7 @@
                     <div class="col-md-6">
                           <div class="form-group">
                             <label><strong>Edit Image</strong></label><span class="text-danger">*</span><br>
-                            <input type="file" name="image_media" id="image_media" accept="image/*">
+                            <input type="file" name="image_media" id="image_media" accept="image/*" required="">
                             {{ Form::hidden('media_path', 'CATEGORY_UPLOAD') }}
                         </div>
                     </div>
