@@ -1,11 +1,13 @@
 @extends('frontend.layouts.app')
 @section('content')
-<main class="page_main_wrapper">            
+<main class="page_main_wrapper login text-center">            
     <div class="container">    
         <div class="row">
             <div class="login-container" id="container">
                 <!-- login user -->
                 <div class="form-container sign-in-container">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
                     <form method="POST" action="{{ url('admin/login') }}">
                         @csrf                        
                         <h3>{{trans('app.sign_in')}}</h3>                        

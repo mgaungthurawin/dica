@@ -152,6 +152,8 @@
     'db_material' => "Database on potential Material Processing companies in Myanmar",
     'db_textile' => "Database on potential Textile companies in Myanmar",
     'db_food' => "Database on potential Food Processing companies in Myanmar",
+    'contact' => "Contact",
+    'sitemap' => "Site Map",
 
    ];
 ?>
