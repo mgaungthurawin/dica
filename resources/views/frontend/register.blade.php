@@ -1,11 +1,13 @@
 @extends('frontend.layouts.app')
 @section('content')
-<main class="page_main_wrapper">            
+<main class="page_main_wrapper login text-centr register">            
     <div class="container">    
         <div class="row">
             <div class="login-container" id="container">
                 <!-- login user -->
-                <div class="form-container sign-in-container">
+                <div class="form-container sign-in-container ">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+
 
                     <form method="post" action="{{ url('/admin/register') }}">
                         @csrf                       
