@@ -63,8 +63,15 @@ header .header-mid{
     font-size:20.5pt !important;
     margin-top: 38px !important;
 }
-nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after{
+/* nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after{
     content:'';
+} */
+.justify-content-center{
+    -ms-flex-pack: center !important;
+justify-content: center !important;
+display: flex;
+flex-wrap: wrap;
+  
 }
 .outline-btn{
 text-transform: uppercase;
