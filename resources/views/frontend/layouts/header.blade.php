@@ -10,12 +10,12 @@
             <!-- START MIDDLE SECTION -->
             <div class="header">
                 <div class="container">
-                    <div class="col-xs-3 col-sm-3 col-md-4 hidden-xs pull-left contact-bar">
+                    <div class="col-xs-3 col-sm-3 col-md-5 hidden-xs pull-left contact-bar">
                         <a class="btn sitemap-btn" href="{{url('sitemap')}}">{{trans('app.sitemap')}}</a> | 
                         <a href="{{ url('contact') }}"><i class="fa fa-envelope"></i> msmebusinessmatching@gmail.com</a> | 
                         <a href="tel:06754321"><i class="fa fa-phone"></i> 067-54321</a>
                     </div>
-                    <div class="attr-nav col-md-8 hidden-xs">
+                    <div class="attr-nav col-md-7 hidden-xs">
                         <div class="pull-right language">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('v2/images/mm.png') }}" width="30px" height="20px">Myanmar</a>
@@ -62,7 +62,7 @@
             </div>
             <!-- END OF /. MIDDLE SECTION -->
             <!-- START NAVIGATION -->
-            <nav class="navbar navbar-default navbar-sticky navbar-mobile bootsnav">
+            <nav class="navbar navbar-expand-md navbar-default navbar-sticky navbar-mobile bootsnav">
                 <div class="container">
                  <!-- Start Atribute Navigation -->            
                     <!-- Start Header Navigation -->
@@ -103,9 +103,9 @@
                         </span>
                         @else
                         <span>
-                            <a href="{{url('login')}}" class="float-right"><i class="fa fa-sign-in" aria-hidden="true"></i> 
+                            <a href="{{url('login')}}" class=""><i class="fa fa-sign-in" aria-hidden="true"></i> 
                             {{trans('app.sign_in')}}</a> |  
-                            <a href="{{url('register')}}" class="float-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <a href="{{url('register')}}" class=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             {{trans('app.user_registration')}}</a>
                         </span>
                         @endif   

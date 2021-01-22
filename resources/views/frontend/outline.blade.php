@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-<main class="page_main_wrapper">            
+<main class="page_main_wrapper outline">            
     <div class="container">    
         <div class="row">
             <div class="container-box" style="width: 100%;">

@@ -4,9 +4,7 @@
     <div class="container">    
         <div class="row">
             <div class="col-lg-12 mb-12">
-                <div class="container-box" style="width: 100%;">
                     <h1>{{trans('app.news')}}</h1>
-                </div>
             </div>
         </div>
         <div class="row">
