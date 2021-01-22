@@ -5,10 +5,10 @@
 <div class="container" style="margin:20px auto;">
        
     <div class="row">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center ">
                     <h1>{{trans('app.contact')}}</h1>
         </div>
-            <div class="login-container col-md-10" id="container" >
+            <div class="login-container" id="container" >
                 <div class="panel-body">
                     <div class="col-md-8">
                         <form action="{{ url('contactemail') }}" method="POST">                                
