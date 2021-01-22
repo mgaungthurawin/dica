@@ -41,15 +41,21 @@
                       <tbody>
                         <?php $index=1;?>
                           @foreach($companies as $company)
+                              <?php
+                                $processing = json_decode($company->processings, TRUE);
+                                $product = json_decode($company->products, TRUE);
+                              ?>
                               <tr>
                                   <th scope="row">{{$index}}</th>
                                   <td>{{ $company->category->title }}</td>
                                   <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                   <td>{{ main_location($company) }}</td>
                                   @if(FOOD !== $category->prefix)
-                                    <td>{{ main_processing($company) }}</td>
+                                    <td>{{ main_processing($processing['511']) }}</td>
+                                    <td>{{ main_product($product['411']) }}</td>
+                                  @else
+                                    <td>{{ main_product($product['412']) }}</td>
                                   @endif
-                                    <td>{{ main_product($company) }}</td>
                                   <td>{{ limit_text($company->strong_point, 15) }}</td>
                               </tr>
                               <?php $index++;?>
