@@ -12,8 +12,10 @@
                       <h4 class="card-title">
                         <a href="{{url($category->id.'/material')}}">{{ $category->title }}</a>
                       </h4>
-                    </div> 
-                    <a href="{{url($category->id.'/material')}}"><img class="card-img-top" src="{{ asset($category->media->file_path . $category->media->file_name) }}" alt=""></a>
+                    </div>
+                    @if($category->media) 
+                        <a href="{{url($category->id.'/material')}}"><img class="card-img-top" src="{{ asset($category->media->file_path . $category->media->file_name) }}" alt=""></a>
+                    @endif
                   </div>
                 </div>
             @endforeach

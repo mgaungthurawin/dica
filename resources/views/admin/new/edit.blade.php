@@ -13,12 +13,14 @@
                 {!! Form::model($new, ['route' => ['new.update', $new->id], 'method' => 'patch', 'files' => 'true']) !!}
 
                     <div class="form-group col-sm-12">
-                        <label for="description">Edit new</label><br/>
-                        <select class="form-control" name="new_id">
-                            @foreach($categories as $new)
-                                <option value="{{ $new->id }}" 
-                                    @if($new->id == $new->new_id) selected @endif>
-                                    {{ $new->title }}
+                        <label for="description">Edit Category</label><br/>
+                        <select name="category_id" id="category_id" class="form-control">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" 
+                                    @if($category->id == $new->category_id) 
+                                        selected 
+                                    @endif>
+                                    {{ $category->title }}
                                 </option>
                             @endforeach
                         </select>
@@ -63,7 +65,7 @@
                     <div class="col-md-12">
                           <div class="form-group">
                             <label><strong>Edit Image</strong></label><span class="text-danger">*</span><br>
-                            <input type="file" name="image_media" id="image_media" accept="image/*" required="">
+                            <input type="file" name="image_media" id="image_media" accept="image/*">
                             {{ Form::hidden('media_path', 'NEW_UPLOAD') }}
                         </div>
                     </div>
