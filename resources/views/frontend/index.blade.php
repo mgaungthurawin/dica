@@ -49,14 +49,7 @@
     <div class="col-lg-12 mb-3">
             <h3 class="my-4 text-center">{{trans('app.links')}}</h3><br>
             <div class="justify-content-center row">
-                <a class="col-md-2" href="https://myanmarindustries.org/" title="myanmarindustries.org">
-                    <div class=" text-center">
-                        <!-- <h4 >{{trans('app.industrial_associations')}}</h4> -->
-                        <img src="v2/images/logo-2.png" alt="logo" width="50px"><br>
-                    {{trans('app.myanmar_industrial_associations')}}
-                    </div>
-                </a>
-                <a  class="col-md-2"  href="https://www.mopfi.gov.mm/" title="myanmarindustries.org"> 
+            <a  class="col-md-2"  href="https://www.mopfi.gov.mm/" title="myanmarindustries.org"> 
                     <div class=" text-center">
                         <!-- <h4 >{{trans('app.government_organization')}}</h4> -->
                         <img src="v2/images/moi_logo.png" alt="logo" width="50px"><br>
@@ -73,35 +66,38 @@
                         
                     </div>
                 </a>
-                <a  class="col-md-2"  href="https://www.dica.gov.mm/" title="myanmarindustries.org">   
-                    <div class="text-center">
-                        <img src="v2/images/logo-1.png" alt="logo" width="50px"><br>
-                        
-                    {{trans('app.dica')}}
-                        
-                    </div>
-                </a>
-                <a  class="col-md-2"  href="https://www.dica.gov.mm/" title="myanmarindustries.org">   
-                    <div class="text-center">
-                        <img src="v2/images/logo-1.png" alt="logo" width="50px"><br>
-                        
-                    {{trans('app.dica')}}
-                        
-                    </div>
-                </a>
-                <a   class="col-md-2"  href="https://www.dica.gov.mm/" title="myanmarindustries.org">   
+                <a class="col-md-2" href="https://myanmarindustries.org/" title="myanmarindustries.org">
                     <div class=" text-center">
-                        <img src="v2/images/logo-1.png" alt="logo" width="50px"><br>
+                        <!-- <h4 >{{trans('app.industrial_associations')}}</h4> -->
+                        <img src="v2/images/logo-2.jpg" alt="logo" width="50px"><br>
+                    {{trans('app.myanmar_industrial_associations')}}
+                    </div>
+                </a>
+                
+              
+              
+                <a  class="col-md-2"  href="https://mfpea.org/" title="myanmarindustries.org">   
+                    <div class="text-center">
+                        <img src="v2/images/logo-4.jpg" alt="logo" width="50px"><br>
                         
-                    {{trans('app.dica')}}
+                    {{trans('app.myanmar_food_processors_and_exporters_association')}}
                         
                     </div>
                 </a>
-                <a  class="col-md-2"  href="https://www.dica.gov.mm/" title="myanmarindustries.org">   
-                    <div class="text-center">
-                        <img src="v2/images/logo-1.png" alt="logo" width="50px"><br>
+
+                <a   class="col-md-2"  href="https://www.myanmargarments.org/" title="myanmarindustries.org">   
+                    <div class=" text-center">
+                        <img src="v2/images/logo-5.jpg" alt="logo" width="50px"><br>
                         
-                    {{trans('app.dica')}}
+                    {{trans('app.myanmar_garment_aanufacturers_association')}}
+                        
+                    </div>
+                </a>
+                <a  class="col-md-2"  href="https://mpiamyanmar.com/index.php/en/" title="myanmarindustries.org">   
+                    <div class="text-center">
+                        <img src="v2/images/logo-6.jpg" alt="logo" width="50px"><br>
+                        
+                    {{trans('app.myanmar_plastic_industries_association')}}
                         
                     </div>
                 </a>
