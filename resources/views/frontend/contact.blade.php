@@ -9,7 +9,7 @@
                     <h1>{{trans('app.contact')}}</h1>
         </div>
             <div class="login-container" id="container" >
-                <div class="panel-body">
+                <div class="panel-body row contact">
                     <div class="col-md-8">
                         <form action="{{ url('contactemail') }}" method="POST">                                
                                 @csrf                        
@@ -61,6 +61,11 @@
                             <strong><span class="fa fa-envelope"></span> {{trans('app.email')}}</strong><br>
                             <a href="mailto:#">msmebusinessmatching@gmail.com</a>
                         </address>
+                        <p>
+                        If you have business inquiries or other questions, we would be
+ pleased to assist you. Kindly give us the brief description of your
+ interest through the following form. Thank you.
+                        </p>
                     </div>
                 </div>
             </div>
