@@ -37,8 +37,10 @@
                               <tbody>
                                 <?php 
                                   $product_index = 1;
-                                  $company_product = $company->products->pluck('id')->all();
+                                  // $company_product = $company->products->pluck('id')->all();
+                                  $company_product = json_decode($company->products, TRUE);
                                   $products = getMainProduct($company_product, $company->type);
+                                  $product_in_array = ['411', '421', '431', '441', '451', '461'];
                                 ?>
                                 @foreach($products as $product)
                                 <tr>
