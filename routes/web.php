@@ -13,6 +13,7 @@
 
 Route::group(['prefix' => 'admin'], function () {
 	Auth::routes();
+	// Hello
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
