@@ -2,11 +2,14 @@
 @section('content')
 <main class="page_main_wrapper">
             
-<div class="container" style="margin:5% auto;">
-    
+<div class="container" style="margin:20px auto;">
+       
     <div class="row">
-            <div class="login-container" id="container" style="width: auto">
-                <div class="panel-body">
+    <div class="col-md-12 text-center ">
+                    <h1>{{trans('app.contact')}}</h1>
+        </div>
+            <div class="login-container" id="container" >
+                <div class="panel-body row contact">
                     <div class="col-md-8">
                         <form action="{{ url('contactemail') }}" method="POST">                                
                                 @csrf                        
@@ -27,7 +30,7 @@
                                         {{trans('app.email_address')}}</label>
                                     <div class="input-group">
                                         </span>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="{{trans('app.enter_email')}}" required="required" style="font-size: 1rem;" />
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="{{trans('app.enter_email')}}" required="required"  />
                                     </div>
                                 </div>
                                 
@@ -58,6 +61,11 @@
                             <strong><span class="fa fa-envelope"></span> {{trans('app.email')}}</strong><br>
                             <a href="mailto:#">msmebusinessmatching@gmail.com</a>
                         </address>
+                        <p>
+                        If you have business inquiries or other questions, we would be
+ pleased to assist you. Kindly give us the brief description of your
+ interest through the following form. Thank you.
+                        </p>
                     </div>
                 </div>
             </div>

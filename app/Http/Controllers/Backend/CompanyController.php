@@ -12,6 +12,7 @@ use App\Model\Location;
 use App\Model\ProductLocation;
 use App\Model\MediaReference;
 Use Alert;
+use App\CustomClass\CompanyExcel;
 
 class CompanyController extends Controller
 {
@@ -53,6 +54,12 @@ class CompanyController extends Controller
         return view('admin.company.index', compact('companies', 'categories'));
     }
 
+    public function exportExcel()
+    {
+        $companyExcel = new CompanyExcel();
+        $companyExcel->download();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -64,7 +71,6 @@ class CompanyController extends Controller
         $standard = ['DIN', 'JIS', 'BS', 'AISI', 'UNS', 'Other'];
         $products = Product::orderBy('name', 'ASC')->get();
         $main_processings = Processing::all();
-        // $categories = Category::all();
         $categories = Category::orderBy('id', 'DESC')->get();
         $locations = Location::all();
         return view('admin.company.create', compact('categories','products','certificate','standard','main_processings','locations'));
@@ -79,8 +85,27 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $form = $request->all();
+        $products = $form['product_id'];
         $category_id = $form['category_id'];
         $category = Category::find($form['category_id']);
+        if(FOOD !== $category->prefix){
+            $processings = $form['processing_id'];
+            $constprocessings = json_decode(PROCESSING, TRUE);
+            $processing_array = [];
+            foreach ($processings as $key => $pr) {
+                $processing_array[$constprocessings[$key]] = $pr;
+            }
+
+            $processing_json = json_encode($processing_array);
+        }
+        
+        $constprodcts = json_decode(PRODUCT, TRUE);
+        $product_array = [];
+
+        foreach ($products as $key => $p) {
+            $product_array[$constprodcts[$key]] = $p;
+        }
+        $product_json = json_encode($product_array);
 
         // Image Upload
         $media_reference = array();
@@ -101,17 +126,22 @@ class CompanyController extends Controller
                 $data = $this->foodPrepareData($form);
                 $data['type'] = $category->prefix;
                 $data['category_id'] = $category->id;
+                $data['products'] = $product_json;
+                $company_product = array_filter($products);
                 $company = Company::create($data);
-                $company->products()->sync($request->product_id);
-                $company->processings()->sync($request->processing_id);
+                $company->products()->sync($company_product);
                 $company->locations()->sync($request->location_id);
                 break;
             default:
                 $data = $this->prepareData($request->all());
                 $data['type'] = $category->prefix;
+                $data['products'] = $product_json;
+                $data['processings'] = $processing_json;
                 $company = Company::create($data);
-                $company->products()->sync($request->product_id);
-                $company->processings()->sync($request->processing_id);
+                $company_product = array_filter($products);
+                $company_processing = array_filter($products);
+                $company->products()->sync($company_product);
+                $company->processings()->sync($company_processing);
                 $company->locations()->sync($request->location_id);
                 break;
         }
@@ -198,7 +228,29 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $data = $request->all();
+
+        // products
+        $products = $data['product_id'];
+        $constprodcts = json_decode(PRODUCT, TRUE);
+        $product_array = [];
+
+        foreach ($products as $key => $p) {
+            $product_array[$constprodcts[$key]] = $p;
+        }
+        $product_json = json_encode($product_array);
+
         $category = Category::find($data['category_id']);
+        // processings
+        if(FOOD !== $category->prefix){
+            $processings = $data['processing_id'];
+            $constprocessings = json_decode(PROCESSING, TRUE);
+            $processing_array = [];
+            foreach ($processings as $key => $pr) {
+                $processing_array[$constprocessings[$key]] = $pr;
+            }
+
+            $processing_json = json_encode($processing_array);
+        }
 
         $media_reference = array();
         if ($request->hasFile('image_media')) {
@@ -229,18 +281,24 @@ class CompanyController extends Controller
         if(FOOD == $category->prefix)
         {
             $update = $this->foodPrepareData($data);
+            $update['products'] = $product_json;
             $update['type'] = $category->prefix;
             Company::find($id)->update($update);
-            $company->products()->sync($request->product_id);
+            $company_product = array_filter($products);
+            $company->products()->sync($company_product);
             $company->locations()->sync($request->location_id);
             Alert::success('Success', 'Successfully Updated Food Processing');
             return redirect(route('company.index'));
         }
         $update = $this->prepareData($request->all());
+        $update['products'] = $product_json;
+        $update['processings'] = $processing_json;
         $update['type'] = $category->prefix;
         Company::find($id)->update($update);
-        $company->products()->sync($request->product_id);
-        $company->processings()->sync($request->processing_id);
+        $company_product = array_filter($products);
+        $company_processing = array_filter($processings);
+        $company->products()->sync($company_product);
+        $company->processings()->sync($company_processing);
         $company->locations()->sync($request->location_id);
 
         Alert::success('Success', 'Successfully Updated Company');
@@ -255,12 +313,19 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+        if (empty($company)) {
+            Alert::error('Error', 'company Not Found');
+            return redirect(route('company.index'));
+        }
+        $company->delete();
+        Alert::success('Success', 'Successfully deleted company');
+        return redirect(route('company.index'));
     }
 
     public function food($category_id, $prefix){
         $certificate = ['ISO', 'HACCP', 'BRC', 'Other'];
-        $products = Product::all();
+        $products = Product::orderBy('name', 'ASC')->get();
         $locations = Location::all();
         return view('admin.company.food', compact('products','certificate','locations', 'category_id'));
     }

@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                     {!! Form::open(array('route' => 'product.store','method'=>'POST', 'files' => 'true')) !!}
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Category</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -19,21 +19,12 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label>Prefix</label>
                             <select name="prefix" class="form-control">
                                 <option value="{{ MATERIAL }}">MATERIAL</option>
                                 <option value="{{ TEXTILE }}">TEXTILE</option>
                                 <option value="{{ FOOD }}">FOOD</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-4">
-                            {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
-                            <select class="form-control" name="parent">
-                                <option value="0">Select One</option>
-                                @foreach($products as $product)
-                                    <option value="{{$product->id}}">{{$product->name}}</option>
-                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-sm-6 mmtext">
@@ -48,11 +39,6 @@
                         <div class="form-group col-sm-6 mmtext">
                             {!! Form::label('sorting', 'Sorting:') !!} <span class="text-danger">*</span>
                             {!! Form::number('sorting', null, ['class' => 'form-control']) !!}
-                            @if ($errors->has('sorting'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('sorting') }}</strong>
-                                </span>
-                            @endif
                         </div>
                         <div class="col-md-12">
                               <div class="form-group">
@@ -65,12 +51,6 @@
                             <label for="recommend">Recommend</label>
                             <input type="checkbox" value="1" id="recommend" name="recommend">  
                         </div>
-
-                        <div class="form-group col-sm-6">
-                            <label for="main_product">Main Product</label>
-                            <input type="checkbox" value="1" id="main_product" name="main_product">  
-                        </div>
-                        
                         <div class="form-group col-sm-12">
                             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
                             <a href="{!! route('product.index') !!}" class="btn btn-default">Cancel</a>

@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row">
                 {!! Form::model($processing, ['url' => ['admin/processing/edit', $processing->id], 'method' => 'post']) !!}
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-6">
                         <label>Prefix</label>
                         <select name="prefix" class="form-control">
                             <option value="{{ MATERIAL }}"
@@ -35,7 +35,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-6">
                         {!! Form::label('main_process', 'Main Process:') !!} <span class="text-danger">*</span>
                         {!! Form::text('main_process', null, ['class' => 'form-control']) !!}
                         @if ($errors->has('main_process'))
@@ -44,27 +44,14 @@
                             </span>
                        @endif
                     </div>
-                    <div class="form-group col-sm-4 mmtext">
+                    <div class="form-group col-sm-6 mmtext">
                         {!! Form::label('sorting', 'sorting:') !!} <span class="text-danger">*</span>
                         {!! Form::number('sorting', null, ['class' => 'form-control']) !!}
-                        @if ($errors->has('sorting'))
-                            <span class="text-danger">
-                                <strong>{{ $errors->first('sorting') }}</strong>
-                            </span>
-                        @endif
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-6" style="margin-top: 25px;">
                         <label for="recommend">Recommend</label>
                         <input type="checkbox" value="1" id="recommend" name="recommend"
                           @if($processing->recommend)
-                            checked
-                          @endif
-                        >  
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="main_classification">Main Classification</label>
-                        <input type="checkbox" value="1" id="main_classification" name="main_classification"
-                          @if($processing->main_classification)
                             checked
                           @endif
                         >  

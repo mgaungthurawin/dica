@@ -150,8 +150,13 @@
 
     'recommand_products' => "Recommand Products",
     'db_material' => "Database on potential Material Processing companies in Myanmar",
-    'db_textile' => "Database on potential Textile Processing companies in Myanmar",
+    'db_textile' => "Database on potential Textile companies in Myanmar",
     'db_food' => "Database on potential Food Processing companies in Myanmar",
-
+    'contact' => "Contact",
+    'sitemap' => "Site Map",
+    'myanmar_food_processors_and_exporters_association' => "Myanmar Food Processors And Exporters Association",
+    'myanmar_garment_aanufacturers_association' => "Myanmar Garment Manufacturers Association",
+    'myanmar_plastic_industries_association' => "Myanmar Plastic Industries Association ",
+    'register-title' => " Don’t have an account? ",
    ];
 ?>

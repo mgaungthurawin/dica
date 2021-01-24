@@ -28,7 +28,6 @@
                         <th>No.</th>
                         <th>Mian Process</th>
                         <th>Recommend</th>
-                        <th>Mian Classification</th>
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -38,10 +37,14 @@
                             <td>{{ $index++ }}</td>
                             <td>{!! $processing->main_process !!}</td>
                             <td>{!!showPrettyStatus($processing->recommend) !!}</td>
-                            <td>{!!showPrettyStatus($processing->main_classification) !!}</td>
                             <td>
                             <a href='{{ url("admin/processing/edit/$processing->id") }}'
                                class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>
+                            <a href="#" type="button" data-id="{{ $processing->id }}"
+                               class="btn btn-xs btn-danger" data-toggle="modal"
+                               data-url="{{ url('admin/processing/delete/'.$processing->id) }}"
+                               data-target="#deleteFormModal"><i
+                                    class="fa fa-trash-o"></i>&nbsp;Delete</a>
                             </td>
                         </tr>
                     @endforeach

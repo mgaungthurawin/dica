@@ -5,6 +5,7 @@ use App\Model\Media;
 use App\Model\Location;
 use App\Model\Processing;
 use App\Model\Product;
+use Auth;
 
 function saveSingleMedia(Request $request, $upload_type)
 {
@@ -198,28 +199,22 @@ function mm($string) {
     return $array[1];
 }
 
-function main_processing($company) {
-    $processingArray = $company->locations->pluck('id');
-    $processings = Processing::whereIn('id', $processingArray)->where('main_classification', TRUE)->pluck('main_process');
-    if(0 > count($processings)) {
-        return implode(" ",$processings);
+function main_processing($processing_id) {
+    if (NULL == $processing_id) {
+        return NULL;
     }
-    if(0 == count($processings)) {
-        return 'N/A';
-    }
-    return $processings[0];
+    $processing = Processing::find($processing_id);
+    return $processing->main_process;
 }
 
-function main_product($company) {
-    $productArray = $company->products->pluck('id');
-    $products = Product::whereIn('id', $productArray)->where('main_product', TRUE)->pluck('name');
-    if(0 > count($products)) {
-        return implode(" ",$products);
+function main_product($product_id) {
+
+    if (NULL == $product_id) {
+        return NULL;
     }
-    if(0 == count($products)) {
-        return 'N/A';
-    }
-    return $products[0];
+
+    $product = Product::find($product_id);
+    return $product->name;
 }
 
 
@@ -233,6 +228,75 @@ function main_location($company) {
         return 'N/A';
     }
     return $locations[0];
+}
+
+
+function getProductName($id) {
+    return Product::find($id)->name;
+}
+
+function getProcessingName($id) {
+    return Processing::find($id)->main_process;
+}
+
+function mainProducts($array) {
+    $string = NULL;
+    $array = array_filter($array);
+    if(NULL == $array) {
+        return 'N/A';
+    }
+    foreach ($array as $key => $arr) {
+        $string .= Product::find($arr)->name;
+        $string .= ",";
+    }
+
+    return $string;
+}
+
+function mainProcessings($array) {
+    $string = NULL;
+    $array = array_filter($array);
+    if(NULL == $array) {
+        return 'N/A';
+    }
+    foreach ($array as $key => $arr) {
+        $string .= Processing::find($arr)->main_process;
+        $string .= ",";
+    }
+
+    return $string;
+}
+
+
+function limit_text($text, $limit) {
+    if (str_word_count($text, 0) > $limit) {
+        $words = str_word_count($text, 2);
+        $pos   = array_keys($words);
+        $text  = substr($text, 0, $pos[$limit]) . '...';
+    }
+    return $text;
+}
+
+function authValue($text) {
+
+    if(Auth::user()){
+        return $text;
+    }
+
+    return NULL;
+
+}
+
+function getMainProduct($company_product, $prefix) {
+    $products = Product::whereIn('id', $company_product)
+                    ->where('prefix', $prefix)->where('main_product', TRUE)->get();
+    return $products;
+}
+
+function getMainProcessing($company_processing, $prefix) {
+    $processings = Processing::whereIn('id', $company_processing)
+                    ->where('prefix', $prefix)->where('main_classification', TRUE)->get();
+    return $processings;
 }
 
 

@@ -109,13 +109,13 @@ class ProcessingController extends Controller
      */
     public function destroy($id)
     {
-        // $processing = Processing::find($id);
-        // if(empty($processing)) {
-        //     Alert::error('Error', 'main processings Not Found');
-        //     return redirect(route('processing.index'));
-        // }
-        // $processing->delete();
-        // Alert::success('Success', 'Successfully deleted main processings');
-        // return redirect(route('processing.index'));
+        $processing = Processing::find($id);
+        if(empty($processing)) {
+            Alert::error('Error', 'main processings Not Found');
+            return redirect(url('admin/processing'));
+        }
+        $processing->delete();
+        Alert::success('Success', 'Successfully deleted main processings');
+        return redirect(url('admin/processing'));
     }
 }

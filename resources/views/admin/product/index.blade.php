@@ -37,7 +37,6 @@
                             <th>Category Name</th>
                             <th>Name</th>
                             <th>Recommend</th>
-                            <th>Main Product</th>
                             <th colspan="3">Action</th>
                         </thead>
                         <tbody>
@@ -48,7 +47,6 @@
                                 <td>{!! $product->category->title !!}
                                 <td>{!! $product->name !!}</td>
                                 <td>{!!showPrettyStatus($product->recommend) !!}</td>
-                                <td>{!!showPrettyStatus($product->main_product) !!}</td>
                                 <td>
                                 <a href="{!! route('product.edit', [$product->id]) !!}"
                                    class='btn btn-xs btn-primary'><i class="fa fa-check-square-o"></i>&nbsp;Edit</a>

@@ -145,6 +145,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	immediately after the control sidebar -->
 	<div class="control-sidebar-bg"></div>
 </div> 
+<input type="hidden" id="product_url" name="product_url" value="{{ url('getProductByCategory') }}">
+<input type="hidden" id="processing_url" name="processing_url" value="{{ url('getProcessingByCategory') }}">
 
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -218,16 +220,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $(document).ready(function () {
         	var str = $('#company_category_id').val();
         	var array = str.split("-");
+        	var category_id = array[0];
         	$('#category_id').val(array[0]);
         })
+
         $(document).on('change', '#company_category_id', function () {
+        	$('#pro_id').empty();
+        	$('#process_id').empty();
         	var str = $(this).val();
         	var array = str.split("-");
+        	var category_id = array[0];
+        	var prefix = array[1];
         	$('#category_id').val(array[0]);
+        	// getProductByCategory(category_id, prefix);
+        	// getProcessingByCategory(category_id, prefix);
         	if (array['1'] == {{ FOOD }}) {
-        		window.location.href = array['0'] + '/' + array['1'] + '/food'
+        		window.location.href = category_id + '/' + prefix + '/food'
         	}
         })
+
+        // function getProcessingByCategory(category_id, prefix) {
+        // 	var url = $('#processing_url').val() + "?category_id=" + category_id +"&prefix="+ prefix;
+        // 	var settings = {
+        // 	  "url": url,
+        // 	  "method": "GET",
+        // 	  "timeout": 0,
+        // 	};
+        // 	$.ajax(settings).done(function (response) {
+        // 		response.forEach(function(item) {
+        // 			$('#process_id').append($('<option>',{
+    			 //        value: item.id,
+    			 //        text : item.main_process 
+    			 //    }));
+        // 		});
+        // 	});
+        // }
+
+        // function getProductByCategory(category_id, prefix) {
+        // 	var url = $('#product_url').val() + "?category_id=" + category_id +"&prefix="+ prefix;
+        // 	var settings = {
+        // 	  "url": url,
+        // 	  "method": "GET",
+        // 	  "timeout": 0,
+        // 	};
+
+        // 	$.ajax(settings).done(function (response) {
+        // 		response.forEach(function(item) {
+        // 			$('#pro_id').append($('<option>', {
+    			 //        value: item.id,
+    			 //        text : item.name 
+    			 //    }));
+        // 		});
+        // 	});
+        // }
 
         $("input[id*='mm_name'], text[id*='mm_name']").change(function(e) {
             myanmarLetterOnly($(this));
@@ -235,10 +280,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         $(document).on('keydown', '#mm_name', function () {
         	myanmarLetterOnly($(this));
-        })
+        });
 
-        $('#pro_id').select2();
-        $('#process_id').select2();
+        $('#pro_id_411').select2();
+        $('#pro_id_412').select2();
+        $('#pro_id_421').select2();
+        $('#pro_id_422').select2();
+        $('#pro_id_431').select2();
+        $('#pro_id_432').select2();
+        $('#pro_id_441').select2();
+        $('#pro_id_442').select2();
+        $('#pro_id_451').select2();
+        $('#pro_id_452').select2();
+        $('#pro_id_461').select2();
+        $('#pro_id_462').select2();
+
+        $('#process_id_511').select2();
+        $('#process_id_512').select2();
+        $('#process_id_521').select2();
+        $('#process_id_522').select2();
+        $('#process_id_531').select2();
+        $('#process_id_532').select2();
+        $('#process_id_541').select2();
+        $('#process_id_542').select2();
+        $('#process_id_551').select2();
+        $('#process_id_552').select2();
+        $('#process_id_561').select2();
+        $('#process_id_562').select2();
+
         $('#loc_id').select2();
 
         function myanmarLetterOnly( self )

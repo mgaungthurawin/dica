@@ -17,7 +17,8 @@
                             <select name="company_category_id" id="company_category_id" class="form-control">
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" 
-                                        @if($category->id == $company->category_id) selected 
+                                        @if($category->id == $company->category_id) 
+                                            selected 
                                         @endif>
                                         {{ $category->title }}
                                     </option>
@@ -51,9 +52,9 @@
 
                         @include('admin.company.edit_media')
 
-                        <div class="form-group col-sm-4">
+                        {{--<div class="form-group col-sm-4">
                             <label for="description">Main Product</label><br/>
-                            <select class="form-control" name="product_id[]" multiple>
+                            <select class="form-control" name="product_id[]" id="pro_id" multiple>
                                 @foreach($products as $product)
                                     <option value="{{ $product->id}}"
                                       @if(in_array($product->id, $selected_product))
@@ -62,22 +63,85 @@
                                       >{{ $product->name }}</option>
                                 @endforeach
                             </select>
+                        </div>--}}
+
+                        <?php
+                            $constproduts = json_decode(PRODUCT, TRUE);
+                            $constprocessings = json_decode(PROCESSING, TRUE);
+                            $existingproducts = json_decode($company->products, TRUE);
+                            $existingprocessings = json_decode($company->processings, TRUE);
+                        ?>
+
+                        <div class="col-md-12">
+                            <label for="description">Main Product</label><br/>
+                            @foreach($constproduts as $cp)
+                                <div class="form-group col-sm-3">
+                                    <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
+                                        <option value="">Select {{ $cp }} Product</option>
+                                        @foreach($products as $key => $product)
+                                            <option value="{{ $product->id}}"
+                                                @if($product->id == $existingproducts[$cp])
+                                                    selected 
+                                                @endif
+                                                >{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="form-group col-sm-4">
+
+                        <div class="com-md-12" style="margin-top: 5px;"></div>
+
+                        <div class="col-md-12">
                             <label for="description">Main Processing Classification</label><br/>
-                            <select class="form-control" name="processing_id[]" multiple>
-                                @foreach($main_processings as $processing)
-                                    <option value="{{ $processing->id }}"
-                                      @if(in_array($processing->id, $selected_processing))
-                                        selected
-                                      @endif
-                                      >{{ $processing->main_process }}</option>
-                                @endforeach
-                            </select>
+                            @foreach($constprocessings as $cpr)
+                                <div class="form-group col-sm-3">
+                                    <select class="form-control" name="processing_id[]" id="process_id_{{ $cpr }}">
+                                        <option value="">Select {{$cpr}} Processing</option>
+                                        @foreach($main_processings as $main_processing)
+                                            <option value="{{ $main_processing->id}}"
+                                                @if($main_processing->id == $existingprocessings[$cpr])
+                                                    selected
+                                                @endif
+                                                >{{ $main_processing->main_process }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="form-group col-sm-4">
+
+                        {{--<div class="col-md-12">
+                            <label for="description">Main Product</label><br/>
+                            @foreach($constproduts as $cp)
+                                <div class="form-group col-sm-3">
+                                    <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
+                                        <option value="">Select {{ $cp }} Product</option>
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id}}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 5px;"></div>
+                            <label for="description">Main Processing Classification</label><br/>
+                            @foreach($constprocessings as $cpr)
+                                <div class="form-group col-sm-3">
+                                    <select class="form-control" name="processing_id[]" id="process_id_{{ $cpr }}">
+                                        <option value="">Select {{$cpr}} Processing</option>
+                                        @foreach($main_processings as $main_processing)
+                                            <option value="{{ $main_processing->id}}">{{ $main_processing->main_process }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endforeach
+                        </div>--}}
+                        
+                        <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>
-                            <select class="form-control" name="location_id[]" multiple="">
+                            <select class="form-control" name="location_id[]" id="loc_id" multiple="">
                                 @foreach($locations as $location)
                                     <option value="{{ $location->id}}"
                                       @if(in_array($location->id, $selected_location))

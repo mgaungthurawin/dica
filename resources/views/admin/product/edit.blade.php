@@ -11,7 +11,7 @@
            <div class="box-body">
                <div class="row">
                    {!! Form::model($product, ['method' => 'PATCH','route' => ['product.update', $product->id], 'files' => 'true' ]) !!}
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label for="description">Categoy</label><br/>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -22,7 +22,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <label>Prefix</label>
                             <select name="prefix" class="form-control">
                                 <option value="{{ MATERIAL }}"
@@ -42,19 +42,6 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="form-group col-sm-4">
-                            {!! Form::label('parent', 'Parent:') !!} <span class="text-danger">*</span>
-                            <select class="form-control" name="parent">
-                                <option value="0">Select One</option>
-                                @foreach($products as $pro)
-                                    <option value="{{$pro->id}}"
-                                        @if($pro->id == $product->parent)
-                                            selected
-                                        @endif
-                                        >{{$pro->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <div class="form-group col-sm-6 mmtext">
                             {!! Form::label('name', 'Name:') !!} <span class="text-danger">*</span>
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -67,11 +54,6 @@
                         <div class="form-group col-sm-6 mmtext">
                             {!! Form::label('sorting', 'sorting:') !!} <span class="text-danger">*</span>
                             {!! Form::number('sorting', null, ['class' => 'form-control']) !!}
-                            @if ($errors->has('sorting'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('sorting') }}</strong>
-                                </span>
-                            @endif
                         </div>
                         <div class="col-md-12">
                               <div class="form-group">
@@ -84,14 +66,6 @@
                             <label for="recommend">Recommend</label>
                             <input type="checkbox" value="1" id="recommend" name="recommend"
                               @if($product->recommend)
-                                checked
-                              @endif
-                            >  
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label for="main_product">Main Product</label>
-                            <input type="checkbox" value="1" id="main_product" name="main_product"
-                              @if($product->main_product)
                                 checked
                               @endif
                             >  
