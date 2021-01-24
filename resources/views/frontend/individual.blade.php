@@ -12,6 +12,7 @@
                         <?php 
                           $product_array = json_decode($company->products, TRUE);
                           $processing_array = json_decode($company->processings, TRUE);
+                          $pro_in_array = ['511', '521', '531', '541', '551', '561'];
                         ?>
                         <p>Main Product：{{ mainProducts($product_array) }}</p>
                     </div>
@@ -61,12 +62,12 @@
                                 <?php 
                                   $product_index = 1;
                                 ?>
-                                @foreach(array_filter($product_array) as $pr)
-                                <tr>
-                                    <th scope="row">{{$product_index}}</th>
-                                    <td>{{ getProductName($pr) }}</td>
-                                </tr>
-                                <?php $product_index++; ?>
+                                @foreach(array_filter($product_array) as $key => $pr)
+                                    <tr>
+                                        <th scope="row">{{$product_index}}</th>
+                                        <td>{{ getProductName($pr) }}</td>
+                                    </tr>
+                                  <?php $product_index++; ?>
                                 @endforeach
                           </tbody>
                         </table>
@@ -84,12 +85,14 @@
                             <?php 
                               $processing_index = 1;
                             ?>
-                            @foreach(array_filter($processing_array) as $pra)
-                            <tr>
-                                <th scope="row">{{$processing_index}}</th>
-                                <td>{{ getProcessingName($pra) }}</td>
-                            </tr>
-                            <?php $processing_index++; ?>
+                            @foreach(array_filter($processing_array) as $key => $pra)
+                              @if(in_array($key, $pro_in_array))
+                                <tr>
+                                    <th scope="row">{{$processing_index}}</th>
+                                    <td>{{ getProcessingName($pra) }}</td>
+                                </tr>
+                              <?php $processing_index++; ?>
+                              @endif
                             @endforeach
                           </tbody>
                           
