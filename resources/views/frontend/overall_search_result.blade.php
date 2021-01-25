@@ -1,9 +1,15 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-    <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div>         
+    <!-- <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div>          -->
+    <div class="bg-wrap" >
+      <div class="container ">
+          <h1>Database On Matching Service Program</h1><br>
+        </div>
+     </div>
+  </div>      
     <div class="container">    
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
                     <h1>Database On Matching Service Program</h1><br>
@@ -13,10 +19,12 @@
                     <p>{{trans('app.search_result')}}</p>
                 </div>
             </div>
-        </div>
+        </div> -->
+        
         <div class="row">
             <div class="col-lg-12 mb-12">
-                <div class="container-box">
+                <div class="container-box result-value">
+                <h3>{{trans('app.search_result')}}</h3>
                     <table class="table table-striped">
                       <thead class="thead-dark">
                         <tr>
