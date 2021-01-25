@@ -16,6 +16,7 @@
                           <th scope="col">{{trans('app.date')}}</th>
                           <th scope="col">{{trans('app.category')}}</th>
                           <th scope="col">{{trans('app.contents')}}</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -24,6 +25,7 @@
                             <th scope="row">{{ $new->created_at->format('Y-m-d') }}</th>
                             <td>{{ languageSwitcher($new->category->title) }}</td>
                             <td>{{ languageSwitcher($new->content) }}</td>
+                            <td><a href="{{url($new->id.'/new_detail')}}">New Detail</a></td>
                           </tr>
                         @endforeach
                       </tbody>

@@ -62,6 +62,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('textile', 'WebController@textile');
 	Route::get('food', 'WebController@food');
 	Route::get('news', 'WebController@news');
+	Route::get('{new_id}/new_detail', 'WebController@new_detail');
+
 	Route::get('individual', 'WebController@individual');
 	Route::get('changelanguage', 'LanguageController@changeLanguage');
 	Route::get('sitemap', 'WebController@sitemap');
