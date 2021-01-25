@@ -35,7 +35,7 @@
                                         <div class="card-body">
                                             <h4 class="card-title">{{ languageSwitcher($new->title) }}</h4>
                                             <p class="card-text">{{ languageSwitcher($new->content) }}</p>
-                                            <span class="read-morebtn"><a href="{{url('new_detail')}}"class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></span>
+                                            <span class="read-morebtn"><a href="{{url($new->id.'/new_detail')}}"class="btn btn-primary outline-btn">{{trans('app.learn_more')}}</a></span>
                                         </div>
 
                                     </div>
