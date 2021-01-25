@@ -96,7 +96,7 @@
                       <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
                     @endif
                   @endforeach
-                  <h3><u>Subsidiary Materiel</u></h3>
+                  <h3><u>Subsidiary Material</u></h3>
                   @foreach($products as $key => $recommand)
                     @if(in_array($recommand->id, $sm_array))
                       <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
@@ -108,7 +108,8 @@
             <div class="col-lg-6 mb-6">
                 <h3>{{trans('app.main_processing_classification')}}</h3>
                   @foreach($processings as $processing)
-                    <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
+                    <?php $product_string = json_decode($processing->product_string, TRUE); ?>
+                        <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }} ({{ getProductString($product_string) }})</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">

@@ -39,7 +39,7 @@
     'matching_service_program_news' => "Matching Service Program News",
     'list_of_products' => "List of products",
     'list_of_processing_technology' => " List of processing technology",
-    'list_of_state_region' => "List of State / Region",
+    'list_of_state_region' => "Location of Factory",
     'date' => "Date",
     'category' => "Category",
     'contents' => "Contents",
@@ -82,8 +82,8 @@
     'you_need_to' => " You need to log in or user registration from below link.",
     'after_login' => "After log in, you can use database as same as “using before user registration” step.2 – step.4",
     'you_can_find' => " You can find all information of the company",
-   	'you_can_login' => " You can Log in or Sign up from below link",
-   	'link_button' => "Link button for “Search Page”",
+   	'you_can_login' => " If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you",
+   	'link_button' => "If you are interested for further information, please register.”",
     'material' => "Material",
     'textile' => "Textile",
     'food' => "Food",
@@ -147,7 +147,7 @@
     'food_processing_industry' => "Food Processing Industry",
     'food_processing_industry_covers' => "The food processing industry covers a wide variety of food products. To select this industry’s companies for the database, the main criteria are their food processing technology, product quality, and hygiene management.",
 
-    'recommand_products' => "Recommanded Products",
+    'recommand_products' => "Recommended Products",
     'db_material' => "Database on potential Material Processing companies in Myanmar",
     'db_textile' => "Database on potential Textile companies in Myanmar",
     'db_food' => "Database on potential Food Processing companies in Myanmar",
@@ -157,5 +157,7 @@
     'myanmar_garment_aanufacturers_association' => "Myanmar Garment Manufacturers Association",
     'myanmar_plastic_industries_association' => "Myanmar Plastic Industries Association ",
     'register-title' => " Don’t have an account? ",
+    'if_you_have' => "If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you. ",
+    'if_you_are_interested' => "If you are interested for further information, please register"
    ];
 ?>

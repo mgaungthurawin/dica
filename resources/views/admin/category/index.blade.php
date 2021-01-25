@@ -2,15 +2,15 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Category
+             Industries
         </h1>
-        <span class="breadcrumb"><a href='{{ route("category.create") }}' class="btn btn-sm btn-primary"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Create New Category</a></span>
+        <span class="breadcrumb"><a href='{{ route("category.create") }}' class="btn btn-sm btn-primary"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Create New  Industries</a></span>
     </section>
     <div class="content">
         <div class="row">
             <form method="GET">
                 <div class="form-group col-sm-3 mmtext">
-                    {!! Form::text('name', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Category name']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Industries name']) !!}
                 </div>
                 <a href="{!! route('category.index') !!}" class="btn btn-info">Clear</a>
                 <button type="submit" class="btn btn-primary btnSearch">Search</button>

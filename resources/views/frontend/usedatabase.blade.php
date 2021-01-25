@@ -28,13 +28,13 @@
         <div class="row">
             <div class="col-lg-6 mb-6">
                 <div class="container-box" style="width: 100%;">
-                    {{trans('app.you_can_login')}}<br><br>
+                    {{trans('app.if_you_have')}}<br><br>
                     <a href="{{ url('login') }}" class="btn outline-btn">{{trans('app.login')}}</a>
                 </div>
             </div>
             <div class="col-lg-6 mb-6">
                 <div class="container-box" style="width: 100%;">
-                    {{trans('app.link_button')}}<br><br>
+                    {{trans('app.if_you_are_interested')}}<br><br>
                     <a href="{{ url('register') }}" class="btn outline-btn">{{trans('app.register')}}</a>
                 </div>
             </div>

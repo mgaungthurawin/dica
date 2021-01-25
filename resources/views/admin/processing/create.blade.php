@@ -32,7 +32,15 @@
                         {!! Form::label('sorting', 'Sorting:') !!} <span class="text-danger">*</span>
                         {!! Form::number('sorting', null, ['class' => 'form-control']) !!}
                     </div>
-                    <div class="form-group col-sm-6" style="margin-top: 25px;">
+                    <div class="form-group col-sm-6">
+                        <label for="description">Products ()</label><br/>
+                        <select class="form-control" name="product_string[]" id="product_string" multiple>
+                            @foreach($products as $product)
+                                <option value="{{ $product->id}}">{{ $product->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12">
                         <label for="recommend">Recommend</label>
                         <input type="checkbox" value="1" id="recommend" name="recommend">  
                     </div>
