@@ -193,10 +193,6 @@ class WebController extends Controller
 
         return view('frontend.sitemap');
     }
-    // public function new_detail(Request $request) {
-
-    //     return view('frontend.new_detail');
-    // }
      public function new_detail($id) {
         $newdetail = News::find($id);
         if(empty($newdetail)) {
