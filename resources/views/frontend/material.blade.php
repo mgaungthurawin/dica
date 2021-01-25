@@ -89,7 +89,7 @@
                       <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
                     @endif
                   @endforeach
-                  <h3><u>Subsidiary Materiel</u></h3>
+                  <h3><u>Subsidiary Material</u></h3>
                   @foreach($products as $key => $recommand)
                     @if(in_array($recommand->id, $sm_array))
                       <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
