@@ -293,6 +293,7 @@ nav.navbar span{
 .h-100 {
     height: 100% !important;
     margin: 0px 0px 20px 0px;
+    border-radius: 10px;
 }
 .input-group {
     position: relative;
@@ -435,11 +436,18 @@ background: #f7f7f7;
 }
 .table .thead-dark th {
     color: #fff;
-    background: #ea6a6ab5;
+    background: #3b95ff94;
     border-color: #e6e6e6;
     border-top-color: rgb(230, 230, 230);
     text-align: left;
     font-weight: normal;
+}
+.table{
+    border-spacing: 0;
+    
+}
+#owl-slider.owl-theme .owl-controls .owl-buttons div{
+    background:#2a7dff;
 }
 /*content */
 .about-container{
@@ -495,7 +503,56 @@ footer{
 .back-top {
     background: #075ec1cf;
     border: 1px solid #0360cc;}
+.search .portfolio-item a img.card-img-top{
+    height:200px;
+    width:100%;
+}
+.search .card-title a{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+/* .search-container{
+    margin-top:-450px;
+} */
+.bg-wrap{
+    background:url('../images/slide-01.jpg');
+    position: relative;
+}
+.bg-wrap::before{
+    content: "";
+    background: rgba(0, 27, 51, 0.64);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.bg-wrap h4{
+    color:#fff;font-size: 30px;
+}
 
+.bg-wrap p{
+    color: #d2d2d2;
+    text-align: center;
+    font-size: 15px;
+    line-height: 27px;
+}
+.bg-wrap .container{
+    position: relative;
+    padding:50px 0 120px;
+}
+.cat-search-box-wrap{
+    margin-top:-50px;
+}
+.cat-search-box-wrap label{
+    font-size: 16px;
+    font-weight: normal;
+}
+.cat-search-box-wrap input{
+   border-radius: 10px;
+}
+
+}
 @media (min-width: 993px) {
     nav.navbar.bootsnav ul.nav>li>a {
         padding: 10px 16px !important;
@@ -504,7 +561,7 @@ footer{
 }
 @media (max-width: 768px) {
     .nav>li {
-        width: 80% !important;
+        width: 100% !important;
         text-align: left;
     }
     .logo_title h2{
