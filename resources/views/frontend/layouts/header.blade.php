@@ -102,13 +102,12 @@
           </ul>
         </li>
         <li >
-            <a href="{{url('contact')}}">{{trans('app.contact')}}</a>
-        </li>
-        
-        <li >
                 <a href="{{url('search')}}">{{trans('app.search')}}</a>
         </li>
         <li ><a href="{{url('news')}}">{{trans('app.news')}}</a></li>
+        <li >
+            <a href="{{url('contact')}}">{{trans('app.contact')}}</a>
+        </li>
       </ul>
     
                             
