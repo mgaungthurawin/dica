@@ -56,8 +56,8 @@
                         <?php $index=1;?>
                           @foreach($companies as $company)
                               <?php
-                                $processing = json_decode($company->processings, TRUE);
-                                $product = json_decode($company->products, TRUE);
+                                $processing = json_decode($company->processing_string, TRUE);
+                                $product = json_decode($company->product_string, TRUE);
                               ?>
                               <tr>
                                   <th scope="row">{{$index}}</th>
