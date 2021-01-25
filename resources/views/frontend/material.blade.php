@@ -48,9 +48,29 @@
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">
-                <h3><u>{{trans('app.recommand_products')}}</u></h3>
-                  @foreach($products as $recommand)
-                    <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
+                <?php
+                  $product_array = ['226', '227', '228'];
+                  $pnc_array = ['229', '230', '231', '232', '233', '234'];
+                  $sm_array = ['256', '236'];
+                ?>
+                <h3>{{trans('app.recommand_products')}}</h3>
+                  <h3><u>Products</u></h3>
+                  @foreach($products as $key => $recommand)
+                    @if(in_array($recommand->id, $product_array))
+                      <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
+                    @endif
+                  @endforeach
+                  <h3><u>Parts and Components</u></h3>
+                    @foreach($products as $key => $recommand)
+                    @if(in_array($recommand->id, $pnc_array))
+                      <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
+                    @endif
+                  @endforeach
+                  <h3><u>Subsidiary Materiel</u></h3>
+                  @foreach($products as $key => $recommand)
+                    @if(in_array($recommand->id, $sm_array))
+                      <a href="{{url($category->id.'/search_result?product=' . $recommand->id)}}" class="list-group-item">{{ $recommand->name }}</a>
+                    @endif
                   @endforeach
             </div>
           @endif        
