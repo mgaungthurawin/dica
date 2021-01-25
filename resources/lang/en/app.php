@@ -18,7 +18,7 @@
     'search' => "SEARCH",
     'news' => "NEWS",
     'material_processing' => "Material Processing",
-    'textile_companies' => "Textile Companies",
+    'textile_companies' => "Textile",
     'food_processing' => "Food Processing",
     'name' => "Name",
     'company' => "Company",
