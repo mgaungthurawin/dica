@@ -169,6 +169,9 @@
     'myanmar_food_processors_and_exporters_association' => "မြန်မာနိုင်ငံ စားသောက်ကုန် ထုတ်လုပ်တင်ပို့ ရောင်းချသူများ အသင်း",
     'myanmar_garment_aanufacturers_association' => "Myanmar Garment Manufacturers Association",
     'myanmar_plastic_industries_association' => "Myanmar Plastic Industries Association ", 
-    'register-title' => "စနစ်ထဲ၀င်ရန် အကောင့်ရှိပါသလား ? ",  
+    'register-title' => "စနစ်ထဲ၀င်ရန် အကောင့်ရှိပါသလား ? ", 
+    'if_you_have' => "If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you. ",
+    'if_you_are_interested' => "If you are interested for further information, please register",
+   ]; 
     ]; 
 ?>
