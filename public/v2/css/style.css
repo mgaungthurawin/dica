@@ -514,9 +514,24 @@ footer{
 /* .search-container{
     margin-top:-450px;
 } */
+
+#material {
+    background:url('../images/s2.jpg');
+    position: relative;        
+}
+
+#food {
+    background:url('../images/s7.jpg');
+    position: relative;        
+}
+
+#textile {
+    background:url('../images/s4.jpg');
+    position: relative;        
+}
+
 .bg-wrap{
-    background:url('../images/slide-01.jpg');
-    position: relative;
+    
 }
 .bg-wrap::before{
     content: "";
