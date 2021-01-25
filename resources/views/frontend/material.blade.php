@@ -108,7 +108,8 @@
             <div class="col-lg-6 mb-6">
                 <h3>{{trans('app.main_processing_classification')}}</h3>
                   @foreach($processings as $processing)
-                    <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }}</a>
+                    <?php $product_string = json_decode($processing->product_string, TRUE); ?>
+                        <a href="{{url($category->id.'/search_result?processing='. $processing->id)}}" class="list-group-item active">{{ $processing->main_process }} ({{ getProductString($product_string) }})</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">

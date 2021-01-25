@@ -298,6 +298,15 @@ function getMainProcessing($company_processing, $prefix) {
     return $processings;
 }
 
+function getProductString($array){
+    if (NULL == $array) {
+        return NULL;
+    }
+    $products = Product::whereIn('id', $array)->pluck('name')->toArray();
+    $string = implode(",", $products);
+    return $string;
+}
+
 
 
 
