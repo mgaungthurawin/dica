@@ -53,10 +53,10 @@
                         <legend>  {{trans('app.office_address')}}</legend>
                         <address>
                             <strong><span class="fa fa-map-marker"></span>  {{trans('app.address')}}</strong><br>
-                           {{trans('app.nay_pyi_taw')}}, {{trans('app.myanmar')}} </address>
+                           {{trans('app.npt_address')}}</address>
                         <address>
                             <strong><span class="fa fa-phone"></span> {{trans('app.phone_no')}}</strong><br>
-                            067 54321                        </address>
+                            +95067408455 (for current)</address>
                         <address>
                             <strong><span class="fa fa-envelope"></span> {{trans('app.email')}}</strong><br>
                             <a href="mailto:#">msmebusinessmatching@gmail.com</a>
