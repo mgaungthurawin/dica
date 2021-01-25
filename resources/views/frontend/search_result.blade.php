@@ -3,18 +3,17 @@
 <main class="page_main_wrapper">
     <!-- <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div> 
            -->
-           <div class="bg-wrap" >
-     <div class="container ">
-                    @if(MATERIAL == $category->prefix)
-                      <h1>{{trans('app.db_material')}}</h1><br>
-                    @elseif(TEXTILE == $category->prefix)
-                      <h1>{{trans('app.db_textile')}}</h1><br>
-                    @else
-                      <h1>{{trans('app.db_food')}}</h1><br>
-                    @endif
-            </div>
-     </div>
-  </div>      
+    <div class="bg-wrap" >
+      <div class="container ">
+                      @if(MATERIAL == $category->prefix)
+                        <h1>{{trans('app.db_material')}}</h1><br>
+                      @elseif(TEXTILE == $category->prefix)
+                        <h1>{{trans('app.db_textile')}}</h1><br>
+                      @else
+                        <h1>{{trans('app.db_food')}}</h1><br>
+                      @endif
+                </div>
+        </div>      
     <div class="container">    
         <div class="row">
             <!-- <div class="col-lg-12 mb-12">
