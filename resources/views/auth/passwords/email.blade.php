@@ -7,7 +7,7 @@
 
                 <h3 class="text-center">{{ __('Reset Password') }}</h3>
                 <div class="col-md-5">
-                <img src="{{ asset('v2/images/Artboard – 15.png') }}" alt="logo" width="100%"><br>
+                <img src="{{ asset('v2/images/resetpw.png') }}" alt="logo" width="100%"><br>
                 </div>
                 <div class="col-md-7">
                     @if (session('status'))

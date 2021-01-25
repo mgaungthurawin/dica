@@ -1,7 +1,13 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-    <div class="bg-wrap" >
+    @if(MATERIAL == $category->prefix)
+        <div class="bg-wrap" id="material">
+    @elseif(FOOD == $category->prefix)
+        <div class="bg-wrap" id="food">   
+    @else
+        <div class="bg-wrap" id="textile">
+    @endif 
      <div class="container ">
      <!-- <center>
               <h3>{{trans('app.database_on_potential')}}</h3>
@@ -56,6 +62,7 @@
                     <div class="cat-search-box">
                       <label >Key word Search from {{ $category->title }} companies</label>
                       <input type="text" name="q" class="form-control" placeholder="{{trans('app.search_for')}}" style="margin-right: 20px;">
+                      <i class="fa fa-search" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
