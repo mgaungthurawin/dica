@@ -10,7 +10,7 @@
         <div class="row">
             <form method="GET">
                 <div class="form-group col-sm-3 mmtext">
-                    {!! Form::text('name', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Category name']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control searchtitle', 'placeholder' => 'Industries name']) !!}
                 </div>
                 <a href="{!! route('category.index') !!}" class="btn btn-info">Clear</a>
                 <button type="submit" class="btn btn-primary btnSearch">Search</button>
