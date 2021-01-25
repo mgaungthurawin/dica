@@ -91,8 +91,8 @@
     'you_need_to' => "အောက်ပါလင့်ခ်မှသင်ဝင်ရောက်ရန်သို့မဟုတ်အသုံးပြုသူမှတ်ပုံတင်ရန်လိုအပ်သည်။",
     'after_login' => "လော့ဂ်အင် လုပ်ပြီးနောက် သင်သည် databaseကိုအသုံးပြုနိုင်သည်။",
     'you_can_find' => "သင်သည်ကုမ္ပဏီ၏အချက်အလက်အားလုံးကိုရှာနိုင်သည်။",
-    'you_can_login' => " အောက်ပါလင့်ခ်မှသင်ဝင်ရောက်နိုင်သည် (သို့) ဆိုင်းအင်လုပ်နိုင်သည်",
-    'link_button' => "“ Search Page” အတွက် link button",
+    'you_can_login' => " If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you",
+    'link_button' => "If you are interested for further information, please register.",
     'material' => "ပစ္စည်း",
     'textile' => "အထည်အလိပ်",
     'food' => "စားသောက်ကုန်",
@@ -167,10 +167,11 @@
     'contact' => "ဆက်သွယ်ရန်",
     'sitemap' => "မြေပုံ",
     'myanmar_food_processors_and_exporters_association' => "မြန်မာနိုင်ငံ စားသောက်ကုန် ထုတ်လုပ်တင်ပို့ ရောင်းချသူများ အသင်း",
-    'myanmar_garment_aanufacturers_association' => "Myanmar Garment Manufacturers Association",
-    'myanmar_plastic_industries_association' => "Myanmar Plastic Industries Association ", 
+    'myanmar_garment_aanufacturers_association' => "မြန်မာနိုင်ငံ အထည်ချုပ် လုပ်ငန်းရှင်များ အသင်း",
+    'myanmar_plastic_industries_association' => "မြန်မာနိုင်ငံ ပလက်စတစ် လုပ်ငန်းရှင်များ အသင်း ", 
     'register-title' => "စနစ်ထဲ၀င်ရန် အကောင့်ရှိပါသလား ? ", 
     'if_you_have' => "If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you. ",
     'if_you_are_interested' => "If you are interested for further information, please register"
+
     ]; 
 ?>

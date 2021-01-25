@@ -2,9 +2,9 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Create Category
+            Create  Industries
         </h1>
-        <span class="breadcrumb"><a href='{{ route("category.index") }}' class="btn btn-sm btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;Go To Category</a></span>
+        <span class="breadcrumb"><a href='{{ route("category.index") }}' class="btn btn-sm btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;Go To  Industries</a></span>
     </section>
     <div class="content">
         <div class="box box-primary">

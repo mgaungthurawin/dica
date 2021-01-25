@@ -531,7 +531,11 @@ footer{
 }
 
 .bg-wrap{
-    
+    position: relative;
+    background:url('../images/slide-01.jpg');
+}
+.search a{
+    cursor: pointer;
 }
 .bg-wrap::before{
     content: "";
