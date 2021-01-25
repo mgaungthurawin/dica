@@ -16,7 +16,7 @@
                         @csrf                          
                         <input type="text" class="form-control" name="email" value="" required autofocus autocomplete="off" placeholder="{{trans('app.email')}}">
                         <input type="password" class="form-control" name="password" required placeholder="{{trans('app.password')}} ">
-                        <p><a href="https://msmewebportal.gov.mm/admin/password/reset">{{trans('app.forgot_your_password')}}</a></p>
+                        <p><a href="{{ url('admin/password/reset') }}">{{trans('app.forgot_your_password')}}</a></p>
                         <button class="btn btn-primary outline-btn" type="submit">{{trans('app.login')}}</button>
                     </form>
                 </div>

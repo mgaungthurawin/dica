@@ -11,7 +11,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
-
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group row">
@@ -104,9 +103,8 @@
 <div class="login-box">
     
     <div class="login-logo">
-        <b>JICA</b>
+        <b>Matching Service Program</b>
     </div>
-    <!-- /.login-logo -->
     <div class="login-box-body">
         <center><h4>{{ __('Reset Password') }}</h4></center><br>
         <form method="POST" action="{{ route('password.update') }}">

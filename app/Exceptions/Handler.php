@@ -46,12 +46,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        $exception = FlattenException::create($exception);
-        $statusCode = $exception->getStatusCode($exception);
-        dd($statusCode);
-
         return parent::render($request, $exception);
-    
     }
 }
 

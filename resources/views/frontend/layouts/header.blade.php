@@ -29,7 +29,7 @@
                     <div class="col-xs-3 col-sm-3 col-md-5 hidden-xs pull-left contact-bar">
                         <a class="btn sitemap-btn" href="{{url('sitemap')}}">{{trans('app.sitemap')}}</a> | 
                         <a href="{{ url('contact') }}"><i class="fa fa-envelope"></i> msmebusinessmatching@gmail.com</a> | 
-                        <a href="tel:06754321"><i class="fa fa-phone"></i> 067-54321</a>
+                        <a href="tel:06754321"><i class="fa fa-phone"></i> +95067408455</a>
                     </div>
                     <div class="attr-nav col-md-7 hidden-xs">
                         <div class="pull-right language">

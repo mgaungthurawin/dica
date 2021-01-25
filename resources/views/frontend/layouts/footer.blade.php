@@ -10,8 +10,8 @@
                     <ul class="justify-content-center row">
                         <!-- <li class="col-sm-3 col-xs-6"><i class="fa fa-address-card"></i> <br> {{trans('app.name_of_officer')}} </li> -->
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-envelope"></i> <br> msmebusinessmatching@gmail.com</a></li>
-                        <li class="col-sm-3 col-xs-6"><i class="fa fa-phone"></i><br>  067-54321</a></li>
-                        <li class="col-sm-3 col-xs-6"><i class="fa fa-map-marker"></i><br>  {{trans('app.nay_pyi_taw')}},{{trans('app.myanmar')}}</a></li>
+                        <li class="col-sm-3 col-xs-6"><i class="fa fa-phone"></i><br>  +95067408455</a></li>
+                        <li class="col-sm-3 col-xs-6"><i class="fa fa-map-marker"></i><br>  {{trans('app.npt_address')}}</a></li>
                     </ul>
                 </div>
             </div>

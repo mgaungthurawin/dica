@@ -1,19 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+}
 
 Route::group(['prefix' => 'admin'], function () {
 	Auth::routes();
-	// Hello
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -62,6 +54,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('textile', 'WebController@textile');
 	Route::get('food', 'WebController@food');
 	Route::get('news', 'WebController@news');
+	Route::get('{new_id}/new_detail', 'WebController@new_detail');
+
 	Route::get('individual', 'WebController@individual');
 	Route::get('changelanguage', 'LanguageController@changeLanguage');
 	Route::get('sitemap', 'WebController@sitemap');
