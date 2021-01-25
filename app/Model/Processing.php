@@ -8,7 +8,7 @@ class Processing extends Model
 {
 	protected $table = 'processing';
     protected $fillable = [
-        'prefix', 'main_process', 'location_id', 'recommend', 'sorting'
+        'prefix', 'main_process', 'location_id', 'recommend', 'sorting', 'product_string'
     ];
 
     public function location()
