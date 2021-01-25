@@ -54,7 +54,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>JICA</title>
+    <title>Matching Service Program</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -86,7 +86,7 @@
 <div class="login-box">
     
     <div class="login-logo">
-        <b>JICA</b>
+        <b>Matching Service Program</b>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
