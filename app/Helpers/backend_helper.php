@@ -5,7 +5,6 @@ use App\Model\Media;
 use App\Model\Location;
 use App\Model\Processing;
 use App\Model\Product;
-use Auth;
 
 function saveSingleMedia(Request $request, $upload_type)
 {
