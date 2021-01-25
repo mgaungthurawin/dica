@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
-<main class="page_main_wrapper"> 
-    <div style="height: 150px;" class="hidden-xs"><img src="v2/images/banner-bg.jpg" alt="" class="img-responsive"></div>            
+<main class="page_main_wrapper search"> 
+    <div style="height: 50px;" class="hidden-xs"><img src="v2/images/banner-bg.jpg" alt="" class="img-responsive"></div>            
     <div class="container">
         <div class="row">
             <h2 style="text-align: center; color: #fff;">{{trans('app.database_on_potential')}}</h2><br>
@@ -9,7 +9,7 @@
               <div class="col-lg-4 col-sm-6 portfolio-item">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h4 class="card-title">
+                      <h4 class="card-title text-center">
                         <a href="{{url($category->id.'/material')}}">{{ $category->title }}</a>
                       </h4>
                     </div>

@@ -63,3 +63,4 @@ Route::group(['namespace' => 'Frontend'], function () {
 });
 // Hello
 // Hello World
+//Hello
