@@ -4,6 +4,8 @@ namespace App\CustomClass;
 
 use App\Model\Company;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use App\Model\Product;
+use App\Model\Processing;
 
 class CompanyExcel
 {
@@ -178,16 +180,16 @@ class CompanyExcel
 
     protected function setProducts($sheet, $no, $products)
     {
-            $count = $products->count();
+            $products = (array)json_decode($products);
+            $products = array_values($products);
+            $products = Product::whereIn('id', $products)->pluck('name')->toArray();
+
             $alphabets = [
                 'U', 'V', 'W', 'X', 'Y', 'Z'
             ];
 
-            for($i = 0; $i < $count; $i++){
-                if($i == 6){ //၆ခုထက်ကျော်ရင် မပြဘူး
-                    break;
-                }
-                $sheet->setCellValue($alphabets[$i].$no, $products[$i]->name);
+            for($i = 0; $i < 6; $i++){
+                $sheet->setCellValue($alphabets[$i].$no, $products[$i]);
             }
 
             return;
@@ -195,16 +197,16 @@ class CompanyExcel
 
     protected function setProcessings($sheet, $no, $data)
     {
-            $count = $data->count();
+            $data = (array)json_decode($data);
+            $data = array_values($data);
+            $data = Processing::whereIn('id', $data)->pluck('main_process')->toArray();
+
             $alphabets = [
                 'AA', 'AB', 'AC', 'AD', 'AE', 'AF'
             ];
 
-            for($i = 0; $i < $count; $i++){
-                if($i == 6){ //၆ခုထက်ကျော်ရင် မပြဘူး
-                    break;
-                }
-                $sheet->setCellValue($alphabets[$i].$no, $data[$i]->main_process);
+            for($i = 0; $i < 6; $i++){
+                $sheet->setCellValue($alphabets[$i].$no, $data[$i]);
             }
 
             return;
