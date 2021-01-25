@@ -59,7 +59,6 @@ Route::group(['namespace' => 'Frontend'], function () {
 	Route::get('individual', 'WebController@individual');
 	Route::get('changelanguage', 'LanguageController@changeLanguage');
 	Route::get('sitemap', 'WebController@sitemap');
-	Route::get('new_detail', 'WebController@new_detail');
 	Route::get('overAllSearch', 'WebController@overAllSearch');
 });
 // Hello
