@@ -20,6 +20,7 @@ class CreateProcessingTable extends Migration
             $table->text('location_id')->nullable();
             $table->boolean('recommend');
             $table->integer('sorting')->nullable();
+            $table->longtext('product_string')->nullable();
             $table->timestamps();
         });
     }

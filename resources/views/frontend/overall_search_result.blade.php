@@ -1,7 +1,17 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-    <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div>         
+    @foreach($companies as $company)
+    <div style="height: 300px;">
+        @if(MATERIAL == $company->type)
+            <img src="{{ asset('v2/images/s2.jpg') }}" alt="" class="img-responsive" style="width: 100%;">
+        @elseif(FOOD == $company->type)
+            <img src="{{ asset('v2/images/s7.jpg') }}" alt="" class="img-responsive" style="width: 100%;">
+        @else
+            <img src="{{ asset('v2/images/s4.jpg') }}" alt="" class="img-responsive" style="width: 100%;">
+        @endif
+    </div>  
+    @endforeach       
     <div class="container">    
         <div class="row">
             <div class="col-lg-12 mb-12">
