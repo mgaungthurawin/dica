@@ -108,7 +108,7 @@
     'abbreviation' => "Abbreviation",
     'burmese_notation' => "Burmese Notation",
     'abc_plastic' => "ABC Plastic is one of leading company supplying all kind of plastic product. The company specilized in manufacturing food packaging,contianer, label, tableware,and so on for food industry, cosmetics,pharmaceuticals. We are familer with not only general-porpose platic material but also engeering plastic.Curentry our company has invested modern equipment of CAD/CAM and CNC machine in order to inject industrial plastic products and process insorcing mould.",
-    'main_processing_classification' => " Main processing classification",
+    'main_processing_classification' => "Main Processing Classification",
     'main_machine_and_equipment' => "Main Machine and Equipment",
     'user_name' => "User Name",
     'search' => "Search",
