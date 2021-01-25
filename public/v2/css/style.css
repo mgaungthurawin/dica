@@ -577,6 +577,7 @@ footer{
 }
 .cat-search-box-wrap{
     margin-top:-50px;
+    position: relative;
 }
 .cat-search-box-wrap label{
     font-size: 16px;
@@ -584,11 +585,15 @@ footer{
 }
 .cat-search-box-wrap input{
    border-radius: 10px;
+
 }
 
-.cat-search-box-wrap input::after{
-content:'aa';
+.cat-search-box-wrap i{
 position: absolute;
+top: 55px;
+right: 30px;
+color: #9d9d9d;
+
 }
 @media (min-width: 993px) {
     nav.navbar.bootsnav ul.nav>li>a {

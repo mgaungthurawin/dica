@@ -5,8 +5,6 @@
            -->
            <div class="bg-wrap" >
      <div class="container ">
-    
-           
                     @if(MATERIAL == $category->prefix)
                       <h1>{{trans('app.db_material')}}</h1><br>
                     @elseif(TEXTILE == $category->prefix)
@@ -14,10 +12,7 @@
                     @else
                       <h1>{{trans('app.db_food')}}</h1><br>
                     @endif
-               
             </div>
-           
-         
      </div>
   </div>      
     <div class="container">    

@@ -62,6 +62,7 @@
                     <div class="cat-search-box">
                       <label >Key word Search from {{ $category->title }} companies</label>
                       <input type="text" name="q" class="form-control" placeholder="{{trans('app.search_for')}}" style="margin-right: 20px;">
+                      <i class="fa fa-search" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
