@@ -196,9 +196,7 @@ class WebController extends Controller
      public function new_detail($id) {
         $newdetail = News::find($id);
         if(empty($newdetail)) {
-            $error =  trans('app.error'); 
-            $not_found =  trans('app.not_found');          
-            alert()->error($error,$not_found);
+             Alert::error('News not found');
             return redirect(url('/'));
         }
 
