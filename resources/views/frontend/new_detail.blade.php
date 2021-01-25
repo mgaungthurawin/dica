@@ -9,6 +9,10 @@
                         <div class="media-body">
                         	<center>
                               	<h3>{{ languageSwitcher($newdetail->title) }}</h3>
+                              	
+                              	 @if($newdetail->media) 
+			                       <img class="card-img-top" src="{{ asset($newdetail->media->file_path . $newdetail->media->file_name) }}" alt="">
+			                    @endif
                               	<p>{{ languageSwitcher($newdetail->content) }}</p>
                            		<p>
                            			<small>
