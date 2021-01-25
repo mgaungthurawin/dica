@@ -71,7 +71,7 @@ class WebController extends Controller
         */  
         $companies = Company::where('category_id', $category_id)->get();
         $processings = Processing::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
-        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->get();
+        $products = Product::where('prefix', $category->prefix)->where('recommend', TRUE)->orderBy('sorting', 'ASC')->whereNotNull('sorting')->get();
         $locations = Location::orderBy('sorting', 'ASC')->get();      
         return view('frontend.material', compact('companies', 'category', 'products', 'category_id', 'processings', 'products', 'locations'));
 
@@ -98,27 +98,21 @@ class WebController extends Controller
         $data = $request->all();
         $companies = Company::where('category_id', $category_id)->get();
         if (array_key_exists('product', $data)) {
-            foreach ($companies as $key => $company) {
-                if(NULL !== $company->product) {
-                    foreach ($company->products as $key => $product) {
-                        if ($data['product'] == $product->product_id) {
-                            $companyArray[] = $company->id;
-                        }
-                    }
-                }
+            $product_id = $data['product'];
+            $query = Company::join('company_product', 'companies.id', 'company_product.company_id')
+                            ->where('company_product.product_id', $product_id)->where('companies.category_id', $category_id)->get();
+            foreach ($query as $key => $q) {
+                $companyArray[] = $q->company_id;
             }
             $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }
 
         if (array_key_exists('processing', $data)) {
-            foreach ($companies as $key => $company) {
-                if(NULL !== $company->processing) {
-                    foreach ($company->processings as $key => $processing) {
-                        if ($data['processing'] == $processing->id) {
-                            $companyArray[] = $company->id;
-                        }
-                    }
-                }
+            $processing_id = $data['processing'];
+            $query = Company::join('company_processing', 'companies.id', 'company_processing.company_id')
+                            ->where('company_processing.processing_id', $processing_id)->where('companies.category_id', $category_id)->get();
+            foreach ($query as $key => $q) {
+                $companyArray[] = $q->company_id;
             }
             $companies = Company::whereIn('id', $companyArray)->where('category_id', $category_id)->get();
         }

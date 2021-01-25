@@ -5,10 +5,10 @@
             <!-- START FOOTER BOX (About) -->
             <div class="col-sm-12 col-xs-12 footer-box">
                
-                <div class="about-inner text-center">
+                <div class="about-inner text-center ">
                     <h2 class="wiget-title">{{trans('app.contact_info')}}</h2>
-                    <ul>
-                        <li class="col-sm-3 col-xs-6"><i class="fa fa-address-card"></i> <br> {{trans('app.name_of_officer')}} </li>
+                    <ul class="justify-content-center row">
+                        <!-- <li class="col-sm-3 col-xs-6"><i class="fa fa-address-card"></i> <br> {{trans('app.name_of_officer')}} </li> -->
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-envelope"></i> <br> msmebusinessmatching@gmail.com</a></li>
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-phone"></i><br>  067-54321</a></li>
                         <li class="col-sm-3 col-xs-6"><i class="fa fa-map-marker"></i><br>  {{trans('app.nay_pyi_taw')}},{{trans('app.myanmar')}}</a></li>

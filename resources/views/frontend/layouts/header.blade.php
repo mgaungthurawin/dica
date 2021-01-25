@@ -2,6 +2,22 @@
 @include('frontend.layouts.fonts')
 <!-- PAGE LOADER -->
 <div class="se-pre-con"></div>
+<style>
+    .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+@media only screen and (min-width: 600px){
+    .mobile-logo{
+        display:none;
+    }
+}
+</style>
         
      <!-- *** START PAGE HEADER SECTION *** -->
         <header>
@@ -62,57 +78,59 @@
             </div>
             <!-- END OF /. MIDDLE SECTION -->
             <!-- START NAVIGATION -->
-            <nav class="navbar navbar-expand-md navbar-default navbar-sticky navbar-mobile bootsnav">
-                <div class="container">
-                 <!-- Start Atribute Navigation -->            
-                    <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                            <i class="fa fa-bars"></i> {{trans('app.menu')}}
-                        </button>                         
-                    </div>
-                    <!-- End Header Navigation -->
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse menu-bar" id="navbar-menu">
-                        <ul class="nav navbar-nav col-md-8" data-in="" data-out="">
-                            <li class="dropdown">
-                                <a href="{{url('/')}}">{{trans('app.home')}}</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{trans('app.about')}}</a>
-                                <ul class="dropdown-menu animated">
-                                    <li><a href="{{url('outline')}}">{{trans('app.outline')}}</a></li>
-                                    <li><a href="{{url('usedatabase')}}">{{trans('app.how_to_use_database')}}</a></li> 
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="{{url('contact')}}">{{trans('app.contact')}}</a>
-                            </li>
-                            
-                            <li class="dropdown">
-                                 <a href="{{url('search')}}">{{trans('app.search')}}</a>
-                            </li>
-                            <li class="dropdown"><a href="{{url('news')}}">{{trans('app.news')}}</a></li>
-                        </ul>
+            <nav id="navbar" class="navbar  navbar-static-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header mobile-logo"> 
+      
+      <a class="navbar-brand" href="#">Brand</a>
+      <a href="javascript:void(0)" class="pull-right navbar-brand">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
+    </div>
 
-                        @if(NULL !== Auth::user())
-                        <span>
-                            <a href="{{url('logout')}}" class="float-right"><i class="fa fa-sign-out" aria-hidden="true"></i> 
-                            {{trans('app.sign_out')}}</a>
-                        </span>
-                        @else
-                        <span>
-                            <a href="{{url('login')}}" class=""><i class="fa fa-sign-in" aria-hidden="true"></i> 
-                            {{trans('app.sign_in')}}</a> |  
-                            <a href="{{url('register')}}" class=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"> <a href="{{url('/')}}">{{trans('app.home')}}</a></li>
+       
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('app.about')}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a href="{{url('outline')}}">{{trans('app.outline')}}</a></li>
+            <li><a href="{{url('usedatabase')}}">{{trans('app.how_to_use_database')}}</a></li> 
+          </ul>
+        </li>
+        <li >
+            <a href="{{url('contact')}}">{{trans('app.contact')}}</a>
+        </li>
+        
+        <li >
+                <a href="{{url('search')}}">{{trans('app.search')}}</a>
+        </li>
+        <li ><a href="{{url('news')}}">{{trans('app.news')}}</a></li>
+      </ul>
+    
+                            
+      <ul class="nav navbar-nav navbar-right">
+      @if(NULL !== Auth::user())
+                        
+        <li> <a href="{{url('logout')}}" class="float-right"><i class="fa fa-sign-out" aria-hidden="true"></i> 
+            {{trans('app.sign_out')}}</a></li>
+        
+        @else
+        <li> <a href="{{url('login')}}" class=""><i class="fa fa-sign-in" aria-hidden="true"></i> 
+                            {{trans('app.sign_in')}}</a>
+        </li>
+        <li> <a href="{{url('register')}}" class=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             {{trans('app.user_registration')}}</a>
                         </span>
-                        @endif   
-                            
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
+        </li>
+        @endif 
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
             <!-- END OF/. NAVIGATION -->
         </header>
 @include('frontend.layouts.javascript')
@@ -131,4 +149,21 @@ $(document).on('click', '#locale', function () {
         });
     });
 });
+</script>
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+$(".navbar-header").click(function(){
+    $(".navbar-collapse ").toggleClass('in');
+})
 </script>

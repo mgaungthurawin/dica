@@ -72,7 +72,7 @@
                             $existingprocessings = json_decode($company->processings, TRUE);
                         ?>
 
-                        {{--<div class="col-md-12">
+                        <div class="col-md-12">
                             <label for="description">Main Product</label><br/>
                             @foreach($constproduts as $cp)
                                 <div class="form-group col-sm-3">
@@ -108,9 +108,9 @@
                                     </select>
                                 </div>
                             @endforeach
-                        </div>--}}
+                        </div>
 
-                        <div class="col-md-12">
+                        {{--<div class="col-md-12">
                             <label for="description">Main Product</label><br/>
                             @foreach($constproduts as $cp)
                                 <div class="form-group col-sm-3">
@@ -137,7 +137,7 @@
                                     </select>
                                 </div>
                             @endforeach
-                        </div>
+                        </div>--}}
                         
                         <div class="form-group col-sm-6">
                             <label for="description">Location</label><br/>

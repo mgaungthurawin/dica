@@ -199,29 +199,22 @@ function mm($string) {
     return $array[1];
 }
 
-function main_processing($company) {
-    if (NULL == $company->processings) {
+function main_processing($processing_id) {
+    if (NULL == $processing_id) {
         return NULL;
     }
-    $array = json_decode($company->processings, TRUE);
-    $processing = Processing::find($array['511']);
+    $processing = Processing::find($processing_id);
     return $processing->main_process;
 }
 
-function main_product($company) {
+function main_product($product_id) {
 
-    if (NULL == $company->products) {
+    if (NULL == $product_id) {
         return NULL;
     }
 
-    $array = json_decode($company->products, TRUE);
-    $array = array_filter($array);
-    $product_id = $array["412"];
-    if (FOOD !== $company->type) {
-        $product_id = $array["411"];
-    }
-
-    return Product::find($product_id)->name;
+    $product = Product::find($product_id);
+    return $product->name;
 }
 
 

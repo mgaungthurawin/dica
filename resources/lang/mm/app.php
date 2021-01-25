@@ -166,6 +166,9 @@
     'db_food' => "မြန်မာနိုင်ငံရှိအလားအလာရှိသောစားနပ်ရိက္ခာထုတ်လုပ်မှုကုမ္ပဏီများအတွက်အချက်အလက်များ",
     'contact' => "ဆက်သွယ်ရန်",
     'sitemap' => "မြေပုံ",
-    
+    'myanmar_food_processors_and_exporters_association' => "မြန်မာနိုင်ငံ စားသောက်ကုန် ထုတ်လုပ်တင်ပို့ ရောင်းချသူများ အသင်း",
+    'myanmar_garment_aanufacturers_association' => "Myanmar Garment Manufacturers Association",
+    'myanmar_plastic_industries_association' => "Myanmar Plastic Industries Association ", 
+    'register-title' => "စနစ်ထဲ၀င်ရန် အကောင့်ရှိပါသလား ? ",  
     ]; 
 ?>
