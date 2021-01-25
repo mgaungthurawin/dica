@@ -147,7 +147,7 @@
     'food_processing_industry' => "Food Processing Industry",
     'food_processing_industry_covers' => "The food processing industry covers a wide variety of food products. To select this industry’s companies for the database, the main criteria are their food processing technology, product quality, and hygiene management.",
 
-    'recommand_products' => "Recommand Products",
+    'recommand_products' => "Recommanded Products",
     'db_material' => "Database on potential Material Processing companies in Myanmar",
     'db_textile' => "Database on potential Textile companies in Myanmar",
     'db_food' => "Database on potential Food Processing companies in Myanmar",
