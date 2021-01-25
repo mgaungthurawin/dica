@@ -1,11 +1,34 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-    <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div>         
+    <div class="bg-wrap" >
+     <div class="container ">
+     <!-- <center>
+              <h3>{{trans('app.database_on_potential')}}</h3>
+              <h4>{{ $category->title }}</h4>
+            </center> -->
+            <div class="text-center">
+            <h4>{{ $category->title }}</h4>
+            </div>
+            <h1>
+              @if(MATERIAL == $category->prefix)
+                <p>{{trans('app.the_material_processing_industry')}}<br><br>
+                  {{trans('app.this_database_defines_material')}}
+                </p>
+              @elseif(FOOD == $category->prefix)
+                <p>
+                  {{trans('app.food_processing_industry_covers')}}
+                </p>
+              @else
+                <p>{{trans('app.textile_one')}}</p>
+              @endif
+            </h1>
+     </div>
+  </div>         
     <div class="container">    
         <div class="row">
             <div class="col-lg-12 mb-12">
-                <div class="container-box" style="width: 100%;">
+                <!-- <div class="container-box" style="width: 100%;">
                     <center>
                       <h3>{{trans('app.database_on_potential')}}</h3>
                       <h4>{{ $category->title }}</h4>
@@ -24,15 +47,15 @@
                       @endif
                     </h1>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <form method="GET" action="{{ url($category->id.'/search_result') }}">
             <div class="col-lg-12 mb-12">
-                <div class="container-box">
-                    <div class="input-group">
-                      <label style="line-height: 30px; padding: 0px 20px 0px 0px;">Key word Search from {{ $category->title }} companies</label> 
-                        <input type="text" name="q" class="form-control" placeholder="{{trans('app.search_for')}}" style="margin-right: 20px;">
+                <div class="container-box cat-search-box-wrap">
+                    <div class="cat-search-box">
+                      <label >Key word Search from {{ $category->title }} companies</label>
+                      <input type="text" name="q" class="form-control" placeholder="{{trans('app.search_for')}}" style="margin-right: 20px;">
                     </div>
                 </div>
             </div>
@@ -108,7 +131,7 @@
             </div>
           @endif
         </div>
-        <div class="col-lg-12 mb-12">
+        <div class="col-lg-12 mb-12 row">
             <div class="container-box" style="width: 100%;">
               @if(MATERIAL == $category->prefix)
               <p>

@@ -6349,8 +6349,9 @@ button.list-group-item {
 .list-group-item.active:hover {
     z-index: 2;
     color: #fff;
-    background-color: #ea6a6a;
-    border-color: #ea6a6a
+    background-color: #2e92ffb3;
+    border-color: #567cd7;
+
 }
 
 .list-group-item.active .list-group-item-heading,
