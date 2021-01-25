@@ -6,7 +6,6 @@
             <div class="col-lg-12 mb-12">
                 <div class="container-box" style="width: 100%;">
                     <div class="col-lg-4 mb-4">
-                      awefawef
                         <p>Category：{{ $company->category->title }}</p>
                     </div>
                     <div class="col-lg-4 mb-4">
