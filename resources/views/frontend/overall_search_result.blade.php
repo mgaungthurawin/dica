@@ -1,10 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-
-
-    <!-- <div style="height: 300px;"><img src="{{ asset('frontend/images/slide-01.jpg') }}" alt="" class="img-responsive" style="width: 100%;"></div>          -->
-    @foreach($companies as $company)
         @if(MATERIAL == $company->type)
           <div class="bg-wrap" id="material"> 
         @elseif(FOOD == $company->type)
@@ -16,9 +12,6 @@
           <h1>Database On Matching Service Program</h1><br>
         </div>
      </div>
-  </div>  
-   @endforeach    
-    
 <!-- =======
     @foreach($companies as $company)
     <div style="height: 300px;">
@@ -33,22 +26,9 @@
     @endforeach       
 >>>>>>> c396a4fdbd28642af50a00e9d8b0587336daafe7 -->
     <div class="container">    
-        <!-- <div class="row">
-            <div class="col-lg-12 mb-12">
-                <div class="container-box" style="width: 100%;">
-                    <h1>Database On Matching Service Program</h1><br>
-                </div>
-
-                <div class="container-box" style="width: 100%;">
-                    <p>{{trans('app.search_result')}}</p>
-                </div>
-            </div>
-        </div> -->
-        
         <div class="row">
             <div class="col-lg-12 mb-12">
-                <div class="container-box result-value">
-                  
+                <div class="container-box result-value">         
                 <p>{{trans('app.search_result')}}</p>
                     <table class="table table-striped">
                       <thead class="thead-dark">
