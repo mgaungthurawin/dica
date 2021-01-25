@@ -1,7 +1,13 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-    <div class="bg-wrap" >
+    @if(MATERIAL == $category->prefix)
+        <div class="bg-wrap" id="material">
+    @elseif(FOOD == $category->prefix)
+        <div class="bg-wrap" id="food">   
+    @else
+        <div class="bg-wrap" id="textile">
+    @endif 
      <div class="container ">
      <!-- <center>
               <h3>{{trans('app.database_on_potential')}}</h3>
