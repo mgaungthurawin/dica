@@ -97,6 +97,7 @@ class WebController extends Controller
         }
         $data = $request->all();
         $companies = Company::where('category_id', $category_id)->get();
+        $product_company = [];
         if (array_key_exists('product', $data)) {
             $product_id = $data['product'];
             $companyids = DB::table('company_product')->where('product_id', $product_id)->pluck('company_id')->toArray();
@@ -107,8 +108,10 @@ class WebController extends Controller
         if (array_key_exists('processing', $data)) {
             $processing_id = $data['processing'];
             $processing = Processing::find($processing_id);
-            $product_array = json_decode($processing->product_string, TRUE);
-            $product_company = DB::table('company_product')->whereIn('product_id', $product_array)->pluck('company_id')->toArray();
+            if(NULL !== $processing->product_string) {
+                $product_array = json_decode($processing->product_string, TRUE);
+                $product_company = DB::table('company_product')->whereIn('product_id', $product_array)->pluck('company_id')->toArray();
+            }
             $processing_company = DB::table('company_processing')->where('processing_id', $processing_id)->pluck('company_id')->toArray();
             $companyids = array_merge($product_company, $processing_company);
             $companies = Company::whereIn('id', $companyids)->where('category_id', $category_id)->get();
