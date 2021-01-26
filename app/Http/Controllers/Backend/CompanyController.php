@@ -275,7 +275,7 @@ class CompanyController extends Controller
                 $update = $this->prepareData($request->all());
                 $update['product_string'] = $product_json;
                 $update['type'] = $category->prefix;
-                $processings = $form['processing_id'];
+                $processings = $data['processing_id'];
                 $constprocessings = json_decode(PROCESSING, TRUE);
                 $processing_array = [];
                 foreach ($processings as $key => $pr) {
