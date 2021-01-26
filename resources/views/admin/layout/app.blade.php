@@ -309,6 +309,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('#process_id_562').select2();
 
         $('#loc_id').select2();
+        $('#product_string').select2();
 
         function myanmarLetterOnly( self )
         {

@@ -16,8 +16,10 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $categories = Category::orderBy('id', 'DESC')->paginate(25);
+    {    
+        
+          $categories = Category::orderBy('prefix', 'ASC')->paginate(25);
+
         if(count($request->all()) > 0) {
             $data = $request->all();
             if(array_key_exists('name', $data)) {

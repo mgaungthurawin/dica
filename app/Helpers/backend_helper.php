@@ -203,7 +203,9 @@ function main_processing($processing_id) {
         return NULL;
     }
     $processing = Processing::find($processing_id);
-    return $processing->main_process;
+    if(NULL !== $processing) {
+        return $processing->main_process;
+    }
 }
 
 function main_product($product_id) {
@@ -213,7 +215,9 @@ function main_product($product_id) {
     }
 
     $product = Product::find($product_id);
-    return $product->name;
+    if(NULL !== $product) {
+        return $product->name;
+    }
 }
 
 
@@ -235,9 +239,19 @@ function getProductName($id) {
 }
 
 function getProcessingName($id) {
-    return Processing::find($id)->main_process;
+    $processing = Processing::find($id);
+    $product = NULL;
+    if(NULL !== $processing) {
+        if (NULL !== $processing->product_string) {
+            $product_array = json_decode($processing->product_string, TRUE);
+            $products = Product::whereIn('id', $product_array)->pluck('name')->toArray();
+            $product = " (" . implode(",", $products) . ")";
+        }
+        $processing = $processing->main_process;
+        return $processing . $product ;
+    }
 }
-
+ 
 function mainProducts($array) {
     $string = NULL;
     $array = array_filter($array);
@@ -259,10 +273,12 @@ function mainProcessings($array) {
         return 'N/A';
     }
     foreach ($array as $key => $arr) {
-        $string .= Processing::find($arr)->main_process;
-        $string .= ",";
+        $processing = Processing::find($arr);
+        if(NULL !== $processing) {
+            $string .= $processing->main_process;
+            $string .= ",";
+        }
     }
-
     return $string;
 }
 
@@ -296,6 +312,20 @@ function getMainProcessing($company_processing, $prefix) {
     $processings = Processing::whereIn('id', $company_processing)
                     ->where('prefix', $prefix)->where('main_classification', TRUE)->get();
     return $processings;
+}
+
+function getProductString($array){
+    if (NULL == $array) {
+        return NULL;
+    }
+    $products = Product::whereIn('id', $array)->pluck('name')->toArray();
+    $string = implode(",", $products);
+    $last = end($products);
+    array_pop($products);
+    if(count($products) > 0) {
+        $string = implode(",", $products) .' and '. $last;
+    }
+    return $string;
 }
 
 

@@ -68,8 +68,8 @@
                         <?php
                             $constproduts = json_decode(PRODUCT, TRUE);
                             $constprocessings = json_decode(PROCESSING, TRUE);
-                            $existingproducts = json_decode($company->products, TRUE);
-                            $existingprocessings = json_decode($company->processings, TRUE);
+                            $existingproducts = json_decode($company->product_string, TRUE);
+                            $existingprocessings = json_decode($company->processing_string, TRUE);
                         ?>
 
                         <div class="col-md-12">

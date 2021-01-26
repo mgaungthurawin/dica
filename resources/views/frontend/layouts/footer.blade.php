@@ -25,8 +25,7 @@
                         </div>
                         <div class="modal-body">
                             <center>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500</p><br>
+                                <p>To view detail company information , please register first.</p><br>
                                 <a href="{{ url('login') }}" class="btn btn-primary">REGISTER HERE</a>
                             </center>
                         </div>

@@ -13,6 +13,7 @@ use App\Model\ProductLocation;
 use App\Model\MediaReference;
 Use Alert;
 use App\CustomClass\CompanyExcel;
+use DB;
 
 class CompanyController extends Controller
 {
@@ -88,17 +89,6 @@ class CompanyController extends Controller
         $products = $form['product_id'];
         $category_id = $form['category_id'];
         $category = Category::find($form['category_id']);
-        if(FOOD !== $category->prefix){
-            $processings = $form['processing_id'];
-            $constprocessings = json_decode(PROCESSING, TRUE);
-            $processing_array = [];
-            foreach ($processings as $key => $pr) {
-                $processing_array[$constprocessings[$key]] = $pr;
-            }
-
-            $processing_json = json_encode($processing_array);
-        }
-        
         $constprodcts = json_decode(PRODUCT, TRUE);
         $product_array = [];
 
@@ -126,25 +116,30 @@ class CompanyController extends Controller
                 $data = $this->foodPrepareData($form);
                 $data['type'] = $category->prefix;
                 $data['category_id'] = $category->id;
-                $data['products'] = $product_json;
-                $company_product = array_filter($products);
+                $data['product_string'] = $product_json;
                 $company = Company::create($data);
-                $company->products()->sync($company_product);
+                $company->products()->sync(array_filter($request->product_id));
                 $company->locations()->sync($request->location_id);
                 break;
             default:
                 $data = $this->prepareData($request->all());
                 $data['type'] = $category->prefix;
-                $data['products'] = $product_json;
-                $data['processings'] = $processing_json;
+                $data['product_string'] = $product_json;;
+                $processings = $form['processing_id'];
+                $constprocessings = json_decode(PROCESSING, TRUE);
+                $processing_array = [];
+                foreach ($processings as $key => $pr) {
+                    $processing_array[$constprocessings[$key]] = $pr;
+                }
+                $processing_json = json_encode($processing_array);
+                $data['processing_string'] = $processing_json;
                 $company = Company::create($data);
-                $company_product = array_filter($products);
-                $company_processing = array_filter($products);
-                $company->products()->sync($company_product);
-                $company->processings()->sync($company_processing);
+                $company->products()->sync(array_filter($request->product_id));
+                $company->processings()->sync(array_filter($request->processing_id));
                 $company->locations()->sync($request->location_id);
                 break;
         }
+
         foreach ($media_reference as $key => $value) {
             $media_reference[$key]['reference_id'] = $company->id;
         }
@@ -228,7 +223,6 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $data = $request->all();
-
         // products
         $products = $data['product_id'];
         $constprodcts = json_decode(PRODUCT, TRUE);
@@ -240,17 +234,6 @@ class CompanyController extends Controller
         $product_json = json_encode($product_array);
 
         $category = Category::find($data['category_id']);
-        // processings
-        if(FOOD !== $category->prefix){
-            $processings = $data['processing_id'];
-            $constprocessings = json_decode(PROCESSING, TRUE);
-            $processing_array = [];
-            foreach ($processings as $key => $pr) {
-                $processing_array[$constprocessings[$key]] = $pr;
-            }
-
-            $processing_json = json_encode($processing_array);
-        }
 
         $media_reference = array();
         if ($request->hasFile('image_media')) {
@@ -278,28 +261,34 @@ class CompanyController extends Controller
             if (count($media_reference)) MediaReference::insert($media_reference);
         }
 
-        if(FOOD == $category->prefix)
-        {
-            $update = $this->foodPrepareData($data);
-            $update['products'] = $product_json;
-            $update['type'] = $category->prefix;
-            Company::find($id)->update($update);
-            $company_product = array_filter($products);
-            $company->products()->sync($company_product);
-            $company->locations()->sync($request->location_id);
-            Alert::success('Success', 'Successfully Updated Food Processing');
-            return redirect(route('company.index'));
+        switch ($category->prefix) {
+            case FOOD:
+                $update = $this->foodPrepareData($data);
+                $update['product_string'] = $product_json;
+                $update['type'] = $category->prefix;
+                Company::find($id)->update($update);
+                $company->products()->sync(array_filter($request->product_id));
+                $company->locations()->sync($request->location_id);
+                break;
+            
+            default:
+                $update = $this->prepareData($request->all());
+                $update['product_string'] = $product_json;
+                $update['type'] = $category->prefix;
+                $processings = $data['processing_id'];
+                $constprocessings = json_decode(PROCESSING, TRUE);
+                $processing_array = [];
+                foreach ($processings as $key => $pr) {
+                    $processing_array[$constprocessings[$key]] = $pr;
+                }
+                $processing_json = json_encode($processing_array);
+                $update['processing_string'] = $processing_json;
+                Company::find($id)->update($update);
+                $company->products()->sync(array_filter($request->product_id));
+                $company->processings()->sync(array_filter($request->processing_id));
+                $company->locations()->sync($request->location_id);
+                break;
         }
-        $update = $this->prepareData($request->all());
-        $update['products'] = $product_json;
-        $update['processings'] = $processing_json;
-        $update['type'] = $category->prefix;
-        Company::find($id)->update($update);
-        $company_product = array_filter($products);
-        $company_processing = array_filter($processings);
-        $company->products()->sync($company_product);
-        $company->processings()->sync($company_processing);
-        $company->locations()->sync($request->location_id);
 
         Alert::success('Success', 'Successfully Updated Company');
         return redirect(route('company.index'));

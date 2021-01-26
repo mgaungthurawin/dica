@@ -5,7 +5,7 @@
     <a href="{{ route('location.index') }}"><i class="fa fa-edit"></i><span>Location</span></a>
 </li>
 <li class="{{ Request::is('category*') ? 'active' : '' }}">
-    <a href="{{ route('category.index') }}"><i class="fa fa-edit"></i><span>Category</span></a>
+    <a href="{{ route('category.index') }}"><i class="fa fa-edit"></i><span>Industries</span></a>
 </li>
 <li class="{{ Request::is('product*') ? 'active' : '' }}">
     <a href="{{ route('product.index') }}"><i class="fa fa-edit"></i><span>Product</span></a>
