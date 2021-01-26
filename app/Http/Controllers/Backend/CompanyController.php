@@ -223,7 +223,6 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $data = $request->all();
-
         // products
         $products = $data['product_id'];
         $constprodcts = json_decode(PRODUCT, TRUE);
@@ -261,20 +260,6 @@ class CompanyController extends Controller
             // Save Media Referencing Table
             if (count($media_reference)) MediaReference::insert($media_reference);
         }
-
-        $product_filters = array_filter($products);
-        foreach ($product_filters as $key => $p) {
-            if(NULL !== $p) {
-                $p_relation[]= 
-                [
-                    'product_id' => $p,
-                    'company_id' => $company->id
-                ];
-            }
-        }
-
-        if (count($p_relation)) DB::table('company_product')->insert($p_relation);
-
 
         switch ($category->prefix) {
             case FOOD:
