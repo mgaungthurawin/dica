@@ -181,15 +181,20 @@ class CompanyExcel
     protected function setProducts($sheet, $no, $products)
     {
             $products = (array)json_decode($products);
-            $products = array_values($products);
-            $products = Product::whereIn('id', $products)->pluck('name')->toArray();
+            // dd($products);
+            // $products = array_values($products);
+            // dd($products);
+            // $products = Product::whereIn('id', $products)->pluck('name')->toArray();
 
             $alphabets = [
                 'U', 'V', 'W', 'X', 'Y', 'Z'
             ];
 
-            for($i = 0; $i < 6; $i++){
-                $sheet->setCellValue($alphabets[$i].$no, $products[$i]);
+            for($i = 0; $i < count($products); $i++){
+                if($i == 6){
+                    break;
+                }
+                $sheet->setCellValue($alphabets[$i].$no, $products[$i]->name);
             }
 
             return;
@@ -198,15 +203,18 @@ class CompanyExcel
     protected function setProcessings($sheet, $no, $data)
     {
             $data = (array)json_decode($data);
-            $data = array_values($data);
-            $data = Processing::whereIn('id', $data)->pluck('main_process')->toArray();
+            // $data = array_values($data);
+            // $data = Processing::whereIn('id', $data)->pluck('main_process')->toArray();
 
             $alphabets = [
                 'AA', 'AB', 'AC', 'AD', 'AE', 'AF'
             ];
 
-            for($i = 0; $i < 6; $i++){
-                $sheet->setCellValue($alphabets[$i].$no, $data[$i]);
+            for($i = 0; $i < count($data); $i++){
+                if($i == 6){
+                    break;
+                }
+                $sheet->setCellValue($alphabets[$i].$no, $data[$i]->main_process);
             }
 
             return;
