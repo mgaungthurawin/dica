@@ -42,6 +42,7 @@
 
                         <?php
                             $constproduts = json_decode(PRODUCT, TRUE);
+                            $existingproducts = json_decode($company->product_string, TRUE);
                         ?>
 
                         <div class="col-md-12">
@@ -50,8 +51,12 @@
                                 <div class="form-group col-sm-3">
                                     <select class="form-control" name="product_id[]" id="pro_id_{{$cp}}">
                                         <option value="">Select {{ $cp }} Product</option>
-                                        @foreach($products as $product)
-                                            <option value="{{ $product->id}}">{{ $product->name }}</option>
+                                        @foreach($products as $key => $product)
+                                            <option value="{{ $product->id}}"
+                                                @if($product->id == $existingproducts[$cp])
+                                                    selected 
+                                                @endif
+                                                >{{ $product->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

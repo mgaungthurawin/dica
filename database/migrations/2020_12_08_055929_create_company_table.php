@@ -74,8 +74,8 @@ class CreateCompanyTable extends Migration
             $table->string('type');
             $table->longText('special_note')->nullable();
             $table->text('strong_point')->nullable();
-            $table->longtext('products')->nullable();
-            $table->longText('processings')->nullable();
+            $table->longtext('product_string')->nullable();
+            $table->longText('processing_string')->nullable();
             $table->timestamps();
         });
     }
