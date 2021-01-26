@@ -240,8 +240,15 @@ function getProductName($id) {
 
 function getProcessingName($id) {
     $processing = Processing::find($id);
+    $product = NULL;
     if(NULL !== $processing) {
-        return $processing->main_process;
+        if (NULL !== $processing->product_string) {
+            $product_array = json_decode($processing->product_string, TRUE);
+            $products = Product::whereIn('id', $product_array)->pluck('name')->toArray();
+            $product = " (" . implode(",", $products) . ")";
+        }
+        $processing = $processing->main_process;
+        return $processing . $product ;
     }
 }
  

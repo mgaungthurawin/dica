@@ -110,7 +110,9 @@ class WebController extends Controller
             $processing = Processing::find($processing_id);
             if(NULL !== $processing->product_string) {
                 $product_array = json_decode($processing->product_string, TRUE);
-                $product_company = DB::table('company_product')->whereIn('product_id', $product_array)->pluck('company_id')->toArray();
+                if(!empty($product_array)) {
+                    $product_company = DB::table('company_product')->whereIn('product_id', $product_array)->pluck('company_id')->toArray();
+                }
             }
             $processing_company = DB::table('company_processing')->where('processing_id', $processing_id)->pluck('company_id')->toArray();
             $companyids = array_merge($product_company, $processing_company);
