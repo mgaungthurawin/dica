@@ -53,8 +53,10 @@
                         <select class="form-control" name="product_string[]" id="product_string" multiple="">
                             @foreach($products as $product)
                                 <option value="{{ $product->id}}"
-                                  @if(in_array($product->id, $selected_product))
-                                    selected
+                                  @if(NULL !== $selected_product)
+                                    @if(in_array($product->id, $selected_product))
+                                      selected
+                                    @endif
                                   @endif
                                   >{{ $product->name }}</option>
                             @endforeach
