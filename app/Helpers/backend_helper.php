@@ -239,9 +239,12 @@ function getProductName($id) {
 }
 
 function getProcessingName($id) {
-    return Processing::find($id)->main_process;
+    $processing = Processing::find($id);
+    if(NULL !== $processing) {
+        return $processing->main_process;
+    }
 }
-
+ 
 function mainProducts($array) {
     $string = NULL;
     $array = array_filter($array);
@@ -263,10 +266,12 @@ function mainProcessings($array) {
         return 'N/A';
     }
     foreach ($array as $key => $arr) {
-        $string .= Processing::find($arr)->main_process;
-        $string .= ",";
+        $processing = Processing::find($arr);
+        if(NULL !== $processing) {
+            $string .= $processing->main_process;
+            $string .= ",";
+        }
     }
-
     return $string;
 }
 
