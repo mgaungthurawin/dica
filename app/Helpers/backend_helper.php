@@ -203,7 +203,9 @@ function main_processing($processing_id) {
         return NULL;
     }
     $processing = Processing::find($processing_id);
-    return $processing->main_process;
+    if(NULL !== $processing) {
+        return $processing->main_process;
+    }
 }
 
 function main_product($product_id) {
@@ -213,7 +215,9 @@ function main_product($product_id) {
     }
 
     $product = Product::find($product_id);
-    return $product->name;
+    if(NULL !== $product) {
+        return $product->name;
+    }
 }
 
 
