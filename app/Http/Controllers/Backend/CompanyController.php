@@ -282,7 +282,7 @@ class CompanyController extends Controller
                     $processing_array[$constprocessings[$key]] = $pr;
                 }
                 $processing_json = json_encode($processing_array);
-                $data['processing_string'] = $processing_json;
+                $update['processing_string'] = $processing_json;
                 Company::find($id)->update($update);
                 $company->products()->sync(array_filter($request->product_id));
                 $company->processings()->sync(array_filter($request->processing_id));
