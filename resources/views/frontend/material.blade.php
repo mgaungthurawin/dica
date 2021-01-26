@@ -34,26 +34,6 @@
     <div class="container">    
         <div class="row">
             <div class="col-lg-12 mb-12">
-                <!-- <div class="container-box" style="width: 100%;">
-                    <center>
-                      <h3>{{trans('app.database_on_potential')}}</h3>
-                      <h4>{{ $category->title }}</h4>
-                    </center>
-                    <h1>
-                      @if(MATERIAL == $category->prefix)
-                        <p>{{trans('app.the_material_processing_industry')}}<br><br>
-                          {{trans('app.this_database_defines_material')}}
-                        </p>
-                      @elseif(FOOD == $category->prefix)
-                        <p>
-                          {{trans('app.food_processing_industry_covers')}}
-                        </p>
-                      @else
-                        <p>{{trans('app.textile_one')}}</p>
-                      @endif
-                    </h1>
-                </div>
-            </div> -->
         </div>
         <div class="row">
             <form method="GET" action="{{ url($category->id.'/search_result') }}">

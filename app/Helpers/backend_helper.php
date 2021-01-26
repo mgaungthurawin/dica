@@ -303,7 +303,9 @@ function getProductString($array){
         return NULL;
     }
     $products = Product::whereIn('id', $array)->pluck('name')->toArray();
-    $string = implode(",", $products);
+    $last = end($products);
+    array_pop($products);
+    $string = implode(",", $products) .' and '. $last;
     return $string;
 }
 
