@@ -12,19 +12,6 @@
           <h1>Database On Matching Service Program</h1><br>
         </div>
      </div>
-<!-- =======
-    @foreach($companies as $company)
-    <div style="height: 300px;">
-        @if(MATERIAL == $company->type)
-            <img src="{{ asset('v2/images/s2.jpg') }}" alt="" class="img-responsive" style="width: 100%;">
-        @elseif(FOOD == $company->type)
-            <img src="{{ asset('v2/images/s7.jpg') }}" alt="" class="img-responsive" style="width: 100%;">
-        @else
-            <img src="{{ asset('v2/images/s4.jpg') }}" alt="" class="img-responsive" style="width: 100%;">
-        @endif
-    </div>  
-    @endforeach       
->>>>>>> c396a4fdbd28642af50a00e9d8b0587336daafe7 -->
     <div class="container">    
         <div class="row">
             <div class="col-lg-12 mb-12">
@@ -54,11 +41,12 @@
                                 <td>{{ $company->category->title }}</td>
                                 <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
                                 <td>{{ main_location($company) }}</td>
-                                @if(FOOD !== $company->type)
+                                @if(FOOD == $company->type)
+                                  <td></td>
+                                  <td>{{ main_product($product['412']) }}</td>
+                                @else
                                   <td>{{ main_processing($processing['511']) }}</td>
                                   <td>{{ main_product($product['411']) }}</td>
-                                @else
-                                  <td>{{ main_product($product['412']) }}</td>
                                 @endif
                                 <td>{{ limit_text($company->strong_point, 15) }}</td>
                             </tr>
