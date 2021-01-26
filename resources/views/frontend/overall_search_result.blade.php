@@ -1,16 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
 <main class="page_main_wrapper">
-        @if(MATERIAL == $company->type)
-          <div class="bg-wrap" id="material"> 
-        @elseif(FOOD == $company->type)
-          <div class="bg-wrap" id="food">
-        @else
-          <div class="bg-wrap" id="textile">
-        @endif
         <div class="container " >
-          <h1>Database On Matching Service Program</h1><br>
+            <h1>Database On Matching Service Program</h1><br>
         </div>
+        <br><br>
      </div>
     <div class="container">    
         <div class="row">
