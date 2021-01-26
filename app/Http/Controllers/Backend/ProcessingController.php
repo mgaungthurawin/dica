@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\ProductLocation;
 use App\Model\Processing;
+use App\Model\Product;
 use App\Http\Requests\Backend\ProcessingRequest;
 Use Alert;
 
@@ -34,7 +35,8 @@ class ProcessingController extends Controller
      */
     public function add()
     {
-        return view('admin.processing.create');
+        $products = Product::all();
+        return view('admin.processing.create', compact('products'));
     }
 
     /**
@@ -46,6 +48,7 @@ class ProcessingController extends Controller
     public function store(ProcessingRequest $request)
     {
     	$data = $request->all();
+        $data['product_string'] = json_encode($data['product_string']);
         Processing::create($data);
         Alert::success('Success', 'Successfully Created main processings');
         return redirect(url('admin/processing'));
@@ -71,11 +74,13 @@ class ProcessingController extends Controller
     public function edit($id)
     {
         $processing = Processing::find($id);
+        $products = Product::all();
+        $selected_product = json_decode($processing->product_string, TRUE);
         if(empty($processing)) {
             Alert::error('Error', 'main processings Not Found');
             return redirect(route('processing.index'));
         }
-        return view('admin.processing.edit', compact('processing'));
+        return view('admin.processing.edit', compact('processing','products', 'selected_product'));
     }
 
     /**
@@ -89,6 +94,7 @@ class ProcessingController extends Controller
     {
     	$data = $request->all();
         $data['location_id'] = json_encode($request['location_id']);
+        $data['product_string'] = json_encode($request['product_string']);
 
         if (!array_key_exists('recommend', $data)) {
             $data['recommend'] = 0;

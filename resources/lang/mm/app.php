@@ -172,5 +172,6 @@
     'register-title' => "စနစ်ထဲ၀င်ရန် အကောင့်ရှိပါသလား ? ", 
     'if_you_have' => "If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you. ",
     'if_you_are_interested' => "If you are interested for further information, please register"
+
     ]; 
 ?>

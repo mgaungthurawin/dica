@@ -10,8 +10,8 @@
                     </div>
                     <div class="col-lg-4 mb-4">
                         <?php 
-                          $product_array = json_decode($company->products, TRUE);
-                          $processing_array = json_decode($company->processings, TRUE);
+                          $product_array = json_decode($company->product_string, TRUE);
+                          $processing_array = json_decode($company->processing_string, TRUE);
                           $product_in_array = ['411', '421', '431', '441', '451', '461'];
                           $pro_in_array = ['511', '521', '531', '541', '551', '561'];
                         ?>
