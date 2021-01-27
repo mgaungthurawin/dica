@@ -32,7 +32,7 @@
                           <td rowspan="2" width="18%" class="black-color"><b>Name of company</b></td>
                           <td class="black-color"> Eniglish Name</td>
                           <td class="black-color">Burmese Name</td>
-                          <td class="black-color">abbreviation </td>
+                          <td class="black-color">Abbreviation </td>
                         </tr>
                         <tr>
                           
