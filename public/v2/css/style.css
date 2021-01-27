@@ -529,7 +529,9 @@ footer{
     background:url('../images/s4.jpg');
     position: relative;        
 }
-
+.black-color{
+    color:#000;
+}
 .bg-wrap{
     position: relative;
     background:url('../images/slide-01.jpg');
