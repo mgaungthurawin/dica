@@ -29,17 +29,20 @@
                     <table class="table">
                       <tbody>
                         <tr>
-                          <td rowspan="2">Name of company</td>
-                          <td width="50%">{{ $company->name }}</td>
-                          <td width="25%">abbreviation</td>
-                          <td width="25%">{{ $company->abbreviation }}</td>
+                          <td rowspan="2" width="18%" class="black-color"><b>Name of company</b></td>
+                          <td class="black-color"> Eniglish Name</td>
+                          <td class="black-color">Burmese Name</td>
+                          <td class="black-color">Abbreviation </td>
                         </tr>
                         <tr>
-                          <td>Burmese Notation</td>
-                          <td colspan="2">{!! $company->mm_name !!}</td>
+                          
+                          <td >{{ $company->name }} </td>
+                          <td>{!! $company->mm_name !!}</td>
+                          <td>{{ $company->abbreviation }} </td>
                         </tr>
                         <tr>
-                          <td colspan="4">{{ $company->description }}</td>
+                        <td class="black-color"><b>Company Profile</b></td>
+                          <td colspan="3">{{ $company->description }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -373,8 +376,8 @@
         <!-- /.row -->         
     </div>
 </main>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
 <script>
   $(document).ready(function(){
     $("#alert").modal('show');
