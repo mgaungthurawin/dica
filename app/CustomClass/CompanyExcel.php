@@ -203,11 +203,15 @@ class CompanyExcel
     protected function setProducts($sheet, $no, $products)
     {
         $products = (array)json_decode($products);
-        $products = array_values($products);
-        $products = Product::whereIn('id', $products)->pluck('name')->toArray();
+        // $products = array_values($products);
+        $array = [
+            411, 421, 431, 441, 451, 461
+        ];
+
+        // $products = Product::whereIn('id', $products)->pluck('name')->toArray();
 
         for($i = 0; $i < 6; $i++){
-            $product_name = isset($products[$i]) ? $products[$i] : '';
+            $product_name = isset($products[$array[$i]]) ? Product::findOrFail($products[$array[$i]])->name : '';
             $sheet->setCellValue($this->increaseAlphaNo().$no, $product_name);
         }
 
