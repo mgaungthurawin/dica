@@ -221,11 +221,15 @@ class CompanyExcel
     protected function setProcessings($sheet, $no, $data)
     {
         $data = (array)json_decode($data);
-        $data = array_values($data);
-        $data = Processing::whereIn('id', $data)->pluck('main_process')->toArray();
+        $array = [
+            511,521,531,541,551,561
+        ];
+        // $data = array_values($data);
+
+        // $data = Processing::whereIn('id', $data)->pluck('main_process')->toArray();
 
         for($i = 0; $i < 6; $i++){
-            $main_process = isset($data[$i]) ? $data[$i] : '';
+            $main_process = isset($data[$array[$i]]) ? Processing::findOrFail($data[$array[$i]])->main_process : '';
             $sheet->setCellValue($this->increaseAlphaNo().$no, $main_process);
         }
 
