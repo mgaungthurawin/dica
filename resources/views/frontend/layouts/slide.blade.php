@@ -14,7 +14,7 @@
                                 </div>  
                                 <div class="item">
                                     <div class="slider-post post-height-1">
-                                        <a href="#" class="news-image"><img src="v2/images/s2.jpg" alt="" class="img-responsive"></a>
+                                        <a href="#" class="news-image"><img src="v2/images/s2.jpeg" alt="" class="img-responsive"></a>
                                         <div class="post-text"><h1 style="color: #FFF;">{{trans('app.material_processing')}}</h1></div>
                                     </div>
                                 </div> 
