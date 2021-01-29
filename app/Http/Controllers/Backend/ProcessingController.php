@@ -18,7 +18,7 @@ class ProcessingController extends Controller
      */
     public function index(Request $request)
     {
-        $processings = Processing::orderBy('id', 'DESC')->paginate(25);
+        $processings = Processing::orderBy('recommend', 'DESC')->paginate(25);
         if(count($request->all()) > 0) {
             $data = $request->all();
             if(array_key_exists('name', $data)) {

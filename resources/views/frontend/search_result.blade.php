@@ -49,6 +49,8 @@
                                 $processing = json_decode($company->processing_string, TRUE);
                                 $product = json_decode($company->product_string, TRUE);
                               ?>
+                            @if(isset($product_id))
+                              @if($product_id == $product['411'] || $product_id == $product['412'])
                               <tr>
                                   <th scope="row">{{$index}}</th>
                                   <td>{{ $company->category->title }}</td>
@@ -63,6 +65,23 @@
                                   <td>{{ limit_text($company->strong_point, 15) }}</td>
                               </tr>
                               <?php $index++;?>
+                              @endif
+                            @else
+                              <tr>
+                                  <th scope="row">{{$index}}</th>
+                                  <td>{{ $company->category->title }}</td>
+                                  <td><a href="{{ url($company->id.'/industry') }}">{{ $company->name }}</a></td>
+                                  <td>{{ main_location($company) }}</td>
+                                  @if(FOOD !== $category->prefix)
+                                    <td>{{ main_processing($processing['511']) }}</td>
+                                    <td>{{ main_product($product['411']) }}</td>
+                                  @else
+                                    <td>{{ main_product($product['412']) }}</td>
+                                  @endif
+                                  <td>{{ limit_text($company->strong_point, 15) }}</td>
+                              </tr>
+                              <?php $index++;?> 
+                            @endif
                           @endforeach
                       </tbody>
                     </table>

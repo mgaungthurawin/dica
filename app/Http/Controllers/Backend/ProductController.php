@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
-        $products = Product::orderBy('id', 'DESC')->paginate(25);
+        $products = Product::orderBy('recommend', 'DESC')->paginate(25);
         if(count($request->all()) > 0) {
             $data = $request->all();
             if(array_key_exists('name', $data) && array_key_exists('category_id', $data)) {

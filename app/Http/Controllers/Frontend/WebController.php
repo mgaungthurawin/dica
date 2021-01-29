@@ -102,7 +102,7 @@ class WebController extends Controller
             $product_id = $data['product'];
             $companyids = DB::table('company_product')->where('product_id', $product_id)->pluck('company_id')->toArray();
             $companies = Company::whereIn('id', $companyids)->where('category_id', $category_id)->get();
-            return view('frontend.search_result', compact('companies', 'category'));
+            return view('frontend.search_result', compact('companies', 'category', 'product_id'));
         }
 
         if (array_key_exists('processing', $data)) {
