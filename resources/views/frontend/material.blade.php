@@ -115,7 +115,7 @@
             <div class="col-lg-6 mb-6">
                 <h3>{{trans('app.main_products')}}</h3>
                   @foreach($products as $product)
-                    <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item">{{ $product->name }}</a>
+                    <a href="{{url($category->id.'/search_result?product=' . $product->id)}}" class="list-group-item active">{{ $product->name }}</a>
                   @endforeach
             </div>
             <div class="col-lg-6 mb-6">

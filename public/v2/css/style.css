@@ -60,13 +60,11 @@ header .header-mid{
   
 }
 .logo_title h2{
-    font-size:20.5pt !important;
+    font-size:26.5pt !important;
     margin-top: 38px !important;
     color:#367ed7;
 }
-.navbar{
 
-}
 /* nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after{
     content:'';
 } */
@@ -508,8 +506,9 @@ footer{
     width:100%;
 }
 .search .card-title a{
-    font-size: 16px;
+    font-size: 20px;
     text-transform: uppercase;
+    text-shadow: 0px 3px 5px #61a3f9bf;
 }
 /* .search-container{
     margin-top:-450px;
