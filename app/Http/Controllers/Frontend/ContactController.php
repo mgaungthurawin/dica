@@ -20,11 +20,13 @@ class ContactController extends Controller
     	$data = array(
     		'email' => $data['email'],
            	'name' => $data['name'],
+            'inquiry_category' => $data['inquiry_category'],
            	'message' => $data['message']
        	);
 
         Mail::to(EMAIL)->send(new ContactMail($data));
-        Alert::success('successfully send email');
-        return redirect('contact');
+        $response = [];
+        $response['status'] = TRUE;
+        return json_encode($response);
     }
 }

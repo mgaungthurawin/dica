@@ -54,6 +54,7 @@
 // 	}
 // });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <input type="hidden" id="allSearch" value="{{ url('overAllSearch') }}">
 <script type="text/javascript">
 	$(document).ready(function () {
@@ -62,6 +63,40 @@
 			var data = $("#orver-all-search").serialize();
 			var url = $('#allSearch').val();
 			window.location.href = url +'?'+ data;
+		})
+
+		$(document).on('submit', '#contact_form', function (e) {
+			e.preventDefault();
+			var data = $('#contact_form').serializeArray();
+			var url = "{{ url('contactemail') }}";
+			var home = "{{ url('/') }}";
+			Swal.fire({
+			  title: 'Are you sure?',
+			  text: "You want to send email to business machining service",
+			  icon: 'success',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+			  	$.ajax({
+		  	        url: url,
+		  	        method:"POST",
+		  	        data: data,
+		  	        success:function(response) {
+		  	        	var result = JSON.parse(response);
+		  	           if(result.status === true){
+		  	           	 Swal.fire(
+		  	           	   'You have successfully sent email to business machining service'
+		  	           	 )
+		  	           	 window.setTimeout(function(){ } ,5000);
+		  	           	 window.location.href = home;
+		  	           }
+		  	        }
+		  	      })
+			  }
+			})
 		})
 	})
   $('.navbar-toggle').click(function(){

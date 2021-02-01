@@ -158,6 +158,8 @@
     'myanmar_plastic_industries_association' => "Myanmar Plastic Industries Association ",
     'register-title' => " Don’t have an account? ",
     'if_you_have' => "If you have business inquiries or other questions, we would be pleased to assist you. Kindly give us the brief description of your interest through the following form. Thank you. ",
-    'if_you_are_interested' => "If you are interested for further information, please register"
+    'if_you_are_interested' => "If you are interested for further information, please register",
+    'inquiry_category' => "Inquiry Category",
+    'select_inquiry' => "Select Inquiry Category"
    ];
 ?>

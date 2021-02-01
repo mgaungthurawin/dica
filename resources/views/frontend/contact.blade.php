@@ -16,8 +16,8 @@
  pleased to assist you. Kindly give us the brief description of your
  interest through the following form. Thank you.
                         </p>
-                        <form action="{{ url('contactemail') }}" method="POST">                                
-                                @csrf                        
+                        <form action="#" method="POST" id="contact_form">
+                            @csrf                       
                                 <div class="form-group">
                                     <label for="name">
                                        {{trans('app.name')}}</label>
@@ -36,6 +36,22 @@
                                     <div class="input-group">
                                         </span>
                                         <input type="email" class="form-control" id="email" name="email" placeholder="{{trans('app.enter_email')}}" required="required"  />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">
+                                        {{trans('app.inquiry_category')}}</label>
+                                    <div class="input-group">
+                                        </span>
+                                        <select name="inquiry_category" class="form-control">
+                                            <option value="0">{{trans('app.select_inquiry')}}</option>
+                                            <option value="About Matching Service Program">About Matching Service Program</option>
+                                            <option value="About Potential Company Database">About Potential Company Database</option>
+                                            <option value="Detail Information Request">Detail Information Request</option>
+                                            <option value="Request for meeting with company in database">Request for meeting with company in database</option>
+                                            <option value="Other">Other</option>
+                                        </select>
                                     </div>
                                 </div>
                                 
