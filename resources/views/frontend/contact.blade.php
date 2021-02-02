@@ -46,11 +46,9 @@
                                         </span>
                                         <select name="inquiry_category" class="form-control">
                                             <option value="0">{{trans('app.select_inquiry')}}</option>
-                                            <option value="About Matching Service Program">About Matching Service Program</option>
-                                            <option value="About Potential Company Database">About Potential Company Database</option>
-                                            <option value="Detail Information Request">Detail Information Request</option>
-                                            <option value="Request for meeting with company in database">Request for meeting with company in database</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Material Processing">Material Processing</option>
+                                            <option value="Textile">Textile</option>
+                                            <option value="Food Processing">Food Processing</option>
                                         </select>
                                     </div>
                                 </div>
