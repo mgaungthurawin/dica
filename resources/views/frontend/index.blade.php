@@ -2,7 +2,7 @@
 @section('content')
 @include('frontend.layouts.slide')
 <!-- *** START PAGE MAIN CONTENT *** -->
-<div class="row about-container">
+<!-- <div class="row about-container">
    <div class="container">
         <div class="col-lg-12 mb-12 text-center">
             <div  style="width: 100%;">
@@ -15,7 +15,7 @@
             </div>
         </div>
    </div>
-</div> 
+</div>  -->
 <main class="page_main_wrapper new-section">            
     <!-- <div class="container">    
        

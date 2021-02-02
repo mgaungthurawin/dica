@@ -303,6 +303,34 @@ nav.navbar span{
     align-items: stretch;
     width: 100%;
 }
+
+.slider-wrapper .news-image:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease
+}
+#owl-slider.owl-theme .owl-controls .owl-buttons div{
+    z-index: 99999;
+}
+.about-section{
+    position:absolute;
+    top:50px;
+    width:100%;
+    text-align:center;
+}
+.about-section h1,.about-section h2,.about-section p{
+    color:#fff;
+}
 /* .login .login-container{
     width:500px;
 } */
